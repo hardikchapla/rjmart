@@ -9,10 +9,10 @@
 	foreach($result as $row)
 	{
 	    $image = '';
-	    if($row['slider_image'] != ''){
+	    if($row['slider_image'] != '' && $row['slider_type'] == 0){
             $image = '<img src="../assets/img/slider/'.$row["slider_image"].'" style = "border-radius: 40px" width="40" height="40" />';
         } else {
-            $image = '<img src="../assets/img/slider/slider_image.jpg" style = "border-radius: 40px" width="40" height="40" />';
+            $image = '<img src="../assets/img/slider/Slider-Webpage-Fruits.jpg" style = "border-radius: 40px" width="40" height="40" />';
         }
         $selectCategory = $db->query("SELECT * FROM category WHERE id='$row[category_id]'");
         $feCat = $selectCategory->fetch();
@@ -21,7 +21,11 @@
 		$sub_array[] = $i;
 		$sub_array[] = $image;
 		$sub_array[] = $feCat["name"];
-      
+		if($row['slider_type'] == 0){
+			$sub_array[] = "Image";
+		} else {
+			$sub_array[] = "Video";
+		}
 		$sub_array[] = '<button class="btn btn-primary fa fa-pencil updateCategory" type="button" id="'.$row["slider_id"].'">Edit</button>';
 		$sub_array[] = '<button class="btn btn-danger fa fa-trash deleteCategory" type="button" id="'.$row["slider_id"].'" >Delete</button>';
 		$data[] = $sub_array;

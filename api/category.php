@@ -1,10 +1,10 @@
 <?php
 	include "../connection/connection.php";
+	include "../helper/constant.php";
 	$status = 0;
 	$message = "";
 	$data = array();
 	$response = array();
-
 	if(!empty($_REQUEST)){
  		if(empty($_REQUEST['user_id'])){
  			$status = 2;
@@ -18,8 +18,8 @@
  		}
  		$user_id = $_REQUEST['user_id'];
  		$date = date('Y-m-d H:i:s');
- 		$path = 'http://'.$_SERVER['SERVER_NAME'].'/assets/img/category/';
- 		$sliderpath = 'http://'.$_SERVER['SERVER_NAME'].'/assets/img/slider/';
+ 		$path = BASE_URL.'assets/img/category/';
+ 		$sliderpath = BASE_URL.'assets/img/slider/';
  		$checkmobile = $db->query("SELECT * FROM user WHERE id = '$user_id'");
  		if($checkmobile->rowCount() > 0){
  			$cat = $db->query("SELECT * FROM category");
@@ -46,6 +46,7 @@
  					while($feSlider = $slider->fetch()){
  					    $ss[$s]['slider_id'] = $feSlider['slider_id'];
  					    $ss[$s]['category_id'] = $feSlider['category_id'];
+ 					    $ss[$s]['slider_type'] = $feSlider['slider_type'];
  					    $ss[$s]['slider_image'] = $sliderpath.$feSlider['slider_image'];
  					    $s++;
  					}
