@@ -5,6 +5,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+ // Defining base url
+ if($_SERVER['HTTP_HOST'] == "localhost"){
+    define("BASE_URL", "http://localhost/rjmart/");
+} else {
+    define("BASE_URL", "https://uniformedtech.com/rjmart/");
+}
+
     define('DATE_FORMAT_YMD', 'Y-m-d H:i:s');
     define('DEVICE_TYPE_ANDROID', 'ANDROID');
     define('DEVICE_TYPE_IOS', 'IOS');
