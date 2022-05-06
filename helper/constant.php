@@ -20,29 +20,29 @@
     define('DATE_TIME_ZON', 'UTC');
     define('PASSWORD_RECOVERY', 'Gujarat Fruits & Vegetables APP Password Recovery');
     define('QUERY_RESPONSE', 'Response about your query');
-    define('RESET_LINK', 'https://gujaratfruitsvegetables.com/admin/admin_reset_password.php');
-    define('RESET_LINK_USER', 'https://gujaratfruitsvegetables.com/reset-password.php');
-    define('VERIFY_LINK', 'https://gujaratfruitsvegetables.com/verify-email.php');
+    define('RESET_LINK', 'https://uniformedtech.com/rjmart/admin/admin_reset_password.php');
+    define('RESET_LINK_USER', 'https://uniformedtech.com/rjmart/reset-password.php');
+    define('VERIFY_LINK', 'https://uniformedtech.com/rjmart/verify-email.php');
     define('FAVICON', 'assets/img/favicon.png');
 
     if (IS_PRODUCT_DEVELOPMENT_MODE):
         // EMAIL SETUP
-    define('MAIL_FROM', 'gujaratfruitsvegetables@gmail.com');
-    define('MAIL_FROM_NAME', 'Gujarat Fruits & Vegetables APP');
-    define('MAIL_HOST', 'smtp.gmail.com');
-    define('MAIL_USERNAME', 'gujaratfruitsvegetables@gmail.com');
-    define('MAIL_PASSWORD', 'Gujarat@123');
-    define('MAIL_SMTP_SECURE', 'tls'); // SSL OR TLS
-    define('MAIL_SMTP_PORT', '587');
+        define('MAIL_FROM', 'admin@gmail.com');
+        define('MAIL_FROM_NAME', 'RJMART');
+        define('MAIL_HOST', 'smtp.gmail.com');
+        define('MAIL_USERNAME', 'info.artechdev@gmail.com');
+        define('MAIL_PASSWORD', 'ducfbawbzfhwljkp');
+        define('MAIL_SMTP_SECURE', 'tls'); // SSL OR TLS
+        define('MAIL_SMTP_PORT', '587');
 	else:
-    // EMAIL SETUP
-    define('MAIL_FROM', 'gujaratfruitsvegetables@gmail.com');
-    define('MAIL_FROM_NAME', 'Gujarat Fruits & Vegetables APP');
-    define('MAIL_HOST', 'smtp.gmail.com');
-    define('MAIL_USERNAME', 'gujaratfruitsvegetables@gmail.com');
-    define('MAIL_PASSWORD', 'Gujarat@123');
-    define('MAIL_SMTP_SECURE', 'tls'); // SSL OR TLS
-    define('MAIL_SMTP_PORT', '587');
+        // EMAIL SETUP
+        define('MAIL_FROM', 'admin@gmail.com');
+        define('MAIL_FROM_NAME', 'RJMART');
+        define('MAIL_HOST', 'smtp.gmail.com');
+        define('MAIL_USERNAME', 'info.artechdev@gmail.com');
+        define('MAIL_PASSWORD', 'ducfbawbzfhwljkp');
+        define('MAIL_SMTP_SECURE', 'tls'); // SSL OR TLS
+        define('MAIL_SMTP_PORT', '587');
     endif;
 
     define('IS_DEBUG_MODE', TRUE);
