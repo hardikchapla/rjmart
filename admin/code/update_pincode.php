@@ -14,6 +14,7 @@
 		{
 			$reoutput["pincode_id"] = $row["id"];
 			$reoutput["pincode"] = $row["pincode"];
+			$reoutput["is_active"] = $row["is_active"];
 		}
 		echo json_encode($reoutput);
 	}

@@ -88,6 +88,24 @@ $currentPage = 'Pincode';
                                                 Please provide a valid pincode.
                                             </div>
                                         </div>
+                                        <div class="col-md-6 mb-4">
+                                            <label for="validationCustom05">Is Active?</label>
+                                            <div class="form-group">
+                                                <div class="form-check form-check-inline">
+                                                    <input class="form-check-input" type="radio" name="is_active"
+                                                        id="is_active1" value="1" checked>
+                                                    <label class="form-check-label" for="is_active1">Yes</label>
+                                                </div>
+                                                <div class="form-check form-check-inline">
+                                                    <input class="form-check-input" type="radio" name="is_active"
+                                                        id="is_active2" value="0">
+                                                    <label class="form-check-label" for="is_active2">No</label>
+                                                </div>
+                                            </div>
+                                            <div class="invalid-feedback">
+                                                Please provide a valid selection.
+                                            </div>
+                                        </div>
                                     </div>
                                     <input type="hidden" name="pincode_id" id="pincode_id" />
                                     <input type="hidden" name="operation" id="operation" value="Add" />
@@ -110,6 +128,7 @@ $currentPage = 'Pincode';
                                         <tr>
                                             <th>Sr. No.</th>
                                             <th>Pincode</th>
+                                            <th>Is Active?</th>
                                             <th>Edit</th>
                                             <th>Delete</th>
                                         </tr>
@@ -298,6 +317,11 @@ $currentPage = 'Pincode';
             success: function(data) {
                 $('#validationCustom05').val(data.pincode);
                 $('#pincode_id').val(pincode_id);
+                if (data.is_active == 0) {
+                    $('#is_active2').attr('checked', true);
+                } else {
+                    $('#is_active1').attr('checked', true);
+                }
                 $('#action').val("Edit");
                 $('#operation').val("Edit");
             }

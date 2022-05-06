@@ -20,7 +20,7 @@
  		$date = date('Y-m-d H:i:s');
  		$checkmobile = $db->query("SELECT * FROM user WHERE id = '$user_id'");
  		if($checkmobile->rowCount() > 0){
- 			$cat = $db->query("SELECT * FROM pincode");
+ 			$cat = $db->query("SELECT * FROM pincode WHERE is_active = 1");
  			if($cat->rowCount() > 0){
  				$bb = array();
  				$aa = array();

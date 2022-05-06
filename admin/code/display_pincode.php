@@ -11,6 +11,11 @@
 		$sub_array = array();
 		$sub_array[] = $i;
 		$sub_array[] = $row["pincode"];
+		if($row['is_active'] == 0){
+			$sub_array[] = "No";
+		} else {
+			$sub_array[] = "Yes";
+		}
 		$sub_array[] = '<button class="btn btn-primary fa fa-pencil updatePincode" type="button" id="'.$row["id"].'">Edit</button>';
 		$sub_array[] = '<button class="btn btn-danger fa fa-trash deletePincode" type="button" id="'.$row["id"].'" >Delete</button>';
 		$data[] = $sub_array;
