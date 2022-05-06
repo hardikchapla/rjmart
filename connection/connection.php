@@ -10,10 +10,17 @@
     session_start();
 	date_default_timezone_set('UTC');
 
-	$servername = 'localhost';
-	$username = 'u806229794_food_app';
-	$password = 'Food_App@123';
-	$databaseName = 'u806229794_food_app';
+	if($_SERVER['HTTP_HOST'] == "localhost"){
+		$servername = 'localhost';
+		$username = 'root';
+		$password = '';
+		$databaseName = 'rjmart';
+	} else {
+		$servername = 'localhost';
+		$username = 'u269128924_rjmart';
+		$password = '?lra8Tm#';
+		$databaseName = 'u269128924_rjmart';
+	}
 	// Create connection
 	$db = new PDO( 'mysql:host='.$servername.';dbname='.$databaseName, $username, $password );
 	$db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
