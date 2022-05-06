@@ -16,6 +16,7 @@
 			$reoutput["cat_name"] = $row["category_id"];
 			$reoutput["user_profile"] = $row["slider_image"];
 			$reoutput["slider_type"] = $row["slider_type"];
+			$reoutput["is_active"] = $row["is_active"];
 		}
 		echo json_encode($reoutput);
 	}

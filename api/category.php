@@ -40,7 +40,7 @@
  						$aa[$a]['slider_id'] = '';
  						$aa[$a]['slider_image'] = '';
  					}*/
- 					$slider = $db->query("SELECT * FROM slider");
+ 					$slider = $db->query("SELECT * FROM slider WHERE is_active=1");
  					$s = 0;
  					$ss = array();
  					while($feSlider = $slider->fetch()){

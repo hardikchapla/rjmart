@@ -80,7 +80,7 @@ $currentPage = 'Slider';
                                 <form class="needs-validation" novalidate action="javascript:void(0);" method="POST"
                                     accept-charset="utf-8" id="add-category-form">
                                     <div class="form-row">
-                                        <div class="col-md-4 mb-4">
+                                        <div class="col-md-3 mb-4">
                                             <!--<div class="custom-file-container" data-upload-id="myFirstImage">
                                              <label for="validationCustom05">Upload Image</label>
                                                 <div class="custom-file mb-4">
@@ -108,7 +108,7 @@ $currentPage = 'Slider';
                                             </div>
                                             <input type="hidden" name="cat_profile1" id="cat_profile1">
                                         </div>
-                                        <div class="col-md-4 mb-4">
+                                        <div class="col-md-3 mb-4">
                                             <label for="validationCustom05">Select Category</label>
                                             <select class="form-control" name="selected_category" id="selected_category"
                                                 required>
@@ -123,7 +123,7 @@ $currentPage = 'Slider';
                                             ?>
                                             </select>
                                         </div>
-                                        <div class="col-md-4 mb-4">
+                                        <div class="col-md-3 mb-4">
                                             <label for="validationCustom05">Slider Type</label>
                                             <div class="form-group">
                                                 <div class="form-check form-check-inline">
@@ -138,7 +138,25 @@ $currentPage = 'Slider';
                                                 </div>
                                             </div>
                                             <div class="invalid-feedback">
-                                                Please provide a valid name.
+                                                Please provide a valid type.
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3 mb-4">
+                                            <label for="validationCustom05">Is Active?</label>
+                                            <div class="form-group">
+                                                <div class="form-check form-check-inline">
+                                                    <input class="form-check-input" type="radio" name="is_active"
+                                                        id="is_active1" value="1" checked>
+                                                    <label class="form-check-label" for="is_active1">Yes</label>
+                                                </div>
+                                                <div class="form-check form-check-inline">
+                                                    <input class="form-check-input" type="radio" name="is_active"
+                                                        id="is_active2" value="0">
+                                                    <label class="form-check-label" for="is_active2">No</label>
+                                                </div>
+                                            </div>
+                                            <div class="invalid-feedback">
+                                                Please provide a valid selection.
                                             </div>
                                         </div>
                                     </div>
@@ -165,6 +183,7 @@ $currentPage = 'Slider';
                                             <th>Image</th>
                                             <th>Category</th>
                                             <th>Type</th>
+                                            <th>Is Active?</th>
                                             <th>Edit</th>
                                             <th>Delete</th>
                                         </tr>
@@ -356,6 +375,11 @@ $currentPage = 'Slider';
                 } else {
                     $('#slider_type2').attr('checked', true);
                 }
+                if (data.is_active == 0) {
+                    $('#is_active2').attr('checked', true);
+                } else {
+                    $('#is_active1').attr('checked', true);
+                }
                 $('#cat_id').val(cat_id);
                 $('#action').val("Edit");
                 $('#operation').val("Edit");
@@ -387,7 +411,7 @@ $currentPage = 'Slider';
             preConfirm: function() {
                 return new Promise(function(resolve) {
                     $.ajax({
-                            url: 'code/delete_slider',
+                            url: 'code/delete_sliders',
                             type: 'POST',
                             data: 'cat_id=' + cat_id,
                             dataType: 'json'

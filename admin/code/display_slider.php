@@ -26,6 +26,11 @@
 		} else {
 			$sub_array[] = "Video";
 		}
+		if($row['is_active'] == 0){
+			$sub_array[] = "No";
+		} else {
+			$sub_array[] = "Yes";
+		}
 		$sub_array[] = '<button class="btn btn-primary fa fa-pencil updateCategory" type="button" id="'.$row["slider_id"].'">Edit</button>';
 		$sub_array[] = '<button class="btn btn-danger fa fa-trash deleteCategory" type="button" id="'.$row["slider_id"].'" >Delete</button>';
 		$data[] = $sub_array;
