@@ -26,6 +26,16 @@
 			echo json_encode($response);
 			die;
  		}
+ 		if(empty($_REQUEST['login_type'])){
+ 			$status = 2;
+			$message = "Please enter login type";
+			$data = array();
+			$response['status'] = $status;
+			$response['message'] = $message;
+			$response['data'] = $data;
+			echo json_encode($response);
+			die;
+ 		}
 		if(empty($_REQUEST['fullname'])){
 			$status = 2;
 		   $message = "Please enter full name";
@@ -36,21 +46,11 @@
 		   echo json_encode($response);
 		   die;
 		}
-        if(empty($_REQUEST['password'])){
-			$status = 2;
-		   $message = "Please enter password";
-		   $data = array();
-		   $response['status'] = $status;
-		   $response['message'] = $message;
-		   $response['data'] = $data;
-		   echo json_encode($response);
-		   die;
-		}
  		$mobile = $_REQUEST['mobile'];
  		$user_type = $_REQUEST['user_type'];
+ 		$login_type = $_REQUEST['login_type'];
  		$fullname = $_REQUEST['fullname'];
- 		$password = md5($_REQUEST['password']);
-        $email = $_REQUEST['email'];
+ 		$email = $_REQUEST['email'];
  		$dob = (isset($_REQUEST['dob']) && !empty($_REQUEST['dob'])) ? date('Y-m-d', strtotime($_REQUEST['dob'])):'0000-00-00';
  		$login_identifier = $_REQUEST['login_identifier'];
  		$device_type = $_REQUEST['device_type'];
@@ -58,6 +58,13 @@
  		$latitude = $_REQUEST['latitude'];
  		$longitude = $_REQUEST['longitude'];
  		$logintype = 0;
+ 		if($login_type == 'facebook'){
+ 			$logintype = 1;
+ 		} elseif($login_type == 'google'){
+ 			$logintype = 2;
+ 		} elseif ($login_type == 'apple') {
+ 			$logintype = 3;
+ 		}
  		if($user_type == 'user'){
  			$usertype = 0;
  			$status = 1;
@@ -68,12 +75,118 @@
  		$date = date('Y-m-d H:i:s');
  		$checkmobile = $db->query("SELECT * FROM user WHERE mobile = '$mobile'");
  		if($checkmobile->rowCount() > 0){
-            $status = 0;
-            $message = "Mobile number already exist";
-            $data = array();
+ 			$userdata = $checkmobile->fetch();
+ 			$user_id = $userdata['id'];
+ 			$delevery_status = $userdata['status'];
+ 			if($usertype == 1 && $delevery_status == 0){
+ 				if(empty($_FILES['avatar']['name'])){
+		 			$status = 2;
+					$message = "Please select profile picture";
+					$data = array();
+					$response['status'] = $status;
+					$response['message'] = $message;
+					$response['data'] = $data;
+					echo json_encode($response);
+					die;
+		 		}
+		 		if(empty($_FILES['document']['name'])){
+		 			$status = 2;
+					$message = "Please select your document";
+					$data = array();
+					$response['status'] = $status;
+					$response['message'] = $message;
+					$response['data'] = $data;
+					echo json_encode($response);
+					die;
+		 		}
+		 		$file = $_FILES['avatar']['name'];
+				$tmp = $_FILES['avatar']['tmp_name'];
+				$ext = pathinfo($file, PATHINFO_EXTENSION);
+				$avatar = rand(1000,1000000).$file; 
+				$path = '../assets/img/user/'.$avatar;
+				move_uploaded_file($tmp,$path);
+				unlink('../assets/img/user/'.$userdata['avatar']);
+
+				$file1 = $_FILES['document']['name'];
+				$tmp1 = $_FILES['document']['tmp_name'];
+				$ext1 = pathinfo($file1, PATHINFO_EXTENSION);
+				$document = rand(1000,1000000).$file1; 
+				$path1 = '../assets/img/user/'.$document;
+				move_uploaded_file($tmp1,$path1);
+				unlink('../assets/img/user/'.$userdata['document']);
+
+				$query = $db->query("UPDATE user SET login_identifier = '$login_identifier', device_type = '$device_type', device_token = '$device_token', latitude = '$latitude', longitude = '$longitude',avatar = '$avatar',document = '$document', updated = '$date' WHERE mobile = '$mobile'");
+ 			} else {
+ 				$query = $db->query("UPDATE user SET login_identifier = '$login_identifier', device_type = '$device_type', device_token = '$device_token', latitude = '$latitude', longitude = '$longitude', updated = '$date' WHERE mobile = '$mobile'");
+ 			}
+ 			if($query){
+ 				$avtar_path = 'http://'.$_SERVER['SERVER_NAME'].'/assets/img/user/';
+	 			$get = $db->query("SELECT * FROM user WHERE id = '$user_id'");
+	 			$status = 1;
+	 			$message = "Login successfully";
+	 			$aa = array();
+	 			$feget = $get->fetch();
+ 				$aa['id'] = $feget['id'];
+ 				$aa['fullname'] = $feget['fullname'];
+ 				$aa['email'] = $feget['email'];
+ 				$aa['mobile'] = $feget['mobile'];
+ 				$aa['dob'] = $feget['dob'];
+ 				$aa['document'] = $avtar_path.$feget['document'];
+ 				$aa['avatar'] = $avtar_path.$feget['avatar'];
+ 				$aa['user_type'] = $feget['user_type'];
+ 				$aa['login_type'] = $feget['login_type'];
+ 				$aa['login_identifier'] = $feget['login_identifier'];
+ 				$aa['device_type'] = $feget['device_type'];
+ 				$aa['device_token'] = $feget['device_token'];
+ 				$aa['latitude'] = $feget['latitude'];
+ 				$aa['longitude'] = $feget['longitude'];
+ 				$aa['status'] = $feget['status'];
+                $aa['referral'] = $feget['referral'];
+                $aa['pincode'] = $feget['pincode'];
+	 			$data = $aa;
+	 			
+	 		} else {
+	 			$status = 0;
+	 			$message = "something is wrong";
+	 			$data = array();
+	 		}
  		} else {
  			if($usertype == 1){
-				$query = $db->query("INSERT INTO user SET mobile = '$mobile', password = '$password',user_type = '$usertype',login_type = '$logintype',fullname = '$fullname', email = '$email', dob = '$dob', login_identifier = '$login_identifier', device_type = '$device_type', device_token = '$device_token', latitude = '$latitude', longitude = '$longitude',avatar = '$avatar',document = '$document', created = '$date', status = '$status'");
+ 				if(empty($_FILES['avatar']['name'])){
+		 			$status = 2;
+					$message = "Please select profile picture";
+					$data = array();
+					$response['status'] = $status;
+					$response['message'] = $message;
+					$response['data'] = $data;
+					echo json_encode($response);
+					die;
+		 		}
+		 		if(empty($_FILES['document']['name'])){
+		 			$status = 2;
+					$message = "Please select your document";
+					$data = array();
+					$response['status'] = $status;
+					$response['message'] = $message;
+					$response['data'] = $data;
+					echo json_encode($response);
+					die;
+		 		}
+		 		$file = $_FILES['avatar']['name'];
+				$tmp = $_FILES['avatar']['tmp_name'];
+				$ext = pathinfo($file, PATHINFO_EXTENSION);
+				$avatar = rand(1000,1000000).$file; 
+				$path = '../assets/img/user/'.$avatar;
+				move_uploaded_file($tmp,$path);
+
+				$file1 = $_FILES['document']['name'];
+				$tmp1 = $_FILES['document']['tmp_name'];
+				$ext1 = pathinfo($file1, PATHINFO_EXTENSION);
+				$document = rand(1000,1000000).$file1; 
+				$path1 = '../assets/img/user/'.$document;
+				move_uploaded_file($tmp1,$path1);
+
+				$query = $db->query("INSERT INTO user SET mobile = '$mobile',user_type = '$usertype',login_type = '$logintype',fullname = '$fullname', email = '$email', dob = '$dob', login_identifier = '$login_identifier', device_type = '$device_type', device_token = '$device_token', latitude = '$latitude', longitude = '$longitude',avatar = '$avatar',document = '$document', created = '$date', status = '$status'");
 	 			$user_id = $db->lastInsertId();
 
 	 			$notification = $db->query("INSERT INTO notification SET sender_id = '$user_id', title = 'Delivery boy register', message = 'New delivery boy register successfully', `type` = 'new_register', receiver_type = '1', created = '$date'");
@@ -100,7 +213,7 @@
                         if($referral_count != 10 && $fereferral['referral_used'] == 0){
                             $ref_update = $db->query("UPDATE user SET referral_count = '$referral_count' WHERE id = '$ref_user_id'");
                         }
-                        $query = $db->query("INSERT INTO user SET mobile = '$mobile', password = '$password',user_type = '$usertype',login_type = '$logintype',fullname = '$fullname', email = '$email', dob = '$dob', login_identifier = '$login_identifier', device_type = '$device_type', device_token = '$device_token', latitude = '$latitude', longitude = '$longitude', created = '$date', status = '$status',referral = '$referral',friend_referral = '$friend_referral'");
+                        $query = $db->query("INSERT INTO user SET mobile = '$mobile',user_type = '$usertype',login_type = '$logintype',fullname = '$fullname', email = '$email', dob = '$dob', login_identifier = '$login_identifier', device_type = '$device_type', device_token = '$device_token', latitude = '$latitude', longitude = '$longitude', created = '$date', status = '$status',referral = '$referral',friend_referral = '$friend_referral'");
                         $user_id = $db->lastInsertId();
                         $notification = $db->query("INSERT INTO notification SET sender_id = '$user_id', title = 'User register', message = 'New user register successfully', `type` = 'new_register', receiver_type = '1', created = '$date'");
                     } else {
@@ -114,7 +227,7 @@
                         die;
                     }
                 } else {
-                    $query = $db->query("INSERT INTO user SET mobile = '$mobile', password = '$password',user_type = '$usertype',login_type = '$logintype',fullname = '$fullname', email = '$email', dob = '$dob', login_identifier = '$login_identifier', device_type = '$device_type', device_token = '$device_token', latitude = '$latitude', longitude = '$longitude', created = '$date', status = '$status',referral = '$referral'");
+                    $query = $db->query("INSERT INTO user SET mobile = '$mobile',user_type = '$usertype',login_type = '$logintype',fullname = '$fullname', email = '$email', dob = '$dob', login_identifier = '$login_identifier', device_type = '$device_type', device_token = '$device_token', latitude = '$latitude', longitude = '$longitude', created = '$date', status = '$status',referral = '$referral'");
                     $user_id = $db->lastInsertId();
                     $notification = $db->query("INSERT INTO notification SET sender_id = '$user_id', title = 'User register', message = 'New user register successfully', `type` = 'new_regiter', receiver_type = '1', created = '$date'");
                 }
