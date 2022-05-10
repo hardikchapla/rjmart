@@ -73,7 +73,6 @@
  		$payment_type = $_REQUEST['payment_type'];
  		$latitude = $_REQUEST['latitude'];
  		$longitude = $_REQUEST['longitude'];
- 		$longitude = $_REQUEST['longitude'];
  		$payment_identifier = (isset($_REQUEST['payment_identifier']) && $_REQUEST['payment_identifier'] != '') ? $_REQUEST['payment_identifier']:'';
  		$TXNDATE = (isset($_REQUEST['TXNDATE']) && $_REQUEST['TXNDATE'] != '') ? $_REQUEST['TXNDATE']:'';
  		$referral_amount = (isset($_REQUEST['referral_amount']) && $_REQUEST['referral_amount'] != '') ? $_REQUEST['referral_amount']:0;
@@ -175,7 +174,7 @@
                     }
                 }
                 $aa['order_items'] = $bb;
-                $check_delivery = $db->query("select *, ( 3959 * acos ( cos ( radians(21.2408) ) * cos( radians( latitude ) ) * cos( radians( longitude ) - radians(72.8806) ) + sin ( radians(21.2408) ) * sin( radians(latitude) ) ) ) AS `distance` from `user` WHERE user_type = 1 AND status = 1 AND active = 1 HAVING distance < 15 ORDER BY distance");
+                $check_delivery = $db->query("select *, ( 3959 * acos ( cos ( radians(".$latitude.") ) * cos( radians( latitude ) ) * cos( radians( longitude ) - radians(".$longitude.") ) + sin ( radians(".$latitude.") ) * sin( radians(latitude) ) ) ) AS `distance` from `user` WHERE user_type = 1 AND status = 1 AND active = 1 HAVING distance < 15 ORDER BY distance");
                 if($check_delivery->rowCount() > 0) {
                     while ($fedelivery = $check_delivery->fetch()) {
                         $delivery_boy = $fedelivery['id'];
