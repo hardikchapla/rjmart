@@ -174,20 +174,20 @@
                     }
                 }
                 $aa['order_items'] = $bb;
-                $check_delivery = $db->query("select *, ( 3959 * acos ( cos ( radians(".$latitude.") ) * cos( radians( latitude ) ) * cos( radians( longitude ) - radians(".$longitude.") ) + sin ( radians(".$latitude.") ) * sin( radians(latitude) ) ) ) AS `distance` from `user` WHERE user_type = 1 AND status = 1 AND active = 1 HAVING distance < 15 ORDER BY distance");
-                if($check_delivery->rowCount() > 0) {
-                    while ($fedelivery = $check_delivery->fetch()) {
-                        $delivery_boy = $fedelivery['id'];
-                        $del_latitude = $fedelivery['latitude'];
-                        $del_longitude = $fedelivery['longitude'];
-                        $title = "New Order Request";
-                        $data1 = array();
-                        $data1['message'] = "New order request by " . $feuser['fullname'];
-                        $data1['data'] = $aa;
-                        sendPushNotification($fedelivery['device_token'], $title, $fedelivery['device_type'], $data1);
-                        $insert = $db->query("INSERT INTO near_by_request SET from_id = '$user_id', to_id = '$delivery_boy', status = 0, order_id = '$order_id', created = '$order_date'");
-                    }
-                }
+                // $check_delivery = $db->query("select *, ( 3959 * acos ( cos ( radians(".$latitude.") ) * cos( radians( latitude ) ) * cos( radians( longitude ) - radians(".$longitude.") ) + sin ( radians(".$latitude.") ) * sin( radians(latitude) ) ) ) AS `distance` from `user` WHERE user_type = 1 AND status = 1 AND active = 1 HAVING distance < 15 ORDER BY distance");
+                // if($check_delivery->rowCount() > 0) {
+                //     while ($fedelivery = $check_delivery->fetch()) {
+                //         $delivery_boy = $fedelivery['id'];
+                //         $del_latitude = $fedelivery['latitude'];
+                //         $del_longitude = $fedelivery['longitude'];
+                //         $title = "New Order Request";
+                //         $data1 = array();
+                //         $data1['message'] = "New order request by " . $feuser['fullname'];
+                //         $data1['data'] = $aa;
+                //         sendPushNotification($fedelivery['device_token'], $title, $fedelivery['device_type'], $data1);
+                //         $insert = $db->query("INSERT INTO near_by_request SET from_id = '$user_id', to_id = '$delivery_boy', status = 0, order_id = '$order_id', created = '$order_date'");
+                //     }
+                // }
                 if($order){
                     $title = "New Order";
                     $data2 = array();
