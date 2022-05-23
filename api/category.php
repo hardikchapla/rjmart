@@ -52,11 +52,104 @@
  					}
  					$a++;
  				}
+				$dd = array();
+				$d = 0;
+				$cat = $db->query("SELECT * FROM product WHERE cat_id = '1' ORDER BY RAND() LIMIT 0, 4");
+				if($cat->rowCount() > 0){
+					while ($fecat = $cat->fetch()) {
+						$dd[$d]['product_id'] = $fecat['id'];
+						$dd[$d]['name'] = $fecat['name'];
+						$dd[$d]['description'] = $fecat['description'];
+						$dd[$d]['offer'] = $fecat['offer'];
+						$dd[$d]['is_active'] = $fecat['is_active'];
+						$images = $db->query("SELECT * FROM product_image WHERE p_id = '".$fecat['id']."'");
+						$bb = array();
+						$b = 0;
+						if($images->rowCount() > 0){
+							while ($feimages = $images->fetch()) {
+								$bb[$b]['image_id'] = $feimages['id'];
+								$bb[$b]['product_image'] = $path.$feimages['image'];
+								$b++;
+							}
+						}
+						$dd[$d]['images'] = $bb;
+						$cc = array();
+						$c = 0;
+						$ptype = $db->query("SELECT * FROM product_type WHERE product_id = '".$fecat['id']."'");
+						if($ptype->rowCount() > 0){
+							while ($feptype = $ptype->fetch()) {
+								$cc[$c]['product_type_id'] = $feptype['product_type_id'];
+								$cc[$c]['product_type'] = $feptype['product_type'];
+								$cc[$c]['Product_qty'] = $feptype['Product_qty'];
+								$cc[$c]['product_type_price'] = $feptype['product_type_price'];
+								$check_cart = $db->query("SELECT * FROM cart WHERE user_id = '$user_id' AND p_id = '".$fecat['id']."' AND product_type_id = '".$feptype['product_type_id']."'");
+								if($check_cart->rowCount() > 0){
+									$fecart = $check_cart->fetch();
+									$cc[$c]['is_cart'] = intval($fecart['qty']);
+								} else {
+									$cc[$c]['is_cart'] = 0;
+								}
+								
+								$c++;
+							}
+						}
+						$dd[$d]['product_type'] = $cc;
+						$d++;
+					}
+				}
+
+				$kk = array();
+				$k = 0;
+				$cat = $db->query("SELECT * FROM product WHERE cat_id = '2' ORDER BY RAND() LIMIT 0, 4");
+				if($cat->rowCount() > 0){
+					while ($fecat = $cat->fetch()) {
+						$kk[$k]['product_id'] = $fecat['id'];
+						$kk[$k]['name'] = $fecat['name'];
+						$kk[$k]['description'] = $fecat['description'];
+						$kk[$k]['offer'] = $fecat['offer'];
+						$kk[$k]['is_active'] = $fecat['is_active'];
+						$images = $db->query("SELECT * FROM product_image WHERE p_id = '".$fecat['id']."'");
+						$bb = array();
+						$b = 0;
+						if($images->rowCount() > 0){
+							while ($feimages = $images->fetch()) {
+								$bb[$b]['image_id'] = $feimages['id'];
+								$bb[$b]['product_image'] = $path.$feimages['image'];
+								$b++;
+							}
+						}
+						$kk[$k]['images'] = $bb;
+						$cc = array();
+						$c = 0;
+						$ptype = $db->query("SELECT * FROM product_type WHERE product_id = '".$fecat['id']."'");
+						if($ptype->rowCount() > 0){
+							while ($feptype = $ptype->fetch()) {
+								$cc[$c]['product_type_id'] = $feptype['product_type_id'];
+								$cc[$c]['product_type'] = $feptype['product_type'];
+								$cc[$c]['Product_qty'] = $feptype['Product_qty'];
+								$cc[$c]['product_type_price'] = $feptype['product_type_price'];
+								$check_cart = $db->query("SELECT * FROM cart WHERE user_id = '$user_id' AND p_id = '".$fecat['id']."' AND product_type_id = '".$feptype['product_type_id']."'");
+								if($check_cart->rowCount() > 0){
+									$fecart = $check_cart->fetch();
+									$cc[$c]['is_cart'] = intval($fecart['qty']);
+								} else {
+									$cc[$c]['is_cart'] = 0;
+								}
+								
+								$c++;
+							}
+						}
+						$kk[$k]['product_type'] = $cc;
+						$k++;
+					}
+				}
  				
  				$status = 1;
 				$message = "Category List";
 				$data['slider'] = $ss;
 				$data['category'] = $aa;
+				$data['vegetables'] = $dd;
+				$data['fruits'] = $kk;
 				$data['user'] = $checkmobile->fetch(PDO::FETCH_ASSOC);
  			} else {
  				$status = 1;
