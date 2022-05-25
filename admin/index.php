@@ -36,10 +36,7 @@
 <body class="form" style="overflow: hidden !important;">
     <div class="container">
         <div class="row">
-            <div class="col-md-6 login-bg">
-
-            </div>
-            <div class="col-md-6">
+            <div class="col-md-12">
                 <div class="form-container outer">
                     <div class="form-form">
                         <div class="form-form-wrap">

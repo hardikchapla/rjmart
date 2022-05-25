@@ -16,9 +16,9 @@
     define('DEVICE_TYPE_ANDROID', 'ANDROID');
     define('DEVICE_TYPE_IOS', 'IOS');
     define('IS_PRODUCT_DEVELOPMENT_MODE', false);
-    define('APP_NAME', 'Gujarat Fruits & Vegetables APP');
+    define('APP_NAME', 'RJ Mart');
     define('DATE_TIME_ZON', 'UTC');
-    define('PASSWORD_RECOVERY', 'Gujarat Fruits & Vegetables APP Password Recovery');
+    define('PASSWORD_RECOVERY', 'RJ Mart APP Password Recovery');
     define('QUERY_RESPONSE', 'Response about your query');
     define('RESET_LINK', 'https://uniformedtech.com/rjmart/admin/admin_reset_password.php');
     define('RESET_LINK_USER', 'https://uniformedtech.com/rjmart/reset-password.php');
