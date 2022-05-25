@@ -72,12 +72,12 @@
  		} else {
             $status = 0;
             $message = "Please enter valid mobile or password";
-            $data = array();
+            $data = (object)  array();
         }
 	} else {
 		$status = 0;
 		$message = "Please enter field values";
-		$data = array();
+		$data = (object)  array();
 	}
 	$response['status'] = $status;
 	$response['message'] = $message;
