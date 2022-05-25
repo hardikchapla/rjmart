@@ -108,6 +108,26 @@ $feaddress = $user_address->fetch();
                                     <p><?= ($feorder['order_date'] == '0000-00-00 00:00:00') ? '':date('d, M Y H:i a',strtotime($feorder['order_date'])) ?>
                                     </p>
                                 </div>
+                                <?php 
+                                    if($feorder['order_status'] == 3){ 
+                                ?>
+                                <div class="col-xl-3 col-lg-3 col-sm-3">
+                                    <p><strong>Cancelled By. :</strong></p>
+                                </div>
+                                <?php 
+                                    if($feorder['is_cancel_by_admin'] == 1){ 
+                                ?>
+                                <div class="col-xl-3 col-lg-3 col-sm-3">
+                                    <p>Admin</p>
+                                </div>
+                                <?php } else { ?>
+                                <div class="col-xl-3 col-lg-3 col-sm-3">
+                                    <p>User</p>
+                                </div>
+                                <?php 
+                                        } 
+                                    } 
+                                ?>
                             </div>
                             <hr>
                             <h4>Delivery Address : </h4>

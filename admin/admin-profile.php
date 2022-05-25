@@ -122,6 +122,18 @@
                                                                             <div id="number_error"></div>
                                                                         </div>
                                                                     </div>
+                                                                    <div class="col-sm-6">
+                                                                        <div class="form-group">
+                                                                            <label for="cancel_time">Cancel Time (In
+                                                                                Minuts)</label>
+                                                                            <input type="number" class="form-control"
+                                                                                id="cancel_time"
+                                                                                placeholder="Cancel Time (In Minuts)"
+                                                                                value="<?= $profile1['cancel_time'] ?>"
+                                                                                name="cancel_time">
+                                                                            <div id="cancel_time_error"></div>
+                                                                        </div>
+                                                                    </div>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -231,11 +243,15 @@
         $("#number").keyup(function() {
             $("#number_error").html("");
         });
+        $("#cancel_time").keyup(function() {
+            $("#cancel_time_error").html("");
+        });
         $("#general-info").on('submit', (function(e) {
             var username = $("#userName").val();
             var full_name = $("#fullName").val();
             var email = $("#email").val();
             var number = $("#number").val();
+            var cancel_time = $("#cancel_time").val();
             if (username == "") {
                 $("#username_error").html("<code>Please enter a valid username</code>");
                 return false;
@@ -250,6 +266,10 @@
             }
             if (number == "") {
                 $("#number_error").html("<code>Please enter a valid number</code>");
+                return false;
+            }
+            if (cancel_time == "") {
+                $("#cancel_time_error").html("<code>Please enter a valid cancel time</code>");
                 return false;
             }
             e.preventDefault();

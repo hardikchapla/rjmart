@@ -210,6 +210,66 @@ $feuser = $user->fetch();
 
     function SwalCancelOrder(order_id) {
         Swal.fire({
+            title: 'Submit your cancel reason',
+            input: 'text',
+            inputAttributes: {
+                autocapitalize: 'off'
+            },
+            showCancelButton: true,
+            confirmButtonColor: 'rgb(221, 51, 51)',
+            cancelButtonColor: '#4ac17d',
+            cancelButtonText: "No, cancel please!",
+            confirmButtonText: 'Submit',
+            showLoaderOnConfirm: true,
+            preConfirm: (reasone) => {
+                return new Promise(function(resolve) {
+                    $.ajax({
+                            url: 'code/order_cancelled',
+                            type: 'POST',
+                            data: {
+                                order_id: order_id,
+                                reasone: reasone
+                            },
+                            dataType: 'json'
+                        })
+                        .done(function(response) {
+                            if (response.error == 0) {
+                                swal({
+                                    title: 'Order cancelled successfully',
+                                    text: "",
+                                    type: 'success',
+                                    timer: 3000,
+                                    padding: '2em',
+                                    onOpen: function() {
+                                        swal.showLoading()
+                                    }
+                                }).then(function(result) {
+                                    if (result.dismiss === swal.DismissReason.timer) {
+                                        location.reload();
+                                    }
+                                })
+                            } else {
+                                swal('Oops...', 'You not entered cancel reason', 'error');
+                            }
+                        })
+                        .fail(function() {
+                            swal('Oops...', 'Something went wrong with ajax !', 'error');
+                        });
+                });
+            },
+            allowOutsideClick: () => !Swal.isLoading()
+        }).then((result) => {
+            if (result.isConfirmed) {
+                Swal.fire({
+                    title: `${result.value.login}'s avatar`,
+                    imageUrl: result.value.avatar_url
+                })
+            }
+        })
+    }
+
+    function SwalCancelOrder1(order_id) {
+        Swal.fire({
             title: 'Are you sure?',
             text: "You want to cancel this order?",
             type: 'warning',

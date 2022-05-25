@@ -98,10 +98,10 @@
             </svg></a>
     </header>
 </div>
-<script language="javascript" type="text/javascript">
+<!-- <script language="javascript" type="text/javascript">
 var timeout = setInterval(reloadChat1, 1000);
 
 function reloadChat1() {
     $('#refreshheader').load('code/notification_list.php');
 }
-</script>
+</script> -->

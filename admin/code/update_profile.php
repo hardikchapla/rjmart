@@ -5,11 +5,12 @@
 	$full_name = $_REQUEST['fullName'];
 	$email = $_REQUEST['email'];
 	$number = $_REQUEST['number'];
+	$cancel_time = $_REQUEST['cancel_time'];
 	$created = date("Y-m-d H:i:s");
 	$admin = $_SESSION['adminId'];
 	if(empty($_FILES['photo']['name']))
 	{
-		$select = $db->query("UPDATE admin set username ='$username',email='$email',name='$full_name',updated='$created', `number` = '$number' WHERE id = '$admin'");
+		$select = $db->query("UPDATE admin set username ='$username',email='$email',name='$full_name',updated='$created', `number` = '$number', `cancel_time` = '$cancel_time' WHERE id = '$admin'");
 		if($select)
 		{
 			$success['error'] = 'success';
@@ -30,7 +31,7 @@
 		$path = '../assets/img/'.$photo;
 		move_uploaded_file($tmp,$path);
 		@unlink("../assets/img/".$_REQUEST['image']);
-		$select = $db->query("UPDATE admin set username ='$username',email='$email',name='$full_name',avatar='$photo',updated='$created', `number` = '$number' WHERE id = '$admin'");
+		$select = $db->query("UPDATE admin set username ='$username',email='$email',name='$full_name',avatar='$photo',updated='$created', `number` = '$number', `cancel_time` = '$cancel_time' WHERE id = '$admin'");
 
 		if($select)
 		{
