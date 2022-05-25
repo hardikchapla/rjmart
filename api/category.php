@@ -22,7 +22,7 @@
  		$sliderpath = BASE_URL.'assets/img/slider/';
  		$checkmobile = $db->query("SELECT * FROM user WHERE id = '$user_id'");
  		if($checkmobile->rowCount() > 0){
- 			$cat = $db->query("SELECT * FROM category");
+ 			$cat = $db->query("SELECT * FROM category WHERE is_active = 1");
  			if($cat->rowCount() > 0){
  				$bb = array();
  				$aa = array();

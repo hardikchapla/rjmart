@@ -20,9 +20,9 @@
     define('DATE_TIME_ZON', 'UTC');
     define('PASSWORD_RECOVERY', 'RJ Mart APP Password Recovery');
     define('QUERY_RESPONSE', 'Response about your query');
-    define('RESET_LINK', 'https://uniformedtech.com/rjmart/admin/admin_reset_password.php');
-    define('RESET_LINK_USER', 'https://uniformedtech.com/rjmart/reset-password.php');
-    define('VERIFY_LINK', 'https://uniformedtech.com/rjmart/verify-email.php');
+    define('RESET_LINK', BASE_URL.'admin/admin_reset_password.php');
+    define('RESET_LINK_USER', BASE_URL.'reset-password.php');
+    define('VERIFY_LINK', BASE_URL.'verify-email.php');
     define('FAVICON', 'assets/img/favicon.png');
 
     if (IS_PRODUCT_DEVELOPMENT_MODE):

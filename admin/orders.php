@@ -66,6 +66,7 @@ $feuser = $user->fetch();
                                             <th>Order Items</th>
                                             <th>Total Amount</th>
                                             <th>Payment Type</th>
+                                            <th>Cancel Order</th>
                                             <th class="safari-assign-boy">Assign</th>
                                             <th>View</th>
                                         </tr>
@@ -185,6 +186,61 @@ $feuser = $user->fetch();
 
                                     result.dismiss === swal.DismissReason.timer
                                 ) {
+                                    location.reload();
+                                }
+                            })
+                        })
+                        .fail(function() {
+                            swal('Oops...', 'Something went wrong with ajax !', 'error');
+                        });
+                });
+            },
+        });
+    }
+    </script>
+    <script type="text/javascript">
+    $(document).ready(function() {
+        $(document).on('click', '.cancelOrder', function(e) {
+            var order_id = $(this).attr("id");
+            SwalCancelOrder(order_id);
+            e.preventDefault();
+        });
+
+    });
+
+    function SwalCancelOrder(order_id) {
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You want to cancel this order?",
+            type: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: 'rgb(221, 51, 51)',
+            cancelButtonColor: '#4ac17d',
+            cancelButtonText: "No, cancel please!",
+            confirmButtonText: 'Yes!',
+            showLoaderOnConfirm: true,
+            preConfirm: function() {
+                return new Promise(function(resolve) {
+                    $.ajax({
+                            url: 'code/order_cancelled',
+                            type: 'POST',
+                            data: {
+                                order_id: order_id
+                            },
+                            dataType: 'json'
+                        })
+                        .done(function(response) {
+                            swal({
+                                title: 'Order cancelled successfully',
+                                text: "",
+                                type: 'success',
+                                timer: 3000,
+                                padding: '2em',
+                                onOpen: function() {
+                                    swal.showLoading()
+                                }
+                            }).then(function(result) {
+                                if (result.dismiss === swal.DismissReason.timer) {
                                     location.reload();
                                 }
                             })

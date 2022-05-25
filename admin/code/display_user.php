@@ -18,7 +18,7 @@
 		$sub_array[] = $i;
 		$sub_array[] = $image;
 		$sub_array[] = $row["fullname"];
-		$sub_array[] = $row["email"];
+		// $sub_array[] = $row["email"];
 		$sub_array[] = $row['mobile'];
 		$sub_array[] = '<a href="user-details.php?id='.$row["id"].'"><button class="btn btn-outline-info userProfileDetails">View</button></a>';
 		$sub_array[] = '<button class="btn btn-danger deleteUser" type="button" id="'.$row["id"].'" >Delete</button>';

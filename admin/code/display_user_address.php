@@ -13,7 +13,7 @@ foreach($result as $row)
     $sub_array[] = $i;
     $sub_array[] = $row['full_name'];
     $sub_array[] = $row["mobile_number"];
-    $sub_array[] = $row["alt_mobile_number"];
+    // $sub_array[] = $row["alt_mobile_number"];
     $sub_array[] = $row['house_no'];
     $sub_array[] = $row['building_name'];
     $sub_array[] = $row['road_area_colony'];

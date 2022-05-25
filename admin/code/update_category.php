@@ -15,6 +15,7 @@
 			$reoutput["cat_id"] = $row["id"];
 			$reoutput["cat_name"] = $row["name"];
 			$reoutput["user_profile"] = $row["image"];
+			$reoutput["is_active"] = $row["is_active"];
 		}
 		echo json_encode($reoutput);
 	}

@@ -59,7 +59,7 @@
                                             <th>Sr. No.</th>
                                             <th>Avatar</th>
                                             <th>Full Name</th>
-                                            <th>Email</th>
+                                            <!-- <th>Email</th> -->
                                             <th>Mobile</th>
                                             <th>View</th>
                                             <th>Delete</th>

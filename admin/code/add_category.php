@@ -5,6 +5,7 @@
 	{
 		$reoutput = array();
 		$cat_name = addslashes($_REQUEST['cat_name']);
+		$is_active = $_REQUEST['is_active'];
 		$created = date("Y-m-d H:i:s");
 		if(!empty($_FILES['cat_profile']['name']))
 		{
@@ -19,7 +20,7 @@
 		{
 			$photo = $_REQUEST['cat_profile1'];
 		}
-		$statement = $db->query("INSERT INTO category (name, image, created) VALUES ('$cat_name','$photo','$created')");
+		$statement = $db->query("INSERT INTO category (name, image, is_active,created) VALUES ('$cat_name','$photo', '$is_active','$created')");
 		if(!empty($statement))
 		{
 			$reoutput['error'] = 'success';
@@ -33,6 +34,7 @@
 		$reoutput = array();
 		$cat_id = $_REQUEST['cat_id'];
         $cat_name = addslashes($_REQUEST['cat_name']);
+		$is_active = $_REQUEST['is_active'];
         $created = date("Y-m-d H:i:s");
         if(!empty($_FILES['cat_profile']['name']))
         {
@@ -47,7 +49,7 @@
         {
             $photo = $_REQUEST['cat_profile1'];
         }
-		$statement = $db->query("UPDATE category SET `name` = '$cat_name',`image` = '$photo', updated = '$created' WHERE  id = '$cat_id'");
+		$statement = $db->query("UPDATE category SET `name` = '$cat_name',`image` = '$photo', `is_active` = '$is_active', updated = '$created' WHERE  id = '$cat_id'");
 		if(!empty($statement))
 		{
 			$reoutput['error'] = 'updateSuccess';

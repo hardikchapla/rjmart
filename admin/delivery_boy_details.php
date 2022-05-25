@@ -2,7 +2,7 @@
 include('../connection/connection.php');
 include('../helper/core_function.php');
 include('../helper/constant.php');
-$currentPage = 'user-Details';
+$currentPage = 'Delivery Boy';
 $user_id = $_REQUEST['id'];
 $user = $db->query("SELECT * FROM user WHERE id = '$user_id'");
 $feuser = $user->fetch();

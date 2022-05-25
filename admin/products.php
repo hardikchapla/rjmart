@@ -277,7 +277,7 @@
     $(document).ready(function() {
         var dataTable = $('#display_category').DataTable({
             "ajax": {
-                url: "code/display_product.php",
+                url: "code/display_product",
                 type: "POST"
             }
         });
@@ -310,7 +310,7 @@
     $(document).ready(function() {
         $('#product_type_add').html(
             '<div style="display: inline-flex;"><div class="col-md-4 mb-4"> <input type="text" class="form-control" id="product_type1" placeholder="Product type (EX: GM,KG)" required name="product_type[]"> </div><div class="col-md-3 mb-4"> <input type="text" class="form-control" id="product_type_qty1" placeholder="Product Quantity" required name="Product_qty[]"> </div><div class="col-md-3 mb-4"> <input type="text" class="form-control" id="product_type_price1" placeholder="Product Price" required name="product_type_price[]"> </div><div class="col-md-3 mb-4"> <button type="button" class="form-control btn btn-success" id="add_new_product_type">Add</button> </div></div>'
-            );
+        );
     });
     $(document).on('click', '#add_new_product_type', function() {
         $('#product_type_add').append('<div id="delete_type' + i +
@@ -341,7 +341,7 @@
         }
         event.preventDefault();
         $.ajax({
-            url: "code/add_product.php",
+            url: "code/add_product",
             method: 'POST',
             data: new FormData(this),
             contentType: false,
@@ -400,7 +400,7 @@
         $("#img-list").html('');
         var cat_id = $(this).attr("id");
         $.ajax({
-            url: "code/update_product.php",
+            url: "code/update_product",
             method: "POST",
             data: {
                 cat_id: cat_id
@@ -429,7 +429,7 @@
                             '"> </div><div class="col-md-3 mb-4"> <input type="text" class="form-control" id="product_edit_type_price1" placeholder="Product Price" required name="product_edit_type_price[]" value="' +
                             value.product_type_price +
                             '"> </div><div class="col-md-3 mb-4"> <button type="button" class="form-control btn btn-success" id="add_new_product_type">Add</button> </div></div>'
-                            );
+                        );
                     } else {
                         $('#product_type_add').append('<div id="delete_edit_type' + i +
                             '" style="display: inline-flex;"><div class="col-md-4 mb-4"> <input type="hidden" name="product_edit_type_id[]" value="' +
@@ -480,7 +480,7 @@
             preConfirm: function() {
                 return new Promise(function(resolve) {
                     $.ajax({
-                            url: 'code/delete_product_type.php',
+                            url: 'code/delete_product_type',
                             type: 'POST',
                             data: {
                                 product_type_id: product_type_id
@@ -522,7 +522,7 @@
             preConfirm: function() {
                 return new Promise(function(resolve) {
                     $.ajax({
-                            url: 'code/delete_product.php',
+                            url: 'code/delete_product',
                             type: 'POST',
                             data: 'cat_id=' + cat_id,
                             dataType: 'json'
@@ -562,7 +562,7 @@
     $(document).on('click', '.view_plan_details', function() {
         var id = $(this).attr("id");
         $.ajax({
-            url: "code/view_product_details.php",
+            url: "code/view_product_details",
             method: "POST",
             data: {
                 id: id
@@ -597,7 +597,7 @@
     <script>
     function get_product_images(id) {
         $.ajax({
-            url: 'code/fetch-product-images.php',
+            url: 'code/fetch-product-images',
             method: 'post',
             data: {
                 id: id
@@ -630,7 +630,7 @@
             preConfirm: function() {
                 return new Promise(function(resolve) {
                     $.ajax({
-                            url: 'code/delete_product_image.php',
+                            url: 'code/delete_product_image',
                             type: 'POST',
                             data: {
                                 id: id,
@@ -683,7 +683,7 @@
             preConfirm: function() {
                 return new Promise(function(resolve) {
                     $.ajax({
-                            url: 'code/product_status_change.php',
+                            url: 'code/product_status_change',
                             type: 'POST',
                             data: {
                                 productId: productId,

@@ -116,6 +116,24 @@ $currentPage = 'category';
                                                 Please provide a valid name.
                                             </div>
                                         </div>
+                                        <div class="col-md-3 mb-4">
+                                            <label for="validationCustom05">Is Active?</label>
+                                            <div class="form-group">
+                                                <div class="form-check form-check-inline">
+                                                    <input class="form-check-input" type="radio" name="is_active"
+                                                        id="is_active1" value="1" checked>
+                                                    <label class="form-check-label" for="is_active1">Yes</label>
+                                                </div>
+                                                <div class="form-check form-check-inline">
+                                                    <input class="form-check-input" type="radio" name="is_active"
+                                                        id="is_active2" value="0">
+                                                    <label class="form-check-label" for="is_active2">No</label>
+                                                </div>
+                                            </div>
+                                            <div class="invalid-feedback">
+                                                Please provide a valid selection.
+                                            </div>
+                                        </div>
                                     </div>
                                     <input type="hidden" name="cat_id" id="cat_id" />
                                     <input type="hidden" name="operation" id="operation" value="Add" />
@@ -139,6 +157,7 @@ $currentPage = 'category';
                                             <th>Sr. No.</th>
                                             <th>Image</th>
                                             <th>Name</th>
+                                            <th>Is Active?</th>
                                             <th>Edit</th>
                                             <th>Delete</th>
                                         </tr>
@@ -327,6 +346,11 @@ $currentPage = 'category';
             success: function(data) {
                 $('#cat_profile1').val(data.user_profile);
                 $('#validationCustom05').val(data.cat_name);
+                if (data.is_active == 0) {
+                    $('#is_active2').attr('checked', true);
+                } else {
+                    $('#is_active1').attr('checked', true);
+                }
                 $('#cat_id').val(cat_id);
                 $('#action').val("Edit");
                 $('#operation').val("Edit");

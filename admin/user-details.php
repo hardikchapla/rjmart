@@ -2,7 +2,7 @@
     include('../connection/connection.php');
     include('../helper/core_function.php');
     include('../helper/constant.php');
-    $currentPage = 'user-Details';
+    $currentPage = 'users';
     $user_id = $_REQUEST['id'];
     $user = $db->query("SELECT * FROM user WHERE id = '$user_id'");
     $feuser = $user->fetch();
@@ -68,24 +68,24 @@
                                 <div class="col-xl-9 col-lg-9 col-sm-9">
                                     <p><?= $feuser['fullname'] ?></p>
                                 </div>
-                                <div class="col-xl-3 col-lg-3 col-sm-3">
+                                <!-- <div class="col-xl-3 col-lg-3 col-sm-3">
                                     <p><strong>Email :</strong></p>
                                 </div>
                                 <div class="col-xl-9 col-lg-9 col-sm-9">
                                     <p><?= $feuser['email'] ?></p>
-                                </div>
+                                </div> -->
                                 <div class="col-xl-3 col-lg-3 col-sm-3">
                                     <p><strong>Mobile No. :</strong></p>
                                 </div>
                                 <div class="col-xl-9 col-lg-9 col-sm-9">
                                     <p><?= $feuser['mobile'] ?></p>
                                 </div>
-                                <div class="col-xl-3 col-lg-3 col-sm-3">
+                                <!-- <div class="col-xl-3 col-lg-3 col-sm-3">
                                     <p><strong>Date Of Birth. :</strong></p>
                                 </div>
                                 <div class="col-xl-9 col-lg-9 col-sm-9">
                                     <p><?= ($feuser['dob'] == '0000-00-00') ? '':$feuser['dob'] ?></p>
-                                </div>
+                                </div> -->
                             </div>
                         </div>
                     </div>
@@ -113,7 +113,7 @@
                                                         <th>Sr. No.</th>
                                                         <th>Full Name</th>
                                                         <th>Mobile Number</th>
-                                                        <th>Alt. Mobile Number</th>
+                                                        <!-- <th>Alt. Mobile Number</th> -->
                                                         <th>House No.</th>
                                                         <th>Building No.</th>
                                                         <th>Road/Area/Colony</th>
