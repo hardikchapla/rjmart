@@ -126,6 +126,15 @@ $feaddress = $user_address->fetch();
                                 </div>
                                 <?php 
                                         } 
+                                        ?>
+                                <div class="col-xl-3 col-lg-3 col-sm-3">
+                                    <p><strong>Cancelled Reason. :</strong></p>
+                                </div>
+                                <div class="col-xl-3 col-lg-3 col-sm-3">
+                                    <p><?= $feorder['reason'] ?></p>
+                                </div>
+
+                                <?php
                                     } 
                                 ?>
                             </div>
