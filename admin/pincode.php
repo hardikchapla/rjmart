@@ -288,6 +288,15 @@ $currentPage = 'Pincode';
                             location.reload();
                         }
                     })
+                } else if (obj.error == 'duplicate') {
+                    swal({
+                        title: "Warning ?",
+                        text: "This pincode is already exist!",
+                        type: "warning",
+                        showCancelButton: false,
+                        confirmButtonColor: "#EF5350"
+                    });
+                    return false;
                 } else {
                     swal({
                         title: "Warning ?",
