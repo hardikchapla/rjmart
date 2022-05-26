@@ -20,6 +20,7 @@
  		$date = date('Y-m-d H:i:s');
  		$path = BASE_URL.'assets/img/category/';
  		$sliderpath = BASE_URL.'assets/img/slider/';
+		$product_path = BASE_URL.'assets/img/product/';
  		$checkmobile = $db->query("SELECT * FROM user WHERE id = '$user_id'");
  		if($checkmobile->rowCount() > 0){
  			$cat = $db->query("SELECT * FROM category WHERE is_active = 1");
@@ -68,7 +69,7 @@
 						if($images->rowCount() > 0){
 							while ($feimages = $images->fetch()) {
 								$bb[$b]['image_id'] = $feimages['id'];
-								$bb[$b]['product_image'] = $path.$feimages['image'];
+								$bb[$b]['product_image'] = $product_path.$feimages['image'];
 								$b++;
 							}
 						}
@@ -100,35 +101,35 @@
 
 				$kk = array();
 				$k = 0;
-				$cat = $db->query("SELECT * FROM product WHERE cat_id = '2' ORDER BY RAND() LIMIT 0, 4");
-				if($cat->rowCount() > 0){
-					while ($fecat = $cat->fetch()) {
-						$kk[$k]['product_id'] = $fecat['id'];
-						$kk[$k]['name'] = $fecat['name'];
-						$kk[$k]['description'] = $fecat['description'];
-						$kk[$k]['offer'] = $fecat['offer'];
-						$kk[$k]['is_active'] = $fecat['is_active'];
-						$images = $db->query("SELECT * FROM product_image WHERE p_id = '".$fecat['id']."'");
+				$cat1 = $db->query("SELECT * FROM product WHERE cat_id = '2' ORDER BY RAND() LIMIT 0, 4");
+				if($cat1->rowCount() > 0){
+					while ($fecat1 = $cat1->fetch()) {
+						$kk[$k]['product_id'] = $fecat1['id'];
+						$kk[$k]['name'] = $fecat1['name'];
+						$kk[$k]['description'] = $fecat1['description'];
+						$kk[$k]['offer'] = $fecat1['offer'];
+						$kk[$k]['is_active'] = $fecat1['is_active'];
+						$images = $db->query("SELECT * FROM product_image WHERE p_id = '".$fecat1['id']."'");
 						$bb = array();
 						$b = 0;
 						if($images->rowCount() > 0){
 							while ($feimages = $images->fetch()) {
 								$bb[$b]['image_id'] = $feimages['id'];
-								$bb[$b]['product_image'] = $path.$feimages['image'];
+								$bb[$b]['product_image'] = $product_path.$feimages['image'];
 								$b++;
 							}
 						}
 						$kk[$k]['images'] = $bb;
 						$cc = array();
 						$c = 0;
-						$ptype = $db->query("SELECT * FROM product_type WHERE product_id = '".$fecat['id']."'");
+						$ptype = $db->query("SELECT * FROM product_type WHERE product_id = '".$fecat1['id']."'");
 						if($ptype->rowCount() > 0){
 							while ($feptype = $ptype->fetch()) {
 								$cc[$c]['product_type_id'] = $feptype['product_type_id'];
 								$cc[$c]['product_type'] = $feptype['product_type'];
 								$cc[$c]['Product_qty'] = $feptype['Product_qty'];
 								$cc[$c]['product_type_price'] = $feptype['product_type_price'];
-								$check_cart = $db->query("SELECT * FROM cart WHERE user_id = '$user_id' AND p_id = '".$fecat['id']."' AND product_type_id = '".$feptype['product_type_id']."'");
+								$check_cart = $db->query("SELECT * FROM cart WHERE user_id = '$user_id' AND p_id = '".$fecat1['id']."' AND product_type_id = '".$feptype['product_type_id']."'");
 								if($check_cart->rowCount() > 0){
 									$fecart = $check_cart->fetch();
 									$cc[$c]['is_cart'] = intval($fecart['qty']);
