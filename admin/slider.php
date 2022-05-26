@@ -452,6 +452,65 @@ $currentPage = 'Slider';
         });
     });
     </script>
+    <script type="text/javascript">
+    $(document).ready(function() {
+        $(document).on('click', '.changeStatus', function(e) {
+            var id = $(this).attr("id");
+            var key = $(this).attr("key");
+            SwalStatusChange(id, key);
+            e.preventDefault();
+        });
+    });
+
+    function SwalStatusChange(sliderId, status) {
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You want to change this status?",
+            type: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: 'rgb(221, 51, 51)',
+            cancelButtonColor: '#4ac17d',
+            cancelButtonText: "No, cancel please!",
+            confirmButtonText: 'Yes, Change it!',
+            showLoaderOnConfirm: true,
+            preConfirm: function() {
+                return new Promise(function(resolve) {
+                    $.ajax({
+                            url: 'code/slider_status_change',
+                            type: 'POST',
+                            data: {
+                                sliderId: sliderId,
+                                status: status
+                            },
+                            dataType: 'json'
+                        })
+                        .done(function(response) {
+                            swal({
+                                title: 'Status has been changed successfully',
+                                text: "",
+                                type: 'success',
+                                timer: 3000,
+                                padding: '2em',
+                                onOpen: function() {
+                                    swal.showLoading()
+                                }
+                            }).then(function(result) {
+                                if (
+
+                                    result.dismiss === swal.DismissReason.timer
+                                ) {
+                                    location.reload();
+                                }
+                            })
+                        })
+                        .fail(function() {
+                            swal('Oops...', 'Something went wrong with ajax !', 'error');
+                        });
+                });
+            },
+        });
+    }
+    </script>
 </body>
 
 </html>

@@ -18,11 +18,11 @@
 		$sub_array[] = $i;
 		$sub_array[] = $image;
 		$sub_array[] = $row["name"];
-		if($row['is_active'] == 0){
-			$sub_array[] = "No";
-		} else {
-			$sub_array[] = "Yes";
-		}
+		if($row["is_active"] == '1'){
+        	$sub_array[] = '<button class="btn btn-warning fa fa-pencil changeStatus" type="button" id="'.$row["id"].'" key="0">Deactivate</button>';
+        }else{
+        	$sub_array[] = '<button class="btn btn-info fa fa-pencil changeStatus" type="button" id="'.$row["id"].'" key="1">Activate</button>';
+        }
 		$sub_array[] = '<button class="btn btn-primary fa fa-pencil updateCategory" type="button" id="'.$row["id"].'">Edit</button>';
 		$sub_array[] = '<button class="btn btn-danger fa fa-trash deleteCategory" type="button" id="'.$row["id"].'" >Delete</button>';
 		$data[] = $sub_array;
