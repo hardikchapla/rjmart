@@ -11,6 +11,8 @@
 	    $image = '';
 	    if($row['slider_image'] != '' && $row['slider_type'] == 0){
             $image = '<img src="../assets/img/slider/'.$row["slider_image"].'" style = "border-radius: 40px" width="40" height="40" />';
+		} elseif ($row['slider_image'] != '' && $row['slider_type'] == 1) {
+			$image = '<video border-radius: 40px" width="40" height="40" controls><source src="../assets/img/slider/'.$row["slider_image"].'" type="video/mp4"></video>';
         } else {
             $image = '<img src="../assets/img/slider/Slider-Webpage-Fruits.jpg" style = "border-radius: 40px" width="40" height="40" />';
         }

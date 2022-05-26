@@ -84,12 +84,12 @@ $feuser = $user->fetch();
                                 <div class="col-xl-9 col-lg-9 col-sm-9">
                                     <p><?= $feuser['mobile'] ?></p>
                                 </div>
-                                <div class="col-xl-3 col-lg-3 col-sm-3">
+                                <!-- <div class="col-xl-3 col-lg-3 col-sm-3">
                                     <p><strong>Date Of Birth. :</strong></p>
                                 </div>
                                 <div class="col-xl-9 col-lg-9 col-sm-9">
                                     <p><?= ($feuser['dob'] == '0000-00-00') ? '':$feuser['dob'] ?></p>
-                                </div>
+                                </div> -->
                                 <div class="col-xl-3 col-lg-3 col-sm-3">
                                     <p><strong>User Status. :</strong></p>
                                 </div>

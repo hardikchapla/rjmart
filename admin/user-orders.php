@@ -166,12 +166,12 @@ $feaddress = $user_address->fetch();
                                 <div class="col-xl-3 col-lg-3 col-sm-3">
                                     <p><?= $feaddress['main_area'] ?></p>
                                 </div>
-                                <div class="col-xl-3 col-lg-3 col-sm-3">
+                                <!-- <div class="col-xl-3 col-lg-3 col-sm-3">
                                     <p><strong>Alt. Mobile Number :</strong></p>
                                 </div>
                                 <div class="col-xl-3 col-lg-3 col-sm-3">
                                     <p><?= $feaddress['alt_mobile_number'] ?></p>
-                                </div>
+                                </div> -->
                                 <div class="col-xl-3 col-lg-3 col-sm-3">
                                     <p><strong>Landmark :</strong></p>
                                 </div>

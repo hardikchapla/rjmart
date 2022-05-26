@@ -1,5 +1,6 @@
 <?php
 	include "../connection/connection.php";
+	include "../helper/constant.php";
 	$status = 0;
 	$message = "";
 	$data = array();
@@ -41,7 +42,7 @@
  		$limit = $_REQUEST['limit'];
  		$start_count = $_REQUEST['start_count'];
  		$date = date('Y-m-d H:i:s');
- 		$path = 'http://'.$_SERVER['SERVER_NAME'].'/assets/img/product/';
+ 		$path = BASE_URL.'assets/img/product/';
  		$checkmobile = $db->query("SELECT * FROM user WHERE id = '$user_id'");
  		if($checkmobile->rowCount() > 0){
  			$cat = $db->query("SELECT * FROM product WHERE cat_id = '$category_id' LIMIT $start_count, $limit");

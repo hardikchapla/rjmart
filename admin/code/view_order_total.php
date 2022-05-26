@@ -11,7 +11,7 @@ if($start_date == '' && $end_date == ''){
 $statement = $db->query($query);
 $statement->execute();
 $result = $statement->fetch();
-$reoutput['total_amount'] = $result['total_amount'];
+$reoutput['total_amount'] = (isset($result['total_amount']) && $result['total_amount'] != '') ? $result['total_amount']:0;
 echo json_encode($reoutput);
 die;
 ?>
