@@ -1,5 +1,6 @@
 <?php
 	include "../connection/connection.php";
+	include "../helper/constant.php";
 	$status = 0;
 	$message = "";
 	$data = array();
@@ -19,7 +20,7 @@
  		$user_id = $_REQUEST['user_id'];
  		$checkmobile = $db->query("SELECT * FROM user WHERE id = '$user_id'");
  		if($checkmobile->rowCount() > 0){
- 			$path = 'http://'.$_SERVER['SERVER_NAME'].'/assets/img/product/';
+			$path = BASE_URL.'assets/img/product/';
  			$checkcart = $db->query("SELECT a.id as cart_id,a.*,b.*,c.* FROM cart a, product b,product_type c WHERE a.p_id = b.id AND a.product_type_id = c.product_type_id AND a.user_id = '$user_id'");
  			if($checkcart->rowCount() > 0){
  				$aa = array();
