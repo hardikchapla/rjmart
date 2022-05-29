@@ -145,6 +145,8 @@
                 $aa['landmark'] = $feorder['landmark'];
                 $aa['city'] = $feorder['city'];
                 $aa['state'] = $feorder['state'];
+                $aa['address'] = $feorder['address'];
+                $aa['pincode'] = $feorder['pincode'];
                 $aa['delivery_date'] = ($feorder['order_date']) ? $feorder['order_date']:'';
                 $aa['order_date'] = ($feorder['orderdt']) ? $feorder['orderdt']:'';
                 $order_items = $db->query("SELECT a.*,b.*,c.* FROM order_items a, product b,product_type c WHERE a.product_id = b.id AND a.product_type_id = c.product_type_id AND a.order_id = '$order_id'");

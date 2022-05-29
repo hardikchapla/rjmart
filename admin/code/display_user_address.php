@@ -14,13 +14,16 @@ foreach($result as $row)
     $sub_array[] = $row['full_name'];
     $sub_array[] = $row["mobile_number"];
     // $sub_array[] = $row["alt_mobile_number"];
-    $sub_array[] = $row['house_no'];
-    $sub_array[] = $row['building_name'];
-    $sub_array[] = $row['road_area_colony'];
-    $sub_array[] = $row['main_area'];
-    $sub_array[] = $row['landmark'];
-    $sub_array[] = $row['city'];
+    // $sub_array[] = $row['house_no'];
+    // $sub_array[] = $row['building_name'];
+    // $sub_array[] = $row['road_area_colony'];
+    // $sub_array[] = $row['main_area'];
+    // $sub_array[] = $row['landmark'];
+    // $sub_array[] = $row['city'];
+    $sub_array[] = $row['address'];
     $sub_array[] = $row['state'];
+    $sub_array[] = $row['pincode'];
+    $sub_array[] = ($row['is_default'] == 1) ? 'Yes':'No';
     $data[] = $sub_array;
     $i++;
 }

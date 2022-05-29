@@ -42,6 +42,8 @@
 				$aa['landmark'] = $feorder['landmark'];
 				$aa['city'] = $feorder['city'];
 				$aa['state'] = $feorder['state'];
+				$aa['address'] = $feorder['address'];
+				$aa['pincode'] = $feorder['pincode'];
 				$aa['is_review'] = $feorder['is_review'];
                 $aa['delivery_date'] = ($feorder['order_date']) ? $feorder['order_date']:'';
                 $aa['order_date'] = ($feorder['orderdt']) ? $feorder['orderdt']:'';
