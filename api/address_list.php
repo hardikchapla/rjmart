@@ -28,14 +28,17 @@
  					$aa[$a]['user_id'] = $feaddress['user_id'];
  					$aa[$a]['full_name'] = $feaddress['full_name'];
  					$aa[$a]['mobile_number'] = $feaddress['mobile_number'];
- 					$aa[$a]['alt_mobile_number'] = $feaddress['alt_mobile_number'];
- 					$aa[$a]['house_no'] = $feaddress['house_no'];
- 					$aa[$a]['building_name'] = $feaddress['building_name'];
- 					$aa[$a]['road_area_colony'] = $feaddress['road_area_colony'];
- 					$aa[$a]['main_area'] = $feaddress['main_area'];
- 					$aa[$a]['landmark'] = $feaddress['landmark'];
- 					$aa[$a]['city'] = $feaddress['city'];
+ 					// $aa[$a]['alt_mobile_number'] = $feaddress['alt_mobile_number'];
+ 					// $aa[$a]['house_no'] = $feaddress['house_no'];
+ 					// $aa[$a]['building_name'] = $feaddress['building_name'];
+ 					// $aa[$a]['road_area_colony'] = $feaddress['road_area_colony'];
+ 					// $aa[$a]['main_area'] = $feaddress['main_area'];
+ 					// $aa[$a]['landmark'] = $feaddress['landmark'];
+ 					// $aa[$a]['city'] = $feaddress['city'];
+ 					$aa[$a]['address'] = $feaddress['address'];
+ 					$aa[$a]['pincode'] = $feaddress['pincode'];
  					$aa[$a]['state'] = $feaddress['state'];
+ 					$aa[$a]['is_default'] = $feaddress['is_default'];
  					$a++;
  				}
  				$status = 1;

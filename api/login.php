@@ -68,6 +68,22 @@
             $aa['status'] = $feget['status'];
             $aa['referral'] = $feget['referral'];
             $aa['pincode'] = $feget['pincode'];
+			$address = $db->query("SELECT * FROM user_address WHERE user_id = '".$feget['id']."' AND is_default = 1");
+			if($address->rowCount() > 0){
+				$feaddress = $address->fetch();
+				$bb = array();
+				$bb['address_id'] = $feaddress['id'];
+				$bb['user_id'] = $feaddress['user_id'];
+				$bb['full_name'] = $feaddress['full_name'];
+				$bb['mobile_number'] = $feaddress['mobile_number'];
+				$bb['address'] = $feaddress['address'];
+				$bb['pincode'] = $feaddress['pincode'];
+				$bb['state'] = $feaddress['state'];
+				$bb['is_default'] = $feaddress['is_default'];
+				$aa['address'] = $bb;
+			} else {
+				$aa['address'] = (object) array();
+			}
             $data = $aa;
  		} else {
             $status = 0;
