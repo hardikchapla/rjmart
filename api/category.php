@@ -83,6 +83,7 @@
 								$cc[$c]['product_type'] = $feptype['product_type'];
 								$cc[$c]['Product_qty'] = $feptype['Product_qty'];
 								$cc[$c]['product_type_price'] = $feptype['product_type_price'];
+								$cc[$c]['Product_type_qty'] = $feptype['Product_qty'].' '.$feptype['product_type'];
 								$check_cart = $db->query("SELECT * FROM cart WHERE user_id = '$user_id' AND p_id = '".$fecat['id']."' AND product_type_id = '".$feptype['product_type_id']."'");
 								if($check_cart->rowCount() > 0){
 									$fecart = $check_cart->fetch();
@@ -129,6 +130,7 @@
 								$cc[$c]['product_type'] = $feptype['product_type'];
 								$cc[$c]['Product_qty'] = $feptype['Product_qty'];
 								$cc[$c]['product_type_price'] = $feptype['product_type_price'];
+								$cc[$c]['Product_type_qty'] = $feptype['Product_qty'].' '.$feptype['product_type'];
 								$check_cart = $db->query("SELECT * FROM cart WHERE user_id = '$user_id' AND p_id = '".$fecat1['id']."' AND product_type_id = '".$feptype['product_type_id']."'");
 								if($check_cart->rowCount() > 0){
 									$fecart = $check_cart->fetch();
