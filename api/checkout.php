@@ -1,5 +1,6 @@
 <?php
 	include "../connection/connection.php";
+    include "../helper/constant.php";
 	include "../helper/core_function.php";
 	$status = 0;
 	$message = "";
@@ -127,7 +128,7 @@
 
                 $order_details = $db->query("SELECT a.created as orderdt,a.id as order_id,a.*,b.* FROM product_order a,user_address b WHERE a.user_address_id = b.id AND a.id = '$order_id'");
                 $feorder = $order_details->fetch();
-                $path = 'http://'.$_SERVER['SERVER_NAME'].'/assets/img/product/';
+                $path = BASE_URL.'assets/img/product/';
                 $aa = array();
                 $aa['order_id'] = $feorder['order_id'];
                 $aa['order_number'] = $feorder['order_number'];

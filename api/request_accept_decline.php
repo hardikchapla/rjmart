@@ -1,5 +1,6 @@
 <?php
 	include "../connection/connection.php";
+	include "../helper/constant.php";
     include "../helper/core_function.php";
 	$status = 0;
 	$message = "";

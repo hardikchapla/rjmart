@@ -1,5 +1,6 @@
 <?php
 	include "../connection/connection.php";
+	include "../helper/constant.php";
 	$status = 0;
 	$message = "";
 	$data = array();
@@ -39,6 +40,8 @@
  		$mobile = $_REQUEST['mobile'];
  		$user_type = $_REQUEST['user_type'];
  		$password = md5($_REQUEST['password']);
+ 		$device_type = $_REQUEST['device_type'];
+ 		$device_token = $_REQUEST['device_token'];
  		$checkmobile = $db->query("SELECT * FROM user WHERE mobile = '$mobile' AND password = '$password' AND user_type = '$user_type'");
  		if($checkmobile->rowCount() > 0){
             if($user_type == 'user'){
@@ -48,9 +51,14 @@
                 $status = 1;
                 $message = "Login successfully";
             }
+			$feget1 = $checkmobile->fetch();
             $aa = array();
-            $avtar_path = 'http://'.$_SERVER['SERVER_NAME'].'/food_app/assets/img/user/';
-            $feget = $checkmobile->fetch();
+			if (!empty($device_type) || !empty($device_token)) {
+				$update = $db->query("UPDATE user SET device_type = '$device_type', device_token = '$device_token' WHERE id = '".$feget1['id']."'");
+			}
+			$checkuser = $db->query("SELECT * FROM user WHERE id = '".$feget1['id']."'");
+			$feget = $checkuser->fetch();
+            $avtar_path = BASE_URL.'assets/img/user/';
             $aa['id'] = $feget['id'];
             $aa['fullname'] = $feget['fullname'];
             $aa['email'] = $feget['email'];

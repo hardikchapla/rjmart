@@ -1,5 +1,6 @@
 <?php
 	include "../connection/connection.php";
+	include "../helper/constant.php";
 	$status = 0;
 	$message = "";
 	$data = array();
@@ -93,7 +94,7 @@
 	 		}
  			
  			if($query){
-				$avtar_path = BASE_URL.'/assets/img/user/';
+				$avtar_path = BASE_URL.'assets/img/user/';
 	 			$get = $db->query("SELECT * FROM user WHERE id = '$user_id'");
 	 			$status = 1;
 	 			$message = "User Updated Successfully";
