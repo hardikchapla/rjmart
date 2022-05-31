@@ -101,22 +101,39 @@
 	 			$aa = array();
 	 			$feget = $get->fetch();
  				$aa['id'] = $feget['id'];
- 				$aa['fullname'] = $feget['fullname'];
- 				$aa['email'] = $feget['email'];
- 				$aa['mobile'] = $feget['mobile'];
- 				$aa['otp'] = $feget['otp'];
- 				$aa['dob'] = $feget['dob'];
- 				$aa['document'] = !empty($feget['document']) ? $avtar_path.$feget['document']:'';
- 				$aa['avatar'] = !empty($feget['avatar']) ? $avtar_path.$feget['avatar']:'';
- 				$aa['user_type'] = $feget['user_type'];
- 				$aa['login_type'] = $feget['login_type'];
- 				$aa['login_identifier'] = $feget['login_identifier'];
- 				$aa['device_type'] = $feget['device_type'];
- 				$aa['device_token'] = $feget['device_token'];
- 				$aa['latitude'] = $feget['latitude'];
- 				$aa['longitude'] = $feget['longitude'];
- 				$aa['status'] = $feget['status'];
-	 			$data = $aa;
+				$aa['fullname'] = $feget['fullname'];
+				$aa['email'] = $feget['email'];
+				$aa['mobile'] = $feget['mobile'];
+				$aa['dob'] = $feget['dob'];
+				$aa['document'] = $avtar_path.$feget['document'];
+				$aa['avatar'] = $avtar_path.$feget['avatar'];
+				$aa['user_type'] = $feget['user_type'];
+				$aa['login_type'] = $feget['login_type'];
+				$aa['login_identifier'] = $feget['login_identifier'];
+				$aa['device_type'] = $feget['device_type'];
+				$aa['device_token'] = $feget['device_token'];
+				$aa['latitude'] = $feget['latitude'];
+				$aa['longitude'] = $feget['longitude'];
+				$aa['status'] = $feget['status'];
+				$aa['referral'] = $feget['referral'];
+				$aa['pincode'] = $feget['pincode'];
+				$address = $db->query("SELECT * FROM user_address WHERE user_id = '".$feget['id']."' AND is_default = 1");
+				if($address->rowCount() > 0){
+					$feaddress = $address->fetch();
+					$bb = array();
+					$bb['address_id'] = $feaddress['id'];
+					$bb['user_id'] = $feaddress['user_id'];
+					$bb['full_name'] = $feaddress['full_name'];
+					$bb['mobile_number'] = $feaddress['mobile_number'];
+					$bb['address'] = $feaddress['address'];
+					$bb['pincode'] = $feaddress['pincode'];
+					$bb['state'] = $feaddress['state'];
+					$bb['is_default'] = $feaddress['is_default'];
+					$aa['address'] = $bb;
+				} else {
+					$aa['address'] = (object) array();
+				}
+				$data = $aa;
 	 			
 	 		} else {
 	 			$status = 0;
