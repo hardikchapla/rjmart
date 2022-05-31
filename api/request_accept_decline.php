@@ -68,7 +68,7 @@
 					$user_update = $db->query("UPDATE user SET active = 0 WHERE id = '$user_id'");
 					if($update && $delete && $update_order){
 					    $feget = $checkmobile->fetch();
-                        $avtar_path = 'http://'.$_SERVER['SERVER_NAME'].'/food_app/assets/img/user/';
+                        $avtar_path = BASE_URL.'/assets/img/user/';
                         $aa['id'] = $feget['id'];
                         $aa['fullname'] = $feget['fullname'];
                         $aa['email'] = $feget['email'];
@@ -89,11 +89,11 @@
                         $data2 = array();
                         $data2['message'] = "Order request accepted successfully";
                         $data2['data'] = $aa;
-
+						$notification1 = $db->query("INSERT INTO notification SET sender_id = '$user_id', receiver_id = '$from_id',order_id = '$order_id', title = 'Request Accepted', message = 'Your order request accepted successfully', `type` = 'order_accepted', receiver_type = '0', created = '$created'");
                         sendPushNotification($fefrom['device_token'],$title,$fefrom['device_type'],$data2);
                         $order = $db->query("SELECT * FROM product_order WHERE id = '$order_id'");
                         $feorder = $order->fetch();
-                        sendsms($fefrom['mobile'],"On the Way : Your order for Gujarat Fruits & Vegetables order ID ".$feorder['order_number']." has been on the way. You will receive another SMS when the product out to deliver it.");
+                        // sendsms($fefrom['mobile'],"On the Way : Your order for Gujarat Fruits & Vegetables order ID ".$feorder['order_number']." has been on the way. You will receive another SMS when the product out to deliver it.");
 						$status = 1;
 						$message = "Request accepted successfully";
 						$data = array();

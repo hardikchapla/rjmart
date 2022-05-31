@@ -22,7 +22,7 @@
  		if($checkmobile->rowCount() > 0){
 			$order_details = $db->query("SELECT c.id as request_id,c.*, a.id as order_id,a.created as orderdt,a.*,b.* FROM near_by_request c, product_order a,user_address b WHERE c.order_id = a.id AND a.user_address_id = b.id AND c.to_id = '$user_id' AND c.status = 1 AND (a.order_status = 1 OR a.order_status = 4) ORDER BY c.created DESC");
 			if($order_details->rowCount() > 0){
-				$path = 'http://'.$_SERVER['SERVER_NAME'].'/assets/img/product/';
+				$path = BASE_URL.'assets/img/product/';
 				$aa = array();
 				$a = 0;
 				while($feorder = $order_details->fetch()){
@@ -47,6 +47,7 @@
 					$aa[$a]['state'] = $feorder['state'];
 					$aa[$a]['address'] = $feorder['address'];
 					$aa[$a]['pincode'] = $feorder['pincode'];
+					$aa[$a]['receive_otp'] = $feorder['receive_otp'];
                     $aa[$a]['delivery_date'] = ($feorder['order_date']) ? $feorder['order_date']:'';
                     $aa[$a]['order_date'] = ($feorder['orderdt']) ? $feorder['orderdt']:'';
 					$order_items = $db->query("SELECT a.*,b.*,c.* FROM order_items a, product b,product_type c WHERE a.product_id = b.id AND a.product_type_id = c.product_type_id AND a.order_id = '$order_id'");

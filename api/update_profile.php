@@ -93,7 +93,7 @@
 	 		}
  			
  			if($query){
- 				$avtar_path = 'http://'.$_SERVER['SERVER_NAME'].'/assets/img/user/';
+				$avtar_path = BASE_URL.'/assets/img/user/';
 	 			$get = $db->query("SELECT * FROM user WHERE id = '$user_id'");
 	 			$status = 1;
 	 			$message = "User Updated Successfully";

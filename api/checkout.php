@@ -108,7 +108,7 @@
                 $order_id = $db->lastInsertId();
 
                 $notification = $db->query("INSERT INTO notification SET sender_id = '$user_id',order_id = '$order_id', title = 'New Order', message = 'New order created successfully', `type` = 'new_order', receiver_type = '1', created = '$created'");
-
+                $notification1 = $db->query("INSERT INTO notification SET receiver_id = '$user_id',order_id = '$order_id', title = 'New Order', message = 'New order created successfully', `type` = 'new_order', receiver_type = '0', created = '$created'");
                 while ($fecheckcart = $checkcart->fetch()) {
                     $product_id = $fecheckcart['p_id'];
                     $qty = $fecheckcart['qty'];
@@ -195,7 +195,7 @@
                     $data2 = array();
                     $data2['message'] = "Order request sent successfully";
                     sendPushNotification($feuser['device_token'],$title,$feuser['device_type'],$data2);
-                    sendsms($feuser['mobile'],"Packed : Your order for Gujarat Fruits & Vegetables order ID ".$feorder['order_number']." has been packed by the seller and will be shipped soon.");
+                    // sendsms($feuser['mobile'],"Packed : Your order for Gujarat Fruits & Vegetables order ID ".$feorder['order_number']." has been packed by the seller and will be shipped soon.");
 
                     $status = 1;
                     $message = "Order Placed successfully";

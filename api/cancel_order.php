@@ -111,6 +111,7 @@
 						$delete = $db->query("UPDATE product_order SET order_status = '3',cancel_status = '$order_status', reason = '$reason' WHERE id = '$order_id'");
 						$notification = $db->query("INSERT INTO notification SET sender_id = '$user_id',order_id = '$order_id', title = 'Cancel Order', message = 'Order cancelled successfully', `type` = 'order_cancelled', receiver_type = '1', created = '$created'");
 						if($delete){
+							$notification1 = $db->query("INSERT INTO notification SET receiver_id = '$user_id', order_id = '$order_id', title = 'Cancel Order', message = 'Your order has been cancelled successfully', `type` = 'order_cancelled', receiver_type = '0', created = '$created'");
 							$status = 1;
 							$message = "Your order cancel successfully";
 							$data = array();

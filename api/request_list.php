@@ -22,7 +22,7 @@
  		if($checkmobile->rowCount() > 0){
 			$order_details = $db->query("SELECT c.id as request_id,c.*, a.id as order_id,a.created as orderdt,a.*,b.* FROM near_by_request c, product_order a,user_address b WHERE c.order_id = a.id AND a.user_address_id = b.id AND c.to_id = '$user_id' AND c.status = 0 ORDER BY c.created DESC");
 			if($order_details->rowCount() > 0){
-				$path = 'http://'.$_SERVER['SERVER_NAME'].'/assets/img/product/';
+				$path = BASE_URL.'assets/img/product/';
 				$aa = array();
 				$a = 0;
 				while($feorder = $order_details->fetch()){

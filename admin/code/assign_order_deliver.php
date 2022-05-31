@@ -20,56 +20,28 @@ if (isset($_REQUEST['order_id']) && isset($_REQUEST['user_id'])) {
 
     $date = date('Y-m-d H:i:s');
 
-    $request = $db->query("INSERT INTO near_by_request SET from_id = '$from_id', to_id = '$user_id', status = 0, order_id = '$order_id',created = '$date',updated = '$date'");
-
-
-
+    $request = $db->query("INSERT INTO near_by_request SET from_id = '$from_id', to_id = '$user_id', status = 1, order_id = '$order_id',created = '$date',updated = '$date'");
     $update_user = $db->query("UPDATE user SET active = 0 WHERE id = '$user_id'");
-
-
-
     $update_order = $db->query("UPDATE product_order SET order_status = 1 WHERE id = '$order_id'");
-
-
-
     $order_details = $db->query("SELECT a.created as orderdt,a.id as order_id,a.*,b.* FROM product_order a,user_address b WHERE a.user_address_id = b.id AND a.id = '$order_id'");
-
     $feorder = $order_details->fetch();
-
-    $path = 'http://'.$_SERVER['SERVER_NAME'].'/food_app/assets/img/product/';
-
+    $path = BASE_URL.'assets/img/product/';
     $aa = array();
-
     $aa['order_id'] = $feorder['order_id'];
-
     $aa['order_number'] = $feorder['order_number'];
-
     $aa['user_id'] = $feorder['user_id'];
-
     $aa['user_address_id'] = $feorder['user_address_id'];
-
     $aa['total_amount'] = $feorder['total_amount'];
-
     $aa['payment_type'] = $feorder['payment_type'];
-
     $aa['order_status'] = $feorder['order_status'];
-
     $aa['full_name'] = $feorder['full_name'];
-
     $aa['mobile_number'] = $feorder['mobile_number'];
-
     $aa['alt_mobile_number'] = $feorder['alt_mobile_number'];
-
     $aa['house_no'] = $feorder['house_no'];
-
     $aa['building_name'] = $feorder['building_name'];
-
     $aa['main_area'] = $feorder['main_area'];
-
     $aa['landmark'] = $feorder['landmark'];
-
     $aa['city'] = $feorder['city'];
-
     $aa['state'] = $feorder['state'];
 
     $aa['delivery_date'] = ($feorder['order_date']) ? $feorder['order_date']:'';
@@ -145,29 +117,19 @@ if (isset($_REQUEST['order_id']) && isset($_REQUEST['user_id'])) {
     $data1 = array();
 
     $data1['message'] = "Order request accepted successfully";
-
     sendPushNotification($feuser['device_token'], $title, $feuser['device_type'], $data1);
-
-
-
+    $notification = $db->query("INSERT INTO notification SET receiver_id = '$from_id',order_id = '$order_id', title = 'Request Accepted', message = 'Your order request accepted successfully', `type` = 'order_accepted', receiver_type = '0', created = '$date'");
     $deliver = $db->query("SELECT * FROM user WHERE id = '$user_id'");
-
     $fedeliver = $deliver->fetch();
 
 
 
     $title1 = "Order assign";
-
     $data2 = array();
-
     $data2['message'] = "Order assign by admin";
-
     $data2['data'] = $aa;
-
     sendPushNotification($fedeliver['device_token'], $title1, $fedeliver['device_type'], $data2);
-
-
-
+    $notification2 = $db->query("INSERT INTO notification SET receiver_id = '$user_id',order_id = '$order_id', title = 'Order assign', message = 'Order assign by admin', `type` = 'order_assigned', receiver_type = '0', created = '$date'");
     echo "true";
 
 }

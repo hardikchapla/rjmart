@@ -59,7 +59,7 @@
 					    $order_id = $fecheck['id'];
 						$update = $db->query("UPDATE product_order SET order_status = 2 WHERE order_number = '$order_number'");
 						$user_update = $db->query("UPDATE user SET active = 1 WHERE id = '$user_id'");
-	                    $notification = $db->query("INSERT INTO notification SET sender_id = '$user_id',order_id = '$order_id', title = 'Order completed', message = 'Order completed successfully', `type` = 'order_shipped', receiver_type = '1', created = '$created'");
+	                    $notification = $db->query("INSERT INTO notification SET sender_id = '$user_id',order_id = '$order_id', title = 'Order completed', message = 'Order completed successfully', `type` = 'order_completed', receiver_type = '1', created = '$created'");
 						if($update && $user_update){
 						    $order_user = $fecheck['user_id'];
 						    $user = $db->query("SELECT * FROM user WHERE id = '$order_user'");
@@ -68,7 +68,8 @@
 	                        $data2 = array();
 	                        $data2['message'] = "Order completed successfully";
 	                        sendPushNotification($feuser['device_token'],$title,$feuser['device_type'],$data2);
-	                        sendsms($feuser['mobile'],"Delivered : Your order for Gujarat Fruits & Vegetables order ID ".$order_number." has been delivered.");
+							$notification2 = $db->query("INSERT INTO notification SET receiver_id = '$order_user',order_id = '$order_id', title = 'Order completed', message = 'Order completed successfully', `type` = 'order_completed', receiver_type = '0', created = '$created'");
+	                        // sendsms($feuser['mobile'],"Delivered : Your order for Gujarat Fruits & Vegetables order ID ".$order_number." has been delivered.");
 							$status = 1;
 							$message = "Order completed successfully";
 							$data = array();
