@@ -48,6 +48,8 @@
 					$aa[$a]['state'] = $feorder['state'];
 					$aa[$a]['address'] = $feorder['address'];
 					$aa[$a]['pincode'] = $feorder['pincode'];
+					$aa[$a]['latitude'] = $feorder['latitude'];
+					$aa[$a]['longitude'] = $feorder['longitude'];
 					$aa[$a]['receive_otp'] = $feorder['receive_otp'];
                     $aa[$a]['delivery_date'] = ($feorder['order_date']) ? $feorder['order_date']:'';
                     $aa[$a]['order_date'] = ($feorder['orderdt']) ? $feorder['orderdt']:'';

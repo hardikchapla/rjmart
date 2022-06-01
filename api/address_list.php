@@ -38,6 +38,8 @@
  					$aa[$a]['address'] = $feaddress['address'];
  					$aa[$a]['pincode'] = $feaddress['pincode'];
  					$aa[$a]['state'] = $feaddress['state'];
+ 					$aa[$a]['latitude'] = $feaddress['latitude'];
+ 					$aa[$a]['longitude'] = $feaddress['longitude'];
  					$aa[$a]['is_default'] = $feaddress['is_default'];
  					$a++;
  				}

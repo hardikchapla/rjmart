@@ -128,6 +128,8 @@
 					$bb['address'] = $feaddress['address'];
 					$bb['pincode'] = $feaddress['pincode'];
 					$bb['state'] = $feaddress['state'];
+					$bb['latitude'] = $feaddress['latitude'];
+					$bb['longitude'] = $feaddress['longitude'];
 					$bb['is_default'] = $feaddress['is_default'];
 					$aa['address'] = $bb;
 				} else {

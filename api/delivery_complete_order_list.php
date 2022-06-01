@@ -48,6 +48,8 @@
 					$aa[$a]['state'] = $feorder['state'];
 					$aa[$a]['address'] = $feorder['address'];
 					$aa[$a]['pincode'] = $feorder['pincode'];
+					$aa[$a]['latitude'] = $feorder['latitude'];
+					$aa[$a]['longitude'] = $feorder['longitude'];
                     $aa[$a]['delivery_date'] = ($feorder['order_date']) ? $feorder['order_date']:'';
                     $aa[$a]['order_date'] = ($feorder['orderdt']) ? $feorder['orderdt']:'';
 					$order_items = $db->query("SELECT a.*,b.*,c.* FROM order_items a, product b,product_type c WHERE a.product_id = b.id AND a.product_type_id = c.product_type_id AND a.order_id = '$order_id'");
