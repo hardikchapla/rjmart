@@ -1,9 +1,9 @@
 <?php
   include('connection/connection.php');
-  $privacy = $db->query("SELECT * FROM privacy_policy");
+  $terms = $db->query("SELECT * FROM terms_and_conditions");
   $data = array();
-  while($feprivacy = $privacy->fetch()){
-    $data[$feprivacy['slug']] = $feprivacy['description'];
+  while($feterms = $terms->fetch()){
+    $data[$feterms['slug']] = $feterms['description'];
   }
 ?>
 <!DOCTYPE html>
@@ -14,7 +14,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <title>Privacy</title>
+    <title>Terms & Condition</title>
     <link rel="icon" type="image/x-icon" href="admin/assets/img/favicon.png" />
     <!-- Bootstrap core CSS -->
     <link href="web/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -59,8 +59,8 @@
             <div class="row align-items-center">
                 <div class="col-lg-12 order-lg-1 mt-5">
                     <div class="p-5 mt-5">
-                        <h2 class="display-4"><?= $data['privacy_policy_header'] ?></h2>
-                        <?= $data['privacy_policy_description'] ?>
+                        <h2 class="display-4"><?= $data['terms_and_condition_header'] ?></h2>
+                        <?= $data['terms_and_condition_description'] ?>
                     </div>
                 </div>
             </div>
