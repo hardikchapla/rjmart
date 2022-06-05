@@ -411,7 +411,7 @@ $currentPage = 'Slider';
             preConfirm: function() {
                 return new Promise(function(resolve) {
                     $.ajax({
-                            url: 'code/delete_sliders',
+                            url: 'code/delete_slider',
                             type: 'POST',
                             data: 'cat_id=' + cat_id,
                             dataType: 'json'

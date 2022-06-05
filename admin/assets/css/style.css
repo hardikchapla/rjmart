@@ -946,3 +946,8 @@ label.error {
 .height_260 {
     height: 300px !important;
 }
+
+.select2-container--default .select2-selection--multiple {
+    background: #ffffff !important;
+    padding: 5px 16px !important;
+}
