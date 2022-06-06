@@ -79,6 +79,8 @@
  		$referral_amount = (isset($_REQUEST['referral_amount']) && $_REQUEST['referral_amount'] != '') ? $_REQUEST['referral_amount']:0;
  		$created = date('Y-m-d H:i:s');
         $order_date = date("Y-m-d H:i:s", strtotime("+1 day"));
+        $admin = $db->query("SELECT * FROM `admin` WHERE id = 1");
+        $feadmin = $admin->fetch();
  		$checkmobile = $db->query("SELECT * FROM user WHERE id = '$user_id'");
  		if($checkmobile->rowCount() > 0){
  			$checkcart = $db->query("SELECT * FROM cart WHERE user_id = '$user_id'");
@@ -179,6 +181,7 @@
                     }
                 }
                 $aa['order_items'] = $bb;
+                $aa['cancel_message'] = "You can cancel the order with in ".$feadmin['cancel_time']." Minutes";
                 // $check_delivery = $db->query("select *, ( 3959 * acos ( cos ( radians(".$latitude.") ) * cos( radians( latitude ) ) * cos( radians( longitude ) - radians(".$longitude.") ) + sin ( radians(".$latitude.") ) * sin( radians(latitude) ) ) ) AS `distance` from `user` WHERE user_type = 1 AND status = 1 AND active = 1 HAVING distance < 15 ORDER BY distance");
                 // if($check_delivery->rowCount() > 0) {
                 //     while ($fedelivery = $check_delivery->fetch()) {

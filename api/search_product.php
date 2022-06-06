@@ -45,7 +45,7 @@
  		$path = BASE_URL.'assets/img/product/';
  		$checkmobile = $db->query("SELECT * FROM user WHERE id = '$user_id'");
  		if($checkmobile->rowCount() > 0){
- 			$cat = $db->query("SELECT * FROM product WHERE name LIKE '%$search%' LIMIT $start_count, $limit");
+ 			$cat = $db->query("SELECT * FROM product WHERE name LIKE '%$search%' AND is_active = 1 LIMIT $start_count, $limit");
  			if($cat->rowCount() > 0){
  				$aa = array();
  				$a = 0;

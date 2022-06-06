@@ -55,7 +55,7 @@
  				}
 				$dd = array();
 				$d = 0;
-				$cat = $db->query("SELECT * FROM product WHERE cat_id = '1' ORDER BY RAND() LIMIT 0, 4");
+				$cat = $db->query("SELECT * FROM product WHERE cat_id = '1' AND is_active = 1 ORDER BY RAND() LIMIT 0, 4");
 				if($cat->rowCount() > 0){
 					while ($fecat = $cat->fetch()) {
 						$dd[$d]['product_id'] = $fecat['id'];
@@ -102,7 +102,7 @@
 
 				$kk = array();
 				$k = 0;
-				$cat1 = $db->query("SELECT * FROM product WHERE cat_id = '2' ORDER BY RAND() LIMIT 0, 4");
+				$cat1 = $db->query("SELECT * FROM product WHERE cat_id = '2' AND is_active = 1 ORDER BY RAND() LIMIT 0, 4");
 				if($cat1->rowCount() > 0){
 					while ($fecat1 = $cat1->fetch()) {
 						$kk[$k]['product_id'] = $fecat1['id'];
