@@ -124,7 +124,7 @@
 	 			$get = $db->query("SELECT * FROM user WHERE id = '$user_id'");
 	 			if($user_type == 'user'){
              		$status = 1;
-    	 			$message = "Login successfully";
+    	 			$message = "Registration successfully";
          		} else {
          			$status = 1;
 	 			    $message = "Your account has been created, you can login after our team verify your documents.";
