@@ -159,9 +159,12 @@
  				// $query = $db->query("INSERT INTO user_address SET user_id = '$user_id', full_name = '$full_name', mobile_number = '$mobile_number', alt_mobile_number = '$alt_mobile_number', house_no = '$house_no', building_name = '$building_name', road_area_colony = '$road_area_colony', main_area = '$main_area', landmark = '$landmark', city = '$city', state = '$state', created = '$date'");
  				$query = $db->query("INSERT INTO user_address SET user_id = '$user_id', full_name = '$full_name', mobile_number = '$mobile_number', address = '$address', pincode = '$pincode', state = '$state',latitude = '$latitude',longitude='$longitude',  created = '$date'");
  				if($query){
+					$address_id = $db->lastInsertId();
+					$address = $db->query("SELECT *, id as address_id FROM user_address WHERE id = '$address_id'");
+					$feaddress = $address->fetch(PDO::FETCH_ASSOC);
  					$status = 1;
 					$message = "User address add successfully";
-					$data = array();
+					$data = $feaddress;
 	 			} else {
 	 				$status = 0;
 					$message = "User address add not successfully";
@@ -173,9 +176,11 @@
 	 				// $query = $db->query("UPDATE user_address SET full_name = '$full_name', mobile_number = '$mobile_number', alt_mobile_number = '$alt_mobile_number', house_no = '$house_no', building_name = '$building_name', road_area_colony = '$road_area_colony', main_area = '$main_area', landmark = '$landmark', city = '$city', state = '$state' WHERE id = '$address_id'");
 	 				$query = $db->query("UPDATE user_address SET full_name = '$full_name', mobile_number = '$mobile_number', address = '$address', pincode = '$pincode', state = '$state',latitude = '$latitude',longitude='$longitude' WHERE id = '$address_id'");
 	 				if($query){
+						$address = $db->query("SELECT *, id as address_id FROM user_address WHERE id = '$address_id'");
+						$feaddress = $address->fetch(PDO::FETCH_ASSOC);
 	 					$status = 1;
 						$message = "User address update successfully";
-						$data = array();
+						$data = $feaddress;
 		 			} else {
 		 				$status = 0;
 						$message = "User address update not successfully";
