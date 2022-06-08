@@ -97,7 +97,7 @@
             $data = $aa;
  		} else {
             $status = 0;
-            $message = "Please enter valid mobile or password";
+            $message = "This mobile number is not registered. please first complete your registration";
             $data = (object)  array();
         }
 	} else {
