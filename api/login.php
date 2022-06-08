@@ -46,7 +46,7 @@
  		if($checkmobile->rowCount() > 0){
             if($user_type == 'user'){
                 $status = 1;
-                $message = "Registration successfully";
+                $message = "Login successfully";
             } else {
                 $status = 1;
                 $message = "Login successfully";
