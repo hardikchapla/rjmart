@@ -11,8 +11,10 @@ if($feorder['order_status'] == 0){
     $order_status = 'Pending';
 } elseif ($feorder['order_status'] == 1){
     $order_status = 'Confirmed';
-} elseif ($feorder['order_status'] == 2){
+} elseif ($feorder['order_status'] == 4){
     $order_status = 'Shipped';
+} elseif ($feorder['order_status'] == 2){
+    $order_status = 'Completed';
 } else {
     $order_status = 'Cancel';
 }
