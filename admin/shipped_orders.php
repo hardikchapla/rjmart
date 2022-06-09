@@ -51,7 +51,7 @@ $currentPage = 'shipped_orders';
                 <div class="row layout-top-spacing">
                     <div class="col-xl-12 col-lg-12 col-sm-12 layout-spacing">
                         <div class="widget-content widget-content-area br-6">
-                            <h4>Shipped Orders</h4>
+                            <h4>Completed Orders</h4>
                             <hr>
                             <div style="width: 100%;overflow-x: scroll;overflow-y: hidden">
                                 <table id="display_order_request" class="table" style="width:100%">
