@@ -67,7 +67,7 @@ $currentPage = 'Delivery Boy';
                                             <th>Full Name</th>
                                             <th>Email</th>
                                             <th>Mobile</th>
-                                            <th>Review</th>
+                                            <!-- <th>Review</th> -->
                                             <th>View</th>
                                             <th>Delete</th>
                                         </tr>

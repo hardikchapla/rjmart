@@ -67,7 +67,7 @@ foreach($result as $row)
     $sub_array[] = $row["fullname"];
     $sub_array[] = $row["email"];
     $sub_array[] = $row['mobile'];
-    $sub_array[] = $kk;
+    // $sub_array[] = $kk;
     $sub_array[] = '<a href="delivery_boy_details.php?id='.$row["id"].'"><button class="btn btn-outline-info userProfileDetails" type="button" >View</button></a>';
     $sub_array[] = '<button class="btn btn-danger fa fa-trash deleteUser" type="button" id="'.$row["id"].'" >Delete</button>';
     $data[] = $sub_array;

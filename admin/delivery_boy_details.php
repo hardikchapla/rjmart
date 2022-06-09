@@ -194,7 +194,7 @@ $feuser = $user->fetch();
                             </div>
                         </div>
                     </div>
-                    <div class="col-xl-12 col-lg-12 col-sm-12 layout-spacing">
+                    <!-- <div class="col-xl-12 col-lg-12 col-sm-12 layout-spacing">
                         <h4>Request Orders</h4>
                         <div class="widget-content widget-content-area br-6">
                             <div style="width: 100%;overflow-x: scroll;overflow-y: hidden">
@@ -215,7 +215,7 @@ $feuser = $user->fetch();
                                 </table>
                             </div>
                         </div>
-                    </div>
+                    </div> -->
 
                 </div>
 

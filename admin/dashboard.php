@@ -88,22 +88,23 @@
 ?>
 
 <script>
-   var saturdayCount = "<?php echo $saturdayCount; ?>";
-   var sundayCount = "<?php echo $sundayCount; ?>";
-   var mondayCount = "<?php echo $mondayCount; ?>";
-   var tuesdayCount = "<?php echo $tuesdayCount; ?>";
-   var wednesdayCount = "<?php echo $wednesdayCount; ?>";
-   var thursdayCount = "<?php echo $thursdayCount; ?>";
-   var fridayCount = "<?php echo $fridayCount; ?>";
+var saturdayCount = "<?php echo $saturdayCount; ?>";
+var sundayCount = "<?php echo $sundayCount; ?>";
+var mondayCount = "<?php echo $mondayCount; ?>";
+var tuesdayCount = "<?php echo $tuesdayCount; ?>";
+var wednesdayCount = "<?php echo $wednesdayCount; ?>";
+var thursdayCount = "<?php echo $thursdayCount; ?>";
+var fridayCount = "<?php echo $fridayCount; ?>";
 </script>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no">
     <title><?= APP_NAME ?></title>
-    <link rel="icon" type="image/x-icon" href="<?= FAVICON ?>"/>
+    <link rel="icon" type="image/x-icon" href="<?= FAVICON ?>" />
     <!-- BEGIN GLOBAL MANDATORY STYLES -->
     <link href="https://fonts.googleapis.com/css?family=Nunito:400,600,700" rel="stylesheet">
     <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
@@ -118,11 +119,12 @@
     <link rel="stylesheet" type="text/css" href="assets/css/style.css">
     <link href="assets/css/dashboard/dash_2.css" rel="stylesheet" type="text/css" />
     <style>
-        .admin-name-header{
-            margin-top: 3px !important;
-        }
+    .admin-name-header {
+        margin-top: 3px !important;
+    }
     </style>
 </head>
+
 <body>
     <!--  BEGIN NAVBAR  -->
     <?php include('header.php'); ?>
@@ -135,7 +137,7 @@
         <!--  BEGIN SIDEBAR  -->
         <?php include('sidebar.php'); ?>
         <!--  END SIDEBAR  -->
-         <!--  BEGIN CONTENT PART  -->
+        <!--  BEGIN CONTENT PART  -->
         <div id="content" class="main-content">
             <div class="layout-px-spacing">
                 <div class="row layout-top-spacing">
@@ -145,53 +147,56 @@
                                 <div class="">
                                     <div class="w-info">
                                         <h6 class="value">Users</h6>
-                                        <p class="text-center mt-3"><?= $total_user ?></p>
+                                        <p class="text-center mt-3"><a href="users.php"><?= $total_user ?></a></p>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    
+
                     <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 col-12 layout-spacing">
                         <div class="widget widget-card-four">
                             <div class="widget-content">
                                 <div class="">
                                     <div class="w-info">
                                         <h6 class="value">Delivery Boy</h6>
-                                        <p class="text-center mt-3"><?= $total_del_boy ?></p>
+                                        <p class="text-center mt-3"><a href="delivery_boy.php"><?= $total_del_boy ?></a>
+                                        </p>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    
+
                     <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 col-12 layout-spacing">
                         <div class="widget widget-card-four">
                             <div class="widget-content">
                                 <div class="">
                                     <div class="w-info">
                                         <h6 class="value">Active Delivery Boys</h6>
-                                        <p class="text-center mt-3"><?= $total_act_del_boy ?></p>
+                                        <p class="text-center mt-3"><a
+                                                href="delivery_boy.php"><?= $total_act_del_boy ?></a></p>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    
+
                     <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 col-12 layout-spacing">
                         <div class="widget widget-card-four">
                             <div class="widget-content">
                                 <div class="">
                                     <div class="w-info">
                                         <h6 class="value">New Delivery Boys</h6>
-                                        <p class="text-center mt-3"><?= $total_deact_del_boy ?></p>
+                                        <p class="text-center mt-3"><a
+                                                href="delivery_boy.php"><?= $total_deact_del_boy ?></a></p>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                
+
                 <div class="row layout-top-spacing mt-0">
                     <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 col-12 layout-spacing">
                         <div class="widget widget-card-four">
@@ -199,53 +204,54 @@
                                 <div class="">
                                     <div class="w-info">
                                         <h6 class="value">Categories</h6>
-                                        <p class="text-center mt-3"><?= $category ?></p>
+                                        <p class="text-center mt-3"><a href="category.php"><?= $category ?></a></p>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    
+
                     <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 col-12 layout-spacing">
                         <div class="widget widget-card-four">
                             <div class="widget-content">
                                 <div class="">
                                     <div class="w-info">
                                         <h6 class="value">Products</h6>
-                                        <p class="text-center mt-3"><?= $product ?></p>
+                                        <p class="text-center mt-3"><a href="products.php"><?= $product ?></a></p>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    
+
                     <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 col-12 layout-spacing">
                         <div class="widget widget-card-four">
                             <div class="widget-content">
                                 <div class="">
                                     <div class="w-info">
                                         <h6 class="value">Slider</h6>
-                                        <p class="text-center mt-3"><?= $feslider ?></p>
+                                        <p class="text-center mt-3"><a href="slider.php"><?= $feslider ?></a></p>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    
+
                     <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 col-12 layout-spacing">
                         <div class="widget widget-card-four">
                             <div class="widget-content">
                                 <div class="">
                                     <div class="w-info">
                                         <h6 class="value">Confirmed Orders</h6>
-                                        <p class="text-center mt-3"><?= $total_completed_order ?></p>
+                                        <p class="text-center mt-3"><a
+                                                href="confirm_order.php"><?= $total_completed_order ?></a></p>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                
+
                 <div class="row layout-top-spacing mt-0">
                     <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 col-12 layout-spacing">
                         <div class="widget widget-card-four">
@@ -253,52 +259,55 @@
                                 <div class="">
                                     <div class="w-info">
                                         <h6 class="value">Orders</h6>
-                                        <p class="text-center mt-3"><?= $total_order ?></p>
+                                        <p class="text-center mt-3"><a href="report.php"><?= $total_order ?></a></p>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    
+
                     <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 col-12 layout-spacing">
                         <div class="widget widget-card-four">
                             <div class="widget-content">
                                 <div class="">
                                     <div class="w-info">
                                         <h6 class="value">Completed Orders</h6>
-                                        <p class="text-center mt-3"><?= $total_completed_order ?></p>
+                                        <p class="text-center mt-3"><a
+                                                href="report.php"><?= $total_completed_order ?></a></p>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    
+
                     <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 col-12 layout-spacing">
                         <div class="widget widget-card-four">
                             <div class="widget-content">
                                 <div class="">
                                     <div class="w-info">
                                         <h6 class="value">Pending Orders</h6>
-                                        <p class="text-center mt-3"><?= $total_pending_order ?></p>
+                                        <p class="text-center mt-3"><a href="orders.php"><?= $total_pending_order ?></a>
+                                        </p>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    
+
                     <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 col-12 layout-spacing">
                         <div class="widget widget-card-four">
                             <div class="widget-content">
                                 <div class="">
                                     <div class="w-info">
                                         <h6 class="value">Canceled Orders</h6>
-                                        <p class="text-center mt-3"><?= $total_canceled_order ?></p>
+                                        <p class="text-center mt-3"><a
+                                                href="cancel_orders.php"><?= $total_canceled_order ?></a></p>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    
+
                     <div class="col-xl-4 col-lg-6 col-md-6 col-sm-6 col-12 layout-spacing">
                         <div class="widget-two height_260">
                             <div class="widget-content">
@@ -326,10 +335,17 @@
 
                                     <div class="summary-list">
                                         <div class="w-icon">
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-shopping-bag"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path><line x1="3" y1="6" x2="21" y2="6"></line><path d="M16 10a4 4 0 0 1-8 0"></path></svg>
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                                stroke-linecap="round" stroke-linejoin="round"
+                                                class="feather feather-shopping-bag">
+                                                <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+                                                <line x1="3" y1="6" x2="21" y2="6"></line>
+                                                <path d="M16 10a4 4 0 0 1-8 0"></path>
+                                            </svg>
                                         </div>
                                         <div class="w-summary-details">
-                                            
+
                                             <div class="w-summary-info">
                                                 <h6>Cash Income</h6>
                                                 <p class="summary-count">₹<?= $cash_amount ?></p>
@@ -337,7 +353,9 @@
 
                                             <div class="w-summary-stats">
                                                 <div class="progress">
-                                                    <div class="progress-bar bg-gradient-secondary" role="progressbar" style="width: 90%" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"></div>
+                                                    <div class="progress-bar bg-gradient-secondary" role="progressbar"
+                                                        style="width: 90%" aria-valuenow="90" aria-valuemin="0"
+                                                        aria-valuemax="100"></div>
                                                 </div>
                                             </div>
 
@@ -347,10 +365,18 @@
 
                                     <div class="summary-list">
                                         <div class="w-icon">
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-tag"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7" y2="7"></line></svg>
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                                stroke-linecap="round" stroke-linejoin="round"
+                                                class="feather feather-tag">
+                                                <path
+                                                    d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z">
+                                                </path>
+                                                <line x1="7" y1="7" x2="7" y2="7"></line>
+                                            </svg>
                                         </div>
                                         <div class="w-summary-details">
-                                            
+
                                             <div class="w-summary-info">
                                                 <h6>Paytm Income</h6>
                                                 <p class="summary-count">₹<?= $paytm_amount ?></p>
@@ -358,7 +384,9 @@
 
                                             <div class="w-summary-stats">
                                                 <div class="progress">
-                                                    <div class="progress-bar bg-gradient-success" role="progressbar" style="width: 65%" aria-valuenow="65" aria-valuemin="0" aria-valuemax="100"></div>
+                                                    <div class="progress-bar bg-gradient-success" role="progressbar"
+                                                        style="width: 65%" aria-valuenow="65" aria-valuemin="0"
+                                                        aria-valuemax="100"></div>
                                                 </div>
                                             </div>
 
@@ -368,10 +396,16 @@
 
                                     <div class="summary-list">
                                         <div class="w-icon">
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-credit-card"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"></rect><line x1="1" y1="10" x2="23" y2="10"></line></svg>
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                                stroke-linecap="round" stroke-linejoin="round"
+                                                class="feather feather-credit-card">
+                                                <rect x="1" y="4" width="22" height="16" rx="2" ry="2"></rect>
+                                                <line x1="1" y1="10" x2="23" y2="10"></line>
+                                            </svg>
                                         </div>
                                         <div class="w-summary-details">
-                                            
+
                                             <div class="w-summary-info">
                                                 <h6>Total Income</h6>
                                                 <p class="summary-count">₹<?= $all_total ?></p>
@@ -379,14 +413,16 @@
 
                                             <div class="w-summary-stats">
                                                 <div class="progress">
-                                                    <div class="progress-bar bg-gradient-warning" role="progressbar" style="width: 80%" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
+                                                    <div class="progress-bar bg-gradient-warning" role="progressbar"
+                                                        style="width: 80%" aria-valuenow="80" aria-valuemin="0"
+                                                        aria-valuemax="100"></div>
                                                 </div>
                                             </div>
 
                                         </div>
 
                                     </div>
-                                    
+
                                 </div>
 
                             </div>
@@ -398,7 +434,15 @@
                             <div class="widget-content">
                                 <div class="w-numeric-value">
                                     <div class="w-icon">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-shopping-cart"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                            stroke-linecap="round" stroke-linejoin="round"
+                                            class="feather feather-shopping-cart">
+                                            <circle cx="9" cy="21" r="1"></circle>
+                                            <circle cx="20" cy="21" r="1"></circle>
+                                            <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6">
+                                            </path>
+                                        </svg>
                                     </div>
                                     <div class="w-content">
                                         <span class="w-value">₹<?= $fecurrunt['total'] ?></span>
@@ -412,7 +456,7 @@
                         </div>
                     </div>
                 </div>
-                
+
                 <div class="row layout-top-spacing mt-0">
                     <div class="col-xl-6 col-lg-12 col-md-12 col-sm-12 col-12 layout-spacing mt-0">
                         <div class="widget widget-table-two widget-20">
@@ -426,14 +470,22 @@
                                     <table class="table">
                                         <thead>
                                             <tr>
-                                                <th><div class="th-content">Customer</div></th>
-                                                <th><div class="th-content">Invoice</div></th>
-                                                <th><div class="th-content th-heading">Price</div></th>
-                                                <th><div class="th-content">Status</div></th>
+                                                <th>
+                                                    <div class="th-content">Customer</div>
+                                                </th>
+                                                <th>
+                                                    <div class="th-content">Invoice</div>
+                                                </th>
+                                                <th>
+                                                    <div class="th-content th-heading">Price</div>
+                                                </th>
+                                                <th>
+                                                    <div class="th-content">Status</div>
+                                                </th>
                                             </tr>
                                         </thead>
                                         <tbody>
-                                        <?php
+                                            <?php
                                         while($ferecent = $recent_order->fetch()){
                                             $image = '';
                                             if($ferecent['avatar'] != ''){
@@ -453,10 +505,20 @@
                                             }
                                             ?>
                                             <tr>
-                                                <td><div class="td-content customer-name"><img src="../assets/img/user/<?= $image ?>" alt="avatar"><?= $ferecent['fullname'] ?></div></td>
-                                                <td><div class="td-content"><a href="user-orders.php?id=<?= $ferecent["order_id"] ?>""><?= $ferecent['order_number'] ?></a></div></td>
-                                                <td><div class="td-content pricing"><span class=""><?= $ferecent['total_amount'] ?></span></div></td>
-                                                <td><div class="td-content"><?= $order_status ?></div></td>
+                                                <td>
+                                                    <div class="td-content customer-name"><img
+                                                            src="../assets/img/user/<?= $image ?>"
+                                                            alt="avatar"><?= $ferecent['fullname'] ?></div>
+                                                </td>
+                                                <td>
+                                                    <div class="td-content"><a
+                                                            href="user-orders.php?id=<?= $ferecent["order_id"] ?>""><?= $ferecent['order_number'] ?></a></div></td>
+                                                <td><div class=" td-content pricing"><span
+                                                                class=""><?= $ferecent['total_amount'] ?></span></div>
+                                                </td>
+                                                <td>
+                                                    <div class="td-content"><?= $order_status ?></div>
+                                                </td>
                                             </tr>
                                             <?php
                                         }
@@ -480,14 +542,22 @@
                                     <table class="table">
                                         <thead>
                                             <tr>
-                                                <th><div class="th-content">Image</div></th>
-                                                <th><div class="th-content th-heading">Name</div></th>
-                                                <th><div class="th-content th-heading">Price</div></th>
-                                                <th><div class="th-content">Sold</div></th>
+                                                <th>
+                                                    <div class="th-content">Image</div>
+                                                </th>
+                                                <th>
+                                                    <div class="th-content th-heading">Name</div>
+                                                </th>
+                                                <th>
+                                                    <div class="th-content th-heading">Price</div>
+                                                </th>
+                                                <th>
+                                                    <div class="th-content">Sold</div>
+                                                </th>
                                             </tr>
                                         </thead>
                                         <tbody>
-                                        <?php
+                                            <?php
                                         while ($fetop = $top_sales->fetch()){
                                             $product_id = $fetop['product_id'];
                                             $selectImages = $db->query("SELECT * FROM product_image WHERE p_id = '$product_id'");
@@ -500,10 +570,23 @@
                                             }
                                             ?>
                                             <tr>
-                                                <td><div class="td-content"><img src="../assets/img/product/<?= $image ?>" alt="product"></div></td>
-                                                <td><div class="td-content"><span class="product-name"><?= $fetop['name'] ?></span></div></td>
-                                                <td><div class="td-content"><span class="pricing"><?= $fetop['product_type_price'] ?></span></div></td>
-                                                <td><div class="td-content"><?= $fetop['total'] ?></div></td>
+                                                <td>
+                                                    <div class="td-content"><img
+                                                            src="../assets/img/product/<?= $image ?>" alt="product">
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="td-content"><span
+                                                            class="product-name"><?= $fetop['name'] ?></span></div>
+                                                </td>
+                                                <td>
+                                                    <div class="td-content"><span
+                                                            class="pricing"><?= $fetop['product_type_price'] ?></span>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="td-content"><?= $fetop['total'] ?></div>
+                                                </td>
                                             </tr>
                                             <?php
                                         }
@@ -516,7 +599,7 @@
                     </div>
 
                 </div>
-                
+
             </div>
             <?php include('footer.php'); ?>
         </div>
@@ -531,9 +614,9 @@
     <script src="plugins/apex/apexcharts.min.js"></script>
     <script src="assets/js/dashboard/dash_2.js"></script>
     <script>
-        $(document).ready(function() {
-            App.init();
-        });
+    $(document).ready(function() {
+        App.init();
+    });
     </script>
     <script src="assets/js/custom.js"></script>
     <!-- END GLOBAL MANDATORY SCRIPTS -->
@@ -542,4 +625,5 @@
     <script src="assets/js/dashboard/dash_1.js"></script>
     <!-- BEGIN PAGE LEVEL PLUGINS/CUSTOM SCRIPTS -->
 </body>
+
 </html>
