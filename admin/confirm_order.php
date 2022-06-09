@@ -137,6 +137,11 @@ $currentPage = 'Confirm_Orders';
             SwalStatusChange(order_id);
             e.preventDefault();
         });
+        $(document).on('click', '.completeorder', function(e) {
+            var order_id = $(this).attr("id");
+            SwalStatusChangeCompleted(order_id);
+            e.preventDefault();
+        });
 
     });
 
@@ -164,6 +169,54 @@ $currentPage = 'Confirm_Orders';
                         .done(function(response) {
                             swal({
                                 title: 'Order shipped successfully',
+                                text: "",
+                                type: 'success',
+                                timer: 3000,
+                                padding: '2em',
+                                onOpen: function() {
+                                    swal.showLoading()
+                                }
+                            }).then(function(result) {
+                                if (
+
+                                    result.dismiss === swal.DismissReason.timer
+                                ) {
+                                    location.reload();
+                                }
+                            })
+                        })
+                        .fail(function() {
+                            swal('Oops...', 'Something went wrong with ajax !', 'error');
+                        });
+                });
+            },
+        });
+    }
+
+    function SwalStatusChangeCompleted(order_id) {
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You want to completed this order?",
+            type: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: 'rgb(221, 51, 51)',
+            cancelButtonColor: '#4ac17d',
+            cancelButtonText: "No, cancel please!",
+            confirmButtonText: 'Yes!',
+            showLoaderOnConfirm: true,
+            preConfirm: function() {
+                return new Promise(function(resolve) {
+                    $.ajax({
+                            url: 'code/order_completed',
+                            type: 'POST',
+                            data: {
+                                order_id: order_id
+                            },
+                            dataType: 'json'
+                        })
+                        .done(function(response) {
+                            swal({
+                                title: 'Order completed successfully',
                                 text: "",
                                 type: 'success',
                                 timer: 3000,

@@ -63,6 +63,7 @@ $currentPage = 'shipped_orders';
                                             <th>Order Items</th>
                                             <th>Total Amount</th>
                                             <th>Payment Type</th>
+                                            <th>View</th>
                                         </tr>
                                     </thead>
                                     <tbody>
