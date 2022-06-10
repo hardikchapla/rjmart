@@ -35,6 +35,7 @@
         if($minutes <= $cancelMinutes ){
             $status = 1;
             $message = "You can cancel your order";
+            $updateStatus = $db->query("UPDATE product_order SET order_status = '3' WHERE id = '$order_id'");
         }else{
             $status = 0;
             $message = "You cannot cancel an order. You can cancel the order within ".$cancelMinutes." minutes after placing your order";
