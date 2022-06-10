@@ -237,58 +237,61 @@
         end_date = document.getElementById("endDate").value;
         if (start_date == '') {
             swal('Warning', 'Select start date', 'warning');
-            if (end_date == '') {
-                swal('Warning', 'Select end date', 'warning');
-            }
-            var dataTable1 = $('#display_order_request').DataTable({
-                "destroy": true,
-                "ajax": {
-                    url: "code/display_orders_report",
-                    type: "POST",
-                    data: {
-                        start_date: start_date,
-                        end_date: end_date
-                    },
-                }
-            });
-            $.ajax({
-                url: "code/view_order_total",
-                method: "POST",
+        }
+        if (end_date == '') {
+            swal('Warning', 'Select end date', 'warning');
+        }
+        var dataTable1 = $('#display_order_request').DataTable({
+            "destroy": true,
+            "ajax": {
+                url: "code/display_orders_report",
+                type: "POST",
                 data: {
                     start_date: start_date,
                     end_date: end_date
                 },
-                dataType: "json",
-                success: function(data) {
-                    $('#total_amount').html('₹' + data.total_amount);
-                }
-            })
-        }
+            }
+        });
+        $.ajax({
+            url: "code/view_order_total",
+            method: "POST",
+            data: {
+                start_date: start_date,
+                end_date: end_date
+            },
+            dataType: "json",
+            success: function(data) {
+                $('#total_amount').html('₹' + data.total_amount);
+            }
+        })
     });
     $("#resetdefault").click(function() {
         location.reload();
-        // start_date = '';
-        // end_date = '';
-        // var dataTable1 = $('#display_order_request').DataTable({
-        //     "destroy": true,
-        //     "ajax": {
-        //         url: "code/display_orders_report.php",
-        //         type: "POST",
-        //         data: {start_date:start_date,end_date:end_date},
-        //     }
-        // });
-        // $.ajax({
-        //     url: "code/view_order_total.php",
-        //     method: "POST",
-        //     data: {
-        //         start_date:start_date,
-        //         end_date:end_date
-        //     },
-        //     dataType: "json",
-        //     success: function(data) {
-        //         $('#total_amount').html(data.total_amount);
-        //     }
-        // })
+        start_date = '';
+        end_date = '';
+        var dataTable1 = $('#display_order_request').DataTable({
+            "destroy": true,
+            "ajax": {
+                url: "code/display_orders_report.php",
+                type: "POST",
+                data: {
+                    start_date: start_date,
+                    end_date: end_date
+                },
+            }
+        });
+        $.ajax({
+            url: "code/view_order_total.php",
+            method: "POST",
+            data: {
+                start_date: start_date,
+                end_date: end_date
+            },
+            dataType: "json",
+            success: function(data) {
+                $('#total_amount').html(data.total_amount);
+            }
+        })
     });
     </script>
 
@@ -321,11 +324,11 @@
         printWindow.print();
     });
     </script>
-    <script type="text/javascript">
+    <!-- <script type="text/javascript">
     if ($('[type="date"]').prop('type') != 'date') {
         $('[type="date"]').datepicker();
     }
-    </script>
+    </script> -->
     <script type="text/javascript">
     var bindDateRangeValidation = function(f, s, e) {
         if (!(f instanceof jQuery)) {
