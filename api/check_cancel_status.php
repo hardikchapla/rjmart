@@ -34,7 +34,7 @@
 
         if($minutes <= $cancelMinutes ){
             $status = 1;
-            $message = "You can cancel your order";
+            $message = "Your order has been cancelled, you will get your refund within 48 hours";
             $updateStatus = $db->query("UPDATE product_order SET order_status = '3' WHERE id = '$order_id'");
         }else{
             $status = 0;
