@@ -20,6 +20,7 @@
  		$getOrderId = $db->query("SELECT * FROM product_order WHERE id = '$order_id'");
         $feOrder = $getOrderId->fetch();
         $orderTime =  $feOrder['order_date'];
+        $user_id =  $feOrder['user_id'];
         date_default_timezone_set('Asia/Kolkata');
         $currentDateTime = date("Y-m-d H:i:s");
 
@@ -36,6 +37,7 @@
             $status = 1;
             $message = "Your order has been cancelled, you will get your refund within 48 hours";
             $updateStatus = $db->query("UPDATE product_order SET order_status = '3' WHERE id = '$order_id'");
+			$notification = $db->query("INSERT INTO notification SET sender_id = '$user_id',order_id = '$order_id', title = 'Cancel Order', message = 'Your order has been cancelled, you will get your refund within 48 hours', `type` = 'order_cancelled', receiver_type = '1', created = '$created'");
         }else{
             $status = 0;
             $message = "You cannot cancel an order. You can cancel the order within ".$cancelMinutes." minutes after placing your order";

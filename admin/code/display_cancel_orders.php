@@ -22,6 +22,11 @@ foreach($result as $row)
         $sub_array[] = "User";
     }
     $sub_array[] = '<a href="user-orders.php?id='.$row["id"].'"><button class="btn btn-outline-info userProfileDetails" type="button" >View</button></a>';
+    if($row["is_refund"] == '1'){
+        $sub_array[] = 'Refunded';
+    } else {
+        $sub_array[] = '<button class="btn btn-info sendRefund" type="button" id="'.$row["id"].'">Refund</button>';
+    }
     $data[] = $sub_array;
     $i++;
 }

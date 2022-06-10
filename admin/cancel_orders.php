@@ -65,6 +65,7 @@ $currentPage = 'Cancel Orders';
                                             <th>Payment Type</th>
                                             <th>Cancelled By</th>
                                             <th>View</th>
+                                            <th>Refund</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -129,6 +130,63 @@ $currentPage = 'Cancel Orders';
             }
         });
     });
+    </script>
+    <script type="text/javascript">
+    $(document).ready(function() {
+        $(document).on('click', '.sendRefund', function(e) {
+            var id = $(this).attr("id");
+            SwalStatusChange(id);
+            e.preventDefault();
+        });
+    });
+
+    function SwalStatusChange(order_id) {
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You want to send refund for this order?",
+            type: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: 'rgb(221, 51, 51)',
+            cancelButtonColor: '#4ac17d',
+            cancelButtonText: "No, cancel please!",
+            confirmButtonText: 'Yes, Send it!',
+            showLoaderOnConfirm: true,
+            preConfirm: function() {
+                return new Promise(function(resolve) {
+                    $.ajax({
+                            url: 'code/order_refund',
+                            type: 'POST',
+                            data: {
+                                order_id: order_id
+                            },
+                            dataType: 'json'
+                        })
+                        .done(function(response) {
+                            swal({
+                                title: 'Refund send successfully',
+                                text: "",
+                                type: 'success',
+                                timer: 3000,
+                                padding: '2em',
+                                onOpen: function() {
+                                    swal.showLoading()
+                                }
+                            }).then(function(result) {
+                                if (
+
+                                    result.dismiss === swal.DismissReason.timer
+                                ) {
+                                    location.reload();
+                                }
+                            })
+                        })
+                        .fail(function() {
+                            swal('Oops...', 'Something went wrong with ajax !', 'error');
+                        });
+                });
+            },
+        });
+    }
     </script>
     <!-- END PAGE LEVEL SCRIPTS -->
 
