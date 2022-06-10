@@ -37,7 +37,7 @@
             $message = "You can cancel your order";
         }else{
             $status = 0;
-            $message = "You can't cancel your order because cancellation time limit was " .$cancelMinutes. " minutes";
+            $message = "You cannot cancel an order. You can cancel the order within ".$cancelMinutes." minutes after placing your order";
         }
         
 	}
