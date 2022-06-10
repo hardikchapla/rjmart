@@ -2,10 +2,10 @@
 -- version 5.1.1
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: May 26, 2022 at 05:42 PM
--- Server version: 10.4.21-MariaDB
--- PHP Version: 7.4.23
+-- Host: 127.0.0.1:3306
+-- Generation Time: Jun 10, 2022 at 09:17 AM
+-- Server version: 10.5.12-MariaDB-cll-lve
+-- PHP Version: 7.2.34
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `rjmart`
+-- Database: `u269128924_rjmart`
 --
 
 -- --------------------------------------------------------
@@ -45,7 +45,7 @@ CREATE TABLE `admin` (
 --
 
 INSERT INTO `admin` (`id`, `name`, `username`, `email`, `avatar`, `number`, `password`, `cancel_time`, `created`, `updated`) VALUES
-(1, 'RJ Mart', 'rjmart', 'admin@gmail.com', '177656753723avatar2.png', '9876543210', 'e10adc3949ba59abbe56e057f20f883e', 30, '2020-06-11 07:00:00', '2022-05-26 10:06:36');
+(1, 'RJ Mart', 'rjmart', 'admin@gmail.com', '4818753723avatar2.png', '9876543210', 'e10adc3949ba59abbe56e057f20f883e', 35, '2020-06-11 07:00:00', '2022-05-26 15:35:17');
 
 -- --------------------------------------------------------
 
@@ -68,8 +68,11 @@ CREATE TABLE `cart` (
 --
 
 INSERT INTO `cart` (`id`, `user_id`, `p_id`, `qty`, `product_type_id`, `created`, `updated`) VALUES
-(1, 1, 2, 2, 109, '2022-05-25 08:01:00', '2022-05-25 08:01:52'),
-(4, 2, 2, 2, 109, '2022-05-26 09:46:49', NULL);
+(25, 4, 32, 2, 60, '2022-06-04 05:25:53', '2022-06-04 05:28:24'),
+(26, 4, 15, 1, 112, '2022-06-04 05:34:35', NULL),
+(27, 4, 46, 3, 119, '2022-06-04 05:34:57', NULL),
+(36, 9, 2, 2, 109, '2022-06-09 05:15:23', NULL),
+(37, 9, 24, 7, 34, '2022-06-09 05:15:49', NULL);
 
 -- --------------------------------------------------------
 
@@ -91,10 +94,10 @@ CREATE TABLE `category` (
 --
 
 INSERT INTO `category` (`id`, `image`, `name`, `is_active`, `created`, `updated`) VALUES
-(1, 'vegetables.jpg', 'Vegetables (શાકભાજી)', 1, '2020-06-05 13:16:16', '2022-05-25 07:54:06'),
-(2, 'fruits.jpg', 'Fruits', 1, '2020-06-05 12:15:15', NULL),
-(3, '976030Ayurvedic-herb-herb-turmeric-indian-spices-1296x728-header-1296x728.jpg', 'Herbs and Seasonings(ઔષધો અને સીઝનિંગ્સ)', 0, '2020-08-02 19:51:48', '2022-05-25 07:55:24'),
-(4, '2505600-38.png', 'Exotic Fruits & Vegetables', 0, '2020-08-02 19:54:12', '2022-05-25 07:55:17');
+(1, 'vegetables.jpg', 'Vegetables (શાકભાજી)', 1, '2020-06-05 13:16:16', '2020-06-16 22:23:09'),
+(2, 'fruits.jpg', 'Fruits', 1, '2020-06-05 12:15:15', '2022-05-25 14:02:29'),
+(3, '976030Ayurvedic-herb-herb-turmeric-indian-spices-1296x728-header-1296x728.jpg', 'Herbs and Seasonings(ઔષધો અને સીઝનિંગ્સ)', 1, '2020-08-02 19:51:48', NULL),
+(4, '2505600-38.png', 'Exotic Fruits & Vegetables', 0, '2020-08-02 19:54:12', NULL);
 
 -- --------------------------------------------------------
 
@@ -111,6 +114,13 @@ CREATE TABLE `near_by_request` (
   `created` timestamp NULL DEFAULT NULL,
   `updated` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `near_by_request`
+--
+
+INSERT INTO `near_by_request` (`id`, `from_id`, `to_id`, `status`, `order_id`, `created`, `updated`) VALUES
+(5, 9, 2, 1, 13, '2022-06-09 05:29:43', '2022-06-09 05:29:43');
 
 -- --------------------------------------------------------
 
@@ -136,12 +146,59 @@ CREATE TABLE `notification` (
 --
 
 INSERT INTO `notification` (`id`, `sender_id`, `receiver_id`, `order_id`, `title`, `message`, `type`, `receiver_type`, `is_read`, `created`) VALUES
-(1, 1, NULL, NULL, 'Delivery boy register', 'New delivery boy register successfully', 'new_register', 1, 0, '2022-05-23 10:12:45'),
-(2, 2, NULL, NULL, 'User register', 'New user register successfully', 'new_regiter', 1, 0, '2022-05-23 10:37:58'),
-(3, 2, NULL, 1, 'New Order', 'New order created successfully', 'new_order', 1, 0, '2022-05-25 08:02:00'),
-(10, 1, NULL, 1, 'Cancel Order', 'Order cancelled successfully', 'order_cancelled', 1, 0, '2022-05-25 10:47:42'),
-(11, 2, NULL, 2, 'New Order', 'New order created successfully', 'new_order', 1, 0, '2022-05-25 11:03:17'),
-(12, NULL, 2, 2, 'Order Cancelled', 'Order cancelled successfully', 'cancel_order', 0, 0, '2022-05-25 16:34:38');
+(1, 1, NULL, NULL, 'User register', 'New user register successfully', 'new_regiter', 1, 0, '2022-05-10 16:23:09'),
+(2, 1, NULL, 1, 'New Order', 'New order created successfully', 'new_order', 1, 0, '2022-05-10 16:43:25'),
+(3, 1, NULL, 1, 'Cancel Order', 'Order cancelled successfully', 'order_cancelled', 1, 0, '2022-05-10 16:44:32'),
+(4, 1, NULL, 2, 'New Order', 'New order created successfully', 'new_order', 1, 0, '2022-05-10 16:46:25'),
+(5, 2, NULL, NULL, 'Delivery boy register', 'New delivery boy register successfully', 'new_register', 1, 0, '2022-05-10 16:48:56'),
+(6, 1, NULL, 3, 'New Order', 'New order created successfully', 'new_order', 1, 0, '2022-05-10 16:54:38'),
+(7, 1, NULL, 2, 'Cancel Order', 'Order cancelled successfully', 'order_cancelled', 1, 0, '2022-05-10 16:57:23'),
+(8, 1, NULL, 3, 'Cancel Order', 'Order cancelled successfully', 'order_cancelled', 1, 0, '2022-05-10 16:57:27'),
+(9, 1, NULL, 4, 'New Order', 'New order created successfully', 'new_order', 1, 0, '2022-05-10 17:00:36'),
+(10, 1, NULL, 5, 'New Order', 'New order created successfully', 'new_order', 1, 0, '2022-05-10 17:02:52'),
+(11, 1, NULL, 1, 'New Order', 'New order created successfully', 'new_order', 1, 0, '2022-05-10 17:07:32'),
+(12, 2, NULL, 1, 'Order completed', 'Order completed successfully', 'order_shipped', 1, 0, '2022-05-10 17:14:14'),
+(13, 1, NULL, 2, 'New Order', 'New order created successfully', 'new_order', 1, 0, '2022-05-11 15:39:39'),
+(14, 3, NULL, NULL, 'Delivery boy register', 'New delivery boy register successfully', 'new_register', 1, 0, '2022-05-11 15:43:27'),
+(15, 3, NULL, 2, 'Order completed', 'Order completed successfully', 'order_shipped', 1, 0, '2022-05-11 15:49:56'),
+(16, 3, NULL, 2, 'Order completed', 'Order completed successfully', 'order_shipped', 1, 0, '2022-05-11 15:53:02'),
+(17, 1, NULL, 3, 'New Order', 'New order created successfully', 'new_order', 1, 0, '2022-05-11 15:55:47'),
+(18, 4, NULL, NULL, 'User register', 'New user register successfully', 'new_regiter', 1, 0, '2022-05-23 16:24:41'),
+(19, 5, NULL, NULL, 'User register', 'New user register successfully', 'new_regiter', 1, 0, '2022-05-23 17:14:48'),
+(20, NULL, 1, 3, 'Order Cancelled', 'Order cancelled successfully', 'cancel_order', 0, 0, '2022-05-25 14:03:17'),
+(21, 4, NULL, 5, 'New Order', 'New order created successfully', 'new_order', 1, 0, '2022-05-25 16:43:06'),
+(22, NULL, 4, 5, 'Order Cancelled', 'Order cancelled successfully', 'cancel_order', 0, 0, '2022-05-25 16:43:37'),
+(23, 4, NULL, 6, 'New Order', 'New order created successfully', 'new_order', 1, 0, '2022-05-25 16:44:19'),
+(24, 4, NULL, 6, 'Cancel Order', 'Order cancelled successfully', 'order_cancelled', 1, 0, '2022-05-25 16:44:41'),
+(25, 4, NULL, 7, 'New Order', 'New order created successfully', 'new_order', 1, 0, '2022-05-25 16:45:09'),
+(26, 1, NULL, 8, 'New Order', 'New order created successfully', 'new_order', 1, 0, '2022-05-30 05:47:31'),
+(27, 5, NULL, 9, 'New Order', 'New order created successfully', 'new_order', 1, 0, '2022-05-30 05:48:32'),
+(28, NULL, 5, 9, 'Request Accepted', 'Your order request accepted successfully', 'order_accepted', 0, 0, '2022-06-04 05:48:19'),
+(29, NULL, 3, 9, 'Order assign', 'Order assign by admin', 'order_assigned', 0, 0, '2022-06-04 05:48:19'),
+(30, NULL, 5, 9, 'Order Shipped', 'Order shipped successfully', 'order_shipped', 0, 0, '2022-06-04 05:49:51'),
+(31, 6, NULL, NULL, 'User register', 'New user register successfully', 'new_regiter', 1, 0, '2022-06-05 05:11:03'),
+(32, 7, NULL, NULL, 'User register', 'New user register successfully', 'new_regiter', 1, 0, '2022-06-05 05:11:30'),
+(33, 5, NULL, 10, 'New Order', 'New order created successfully', 'new_order', 1, 0, '2022-06-06 04:14:11'),
+(34, NULL, 5, 10, 'New Order', 'New order created successfully', 'new_order', 0, 0, '2022-06-06 04:14:11'),
+(35, 5, NULL, 11, 'New Order', 'New order created successfully', 'new_order', 1, 0, '2022-06-06 04:19:04'),
+(36, NULL, 5, 11, 'New Order', 'New order created successfully', 'new_order', 0, 0, '2022-06-06 04:19:04'),
+(37, 5, NULL, 12, 'New Order', 'New order created successfully', 'new_order', 1, 0, '2022-06-07 08:36:35'),
+(38, NULL, 5, 12, 'New Order', 'New order created successfully', 'new_order', 0, 0, '2022-06-07 08:36:35'),
+(39, 8, NULL, NULL, 'User register', 'New user register successfully', 'new_regiter', 1, 0, '2022-06-08 09:27:43'),
+(40, 9, NULL, NULL, 'User register', 'New user register successfully', 'new_regiter', 1, 0, '2022-06-08 09:50:59'),
+(41, 9, NULL, 13, 'New Order', 'New order created successfully', 'new_order', 1, 0, '2022-06-08 10:15:34'),
+(42, NULL, 9, 13, 'New Order', 'New order created successfully', 'new_order', 0, 0, '2022-06-08 10:15:34'),
+(43, 10, NULL, NULL, 'Delivery boy register', 'New delivery boy register successfully', 'new_register', 1, 0, '2022-06-08 13:35:00'),
+(44, 11, NULL, NULL, 'User register', 'New user register successfully', 'new_regiter', 1, 0, '2022-06-08 13:35:18'),
+(45, 12, NULL, NULL, 'User register', 'New user register successfully', 'new_regiter', 1, 0, '2022-06-08 14:01:28'),
+(46, NULL, 9, 13, 'Request Accepted', 'Your order request accepted successfully', 'order_accepted', 0, 0, '2022-06-09 05:29:43'),
+(47, NULL, 2, 13, 'Order assign', 'Order assign by admin', 'order_assigned', 0, 0, '2022-06-09 05:29:43'),
+(48, NULL, 9, 13, 'Order Shipped', 'Order shipped successfully', 'order_shipped', 0, 0, '2022-06-09 05:30:00'),
+(49, NULL, 9, 13, 'Order Shipped', 'Order shipped successfully', 'order_shipped', 0, 0, '2022-06-09 14:50:13'),
+(50, NULL, 2, 13, 'Order Shipped', 'Order shipped successfully', 'order_shipped', 0, 0, '2022-06-09 14:50:13'),
+(51, 2, NULL, 13, 'Order Shipped', 'Order shipped successfully', 'order_shipped', 1, 0, '2022-06-09 14:50:13'),
+(52, 12, NULL, 14, 'New Order', 'New order created successfully', 'new_order', 1, 0, '2022-06-10 08:52:19'),
+(53, NULL, 12, 14, 'New Order', 'New order created successfully', 'new_order', 0, 0, '2022-06-10 08:52:19');
 
 -- --------------------------------------------------------
 
@@ -163,8 +220,20 @@ CREATE TABLE `order_items` (
 --
 
 INSERT INTO `order_items` (`order_items_id`, `order_id`, `product_id`, `product_type_id`, `qty`, `created`) VALUES
-(1, 1, 2, 109, 1, '2022-05-25 13:32:00'),
-(2, 2, 2, 109, 1, '2022-05-25 16:33:17');
+(1, 1, 2, 109, 1, '2022-05-10 17:07:32'),
+(2, 2, 2, 109, 1, '2022-05-11 15:39:39'),
+(3, 3, 2, 109, 1, '2022-05-11 15:55:47'),
+(4, 5, 2, 109, 1, '2022-05-25 16:43:06'),
+(5, 6, 2, 109, 1, '2022-05-25 16:44:19'),
+(6, 7, 2, 109, 1, '2022-05-25 16:45:09'),
+(7, 8, 2, 109, 2, '2022-05-30 05:47:31'),
+(8, 9, 31, 57, 2, '2022-05-30 05:48:32'),
+(9, 10, 1, 1, 3, '2022-06-06 04:14:11'),
+(10, 11, 32, 60, 1, '2022-06-06 04:19:04'),
+(11, 12, 29, 51, 1, '2022-06-07 08:36:35'),
+(12, 13, 1, 1, 4, '2022-06-08 10:15:34'),
+(13, 13, 13, 125, 4, '2022-06-08 10:15:34'),
+(14, 14, 40, 84, 2, '2022-06-10 08:52:19');
 
 -- --------------------------------------------------------
 
@@ -190,8 +259,9 @@ CREATE TABLE `payment` (
 --
 
 INSERT INTO `payment` (`id`, `user_id`, `order_id`, `status`, `payment_identifier`, `TXNDATE`, `refId`, `payment_type`, `created`, `updated`) VALUES
-(1, 2, 1, 1, '', '', NULL, 0, '2022-05-25 08:02:00', NULL),
-(2, 2, 2, 1, '', '', NULL, 0, '2022-05-25 11:03:17', NULL);
+(4, 1, 4, 1, '', '', NULL, 0, '2022-05-10 17:00:36', NULL),
+(17, 9, 13, 1, '', '', NULL, 0, '2022-06-08 10:15:34', NULL),
+(18, 12, 14, 1, '', '', NULL, 1, '2022-06-10 08:52:19', NULL);
 
 -- --------------------------------------------------------
 
@@ -212,8 +282,31 @@ CREATE TABLE `pincode` (
 --
 
 INSERT INTO `pincode` (`id`, `pincode`, `is_active`, `created_at`, `updated_at`) VALUES
-(3, 395006, 1, '2022-05-26 15:31:06', '2022-05-26 15:40:27'),
-(4, 395009, 1, '2022-05-26 15:40:35', NULL);
+(1, 395006, 1, '2022-05-10 16:29:36', '2022-05-26 15:45:30'),
+(2, 395009, 1, '2022-05-26 15:45:39', NULL),
+(3, 360004, 1, '2022-06-04 05:52:42', NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `privacy_policy`
+--
+
+CREATE TABLE `privacy_policy` (
+  `id` int(11) NOT NULL,
+  `slug` varchar(255) DEFAULT NULL,
+  `description` longtext DEFAULT NULL,
+  `created_at` datetime NOT NULL DEFAULT current_timestamp(),
+  `updated_at` datetime DEFAULT NULL ON UPDATE current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `privacy_policy`
+--
+
+INSERT INTO `privacy_policy` (`id`, `slug`, `description`, `created_at`, `updated_at`) VALUES
+(1, 'privacy_policy_header', 'Privacy Policy', '2022-06-02 21:20:39', '2022-06-02 17:49:36'),
+(2, 'privacy_policy_description', '<p>&bull; Deliveries would take place around the same time and date selected by the customersM<br />\n&bull; For same day Deliveries the closing time 1 hour after your place order.<br />\n&bull; The above-mentioned details would have some exceptions.<br />\n&bull; Gujarat Foods will strive hard to deliver the products ordered on time, however we do not guarantee delivery on time.<br />\n&bull; Gujarat Foods is not liable for any incorrect address provided<br />\n&bull; Gujarat Foods does not guarantee to deliver all produce mentioned on the website.<br />\n&bull; Gujarat Foods will not cancel the order placed on the same day of the delivery.<br />\n&bull; Order can be changed or cancelled 30 min before the delivery time.<br />\n&bull; All decision on delivery charge, product availability, order cancellation is reserved with Gujarat Foods.</p>\n\n<p>This privacy policy has been compiled to better serve those who are concerned with how their &#39;Personally identifiable information&#39; (PII) is being used on Gujarat Foods. PII, as used in accordance with the Indian privacy act, is information that can be used on its own or with other information to identify, contact, or locate a single person, or to identify an individual in context.</p>\n\n<p>Please read our privacy policy carefully to get a clear understanding of how we collect, use, protect or otherwise handle your Personally Identifiable Information in accordance with our website.</p>\n\n<p><strong>1. What personal information do we collect from the people that visit our website or app?</strong><br />\nWhen ordering or registering on our site, as appropriate, you may be asked to enter your name, email address, mailing address, phone number or other details to help you with your experience.</p>\n\n<p><strong>2. When do we collect information?</strong><br />\nWe collect information from you when you register on our site, place an order or enter information on our site.</p>\n\n<p><strong>3. How do we use your information?</strong><br />\nWe may use the information we collect from you when you register, make a purchase, sign up for our newsletter, respond to a survey or marketing communication, surf the website, or use certain other site features in the following ways:<br />\n<br />\n&bull; To personalize user&#39;s experience and to allow us to deliver the type of content and product offerings in which you are most interested.<br />\n&bull; To improve our website in order to better serve you.<br />\n&bull; To allow us to better service you in responding to your customer service requests.<br />\n&bull; To administer a contest, promotion, survey or other site feature.<br />\n&bull; To quickly process your transactions.<br />\n&bull; To ask for ratings and reviews of services or products</p>\n\n<p><strong>4. Do we collect and store your credit card information?</strong><br />\nNo. All transactions are processed through a gateway provider and are not stored or processed on our servers.</p>\n\n<p><strong>5. How do we protect visitor information?</strong><br />\nOur website is scanned on a regular basis for security holes and known vulnerabilities in order to make your visit to our site as safe as possible.<br />\n<br />\nWe do not use Malware Scanning.<br />\n<br />\nYour personal information is contained behind secured networks and is only accessible by a limited number of persons who have special access rights to such systems and are required to keep the information confidential. In addition, all sensitive/credit information you supply is encrypted via Secure Socket Layer (SSL) technology.<br />\n<br />\nWe implement a variety of security measures when a user places an order enters, submits, or accesses their information to maintain the safety of your personal information. All transactions are processed through a gateway provider and are not stored or processed on our servers.</p>\n\n<p><strong>a. Do we use &#39;cookies&#39;?</strong><br />\nYes. Cookies are small files that a site or its service provider transfers to your computer&#39;s hard drive through your Web browser (if you allow) that enables the site&#39;s or service provider&#39;s systems to recognize your browser and capture and remember certain information. For instance, we use cookies to help us remember and process the items in your shopping cart. They are also used to help us understand your preferences based on previous or current site activity, which enables us to provide you with improved services. We also use cookies to help us compile aggregate data about site traffic and site interaction so that we can offer better site experiences and tools in the future. We use cookies to:<br />\n<br />\n&bull; Help remember and process the items in the shopping cart.<br />\n&bull; Understand and save user&#39;s preferences for future visits.<br />\n&bull; Compile aggregate data about site traffic and site interactions in order to offer better site experiences and tools in the future. We may also use trusted third-party services that track this information on our behalf.<br />\n<br />\nYou can choose to have your computer warn you each time a cookie is being sent, or you can choose to turn off all cookies. You do this through your browser (like Internet Explorer) settings. Each browser is a little different, so look at your browser&#39;s Help menu to learn the correct way to modify your cookies.<br />\n<br />\nIf you disable cookies, some features will be disabled It won&#39;t affect the user&#39;s experience that make your site experience more efficient and some of our services will not function properly.<br />\n<br />\nHowever, you can still place orders.<br />\n<br />\n<strong>b. Third-party disclosure</strong><br />\nWe do not sell, trade, or otherwise transfer to outside parties your personally identifiable information unless we provide users with advance notice. This does not include website hosting partners and other parties who assist us in operating our website, conducting our business, or serving our users, so long as those parties agree to keep this information confidential. We may also release information when it&#39;s release is appropriate to comply with the law, enforce our site policies, or protect ours or others&#39; rights, property, or safety. However, non-personally identifiable visitor information may be provided to other parties for marketing, advertising, or other uses.<br />\n<br />\nThird-party links Occasionally, at our discretion, we may include or offer third-party products or services on our website. These third-party sites have separate and independent privacy policies. We therefore have no responsibility or liability for the content and activities of these linked sites. Nonetheless, we seek to protect the integrity of our site and welcome any feedback about these sites.</p>\n\n<p>&nbsp;</p>\n\n<p><strong>Corrections</strong><br />\nIf you would like to update or correct information previously provided to us, please send an e-mail with your new information, including your complete name, postal address, and email address to&nbsp;<a href=\"mailto:Care@gujratfoods.in\">Care@gujratfoods.in</a>. and Phone Number to&nbsp;<a href=\"tel:+919876543210\">+919876543210</a>&nbsp;Registered users can modify and update their membership information (including name, mailing address, telephone number and email address) by accessing the password protected &quot;Edit Profile&quot; page.<br />\n<br />\nYour Consent and Changes to this Policy Subject to the above provisions, by using our Web Site, you consent to the terms of this Privacy Policy and the Terms of Use, of which this policy is a part. We may change our Privacy Policy from time to time as new features are added, suggestions from our customers are incorporated or other changes are made. We will post the revised Privacy Policy on our Web Site at least 30 days prior to their effective date - unless we believe changes must take effect sooner to comply with law or to protect the Company or our customers, users, members, recipients, sponsors, providers, licensors, merchants, associates and affiliates, in which case the changes will be effective upon posting or as otherwise specified.</p>\n', '2022-06-02 21:20:39', '2022-06-03 18:46:37');
 
 -- --------------------------------------------------------
 
@@ -431,8 +524,8 @@ CREATE TABLE `product_order` (
 --
 
 INSERT INTO `product_order` (`id`, `order_number`, `user_id`, `user_address_id`, `total_amount`, `payment_type`, `order_status`, `cancel_status`, `order_date`, `is_review`, `referral_amount`, `receive_otp`, `reason`, `is_cancel_by_admin`, `created`, `updated`) VALUES
-(1, 'ORDER2022052501320062', 2, 1, '24', 'cash', 3, 0, '2022-05-26 13:32:00', 0, 0, NULL, 'This is testing', 0, '2022-05-25 10:28:00', NULL),
-(2, 'ORDER2022052504331723', 2, 1, '24', 'cash', 3, 1, '2022-05-26 16:33:17', 0, 0, NULL, 'This is testing', 1, '2022-05-25 11:03:17', NULL);
+(13, 'ORDER2022060810153545', 9, 23, '544', 'cash', 2, 0, '2022-06-09 10:15:34', 0, 0, 523501, NULL, 0, '2022-06-08 10:15:34', NULL),
+(14, 'ORDER2022061008521922', 12, 29, '144', 'online', 0, 0, '2022-06-11 08:52:19', 0, 0, NULL, NULL, 0, '2022-06-10 08:52:19', NULL);
 
 -- --------------------------------------------------------
 
@@ -549,7 +642,11 @@ INSERT INTO `product_type` (`product_type_id`, `product_id`, `product_type`, `Pr
 (118, 46, 'KG', 1, '110', '2020-08-25 06:07:35', '2020-08-30 05:47:09'),
 (119, 46, 'GM', 500, '60', '2020-08-25 06:07:35', '2020-08-30 05:47:09'),
 (121, 47, 'KG', 1, '120', '2020-08-25 06:17:16', '2020-08-30 05:46:48'),
-(122, 47, 'GM', 500, '65', '2020-08-25 06:17:16', '2020-08-30 05:46:48');
+(122, 47, 'GM', 500, '65', '2020-08-25 06:17:16', '2020-08-30 05:46:48'),
+(134, 52, 'KG', 1, '50', '2022-06-04 05:39:47', '2022-06-04 05:41:56'),
+(135, 52, 'GM', 500, '40', '2022-06-04 05:39:47', '2022-06-04 05:41:56'),
+(136, 53, 'KG', 2, '100', '2022-06-04 05:43:27', '2022-06-04 05:43:27'),
+(137, 53, 'GM', 500, '50', '2022-06-04 05:43:27', '2022-06-04 05:43:27');
 
 -- --------------------------------------------------------
 
@@ -566,6 +663,14 @@ CREATE TABLE `review` (
   `description` longtext DEFAULT NULL,
   `created` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `review`
+--
+
+INSERT INTO `review` (`review_id`, `order_id`, `user_id`, `deliver_id`, `review`, `description`, `created`) VALUES
+(1, 1, 1, 2, 5, 'Good work all of you', '2022-05-10 17:15:36'),
+(2, 2, 1, 3, 5, 'Good work all of you', '2022-05-11 15:53:07');
 
 -- --------------------------------------------------------
 
@@ -590,7 +695,30 @@ INSERT INTO `slider` (`slider_id`, `category_id`, `slider_image`, `slider_type`,
 (1, 1, 'AbdullaBinKhater_slider1.jpg', 0, 1, '2020-06-06 08:17:02'),
 (2, 2, '49017world-hands.png', 0, 1, '2020-07-24 19:17:05'),
 (5, 1, '638623SampleVideo_360x240_2mb.mp4', 1, 1, '2022-05-06 16:42:01'),
-(6, 4, '44909293653download.jpg', 0, 0, '2022-05-06 17:25:26');
+(6, 4, '44909293653download.jpg', 0, 0, '2022-05-06 17:25:26'),
+(7, 2, '721263SampleVideo_360x240_2mb.mp4', 1, 0, '2022-05-26 13:28:55');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `terms_and_conditions`
+--
+
+CREATE TABLE `terms_and_conditions` (
+  `id` int(11) NOT NULL,
+  `slug` varchar(255) NOT NULL,
+  `description` longtext NOT NULL,
+  `created_at` datetime NOT NULL DEFAULT current_timestamp(),
+  `updated_at` datetime DEFAULT NULL ON UPDATE current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `terms_and_conditions`
+--
+
+INSERT INTO `terms_and_conditions` (`id`, `slug`, `description`, `created_at`, `updated_at`) VALUES
+(1, 'terms_and_condition_header', '<p>Terms &amp; Condition</p>\r\n', '2022-06-03 18:33:01', '2022-06-03 13:23:48'),
+(2, 'terms_and_condition_description', '<p>&bull; Deliveries would take place around the same time and date selected by the customersM<br />\r\n&bull; For same day Deliveries the closing time 1 hour after your place order.<br />\r\n&bull; The above-mentioned details would have some exceptions.<br />\r\n&bull; Gujarat Foods will strive hard to deliver the products ordered on time, however we do not guarantee delivery on time.<br />\r\n&bull; Gujarat Foods is not liable for any incorrect address provided<br />\r\n&bull; Gujarat Foods does not guarantee to deliver all produce mentioned on the website.<br />\r\n&bull; Gujarat Foods will not cancel the order placed on the same day of the delivery.<br />\r\n&bull; Order can be changed or cancelled 30 min before the delivery time.<br />\r\n&bull; All decision on delivery charge, product availability, order cancellation is reserved with Gujarat Foods.</p>\r\n\r\n<p>This privacy policy has been compiled to better serve those who are concerned with how their &#39;Personally identifiable information&#39; (PII) is being used on Gujarat Foods. PII, as used in accordance with the Indian privacy act, is information that can be used on its own or with other information to identify, contact, or locate a single person, or to identify an individual in context.</p>\r\n\r\n<p>Please read our privacy policy carefully to get a clear understanding of how we collect, use, protect or otherwise handle your Personally Identifiable Information in accordance with our website.</p>\r\n\r\n<p><strong>1. What personal information do we collect from the people that visit our website or app?</strong><br />\r\nWhen ordering or registering on our site, as appropriate, you may be asked to enter your name, email address, mailing address, phone number or other details to help you with your experience.</p>\r\n\r\n<p><strong>2. When do we collect information?</strong><br />\r\nWe collect information from you when you register on our site, place an order or enter information on our site.</p>\r\n\r\n<p><strong>3. How do we use your information?</strong><br />\r\nWe may use the information we collect from you when you register, make a purchase, sign up for our newsletter, respond to a survey or marketing communication, surf the website, or use certain other site features in the following ways:<br />\r\n<br />\r\n&bull; To personalize user&#39;s experience and to allow us to deliver the type of content and product offerings in which you are most interested.<br />\r\n&bull; To improve our website in order to better serve you.<br />\r\n&bull; To allow us to better service you in responding to your customer service requests.<br />\r\n&bull; To administer a contest, promotion, survey or other site feature.<br />\r\n&bull; To quickly process your transactions.<br />\r\n&bull; To ask for ratings and reviews of services or products</p>\r\n\r\n<p><strong>4. Do we collect and store your credit card information?</strong><br />\r\nNo. All transactions are processed through a gateway provider and are not stored or processed on our servers.</p>\r\n\r\n<p><strong>5. How do we protect visitor information?</strong><br />\r\nOur website is scanned on a regular basis for security holes and known vulnerabilities in order to make your visit to our site as safe as possible.<br />\r\n<br />\r\nWe do not use Malware Scanning.<br />\r\n<br />\r\nYour personal information is contained behind secured networks and is only accessible by a limited number of persons who have special access rights to such systems and are required to keep the information confidential. In addition, all sensitive/credit information you supply is encrypted via Secure Socket Layer (SSL) technology.<br />\r\n<br />\r\nWe implement a variety of security measures when a user places an order enters, submits, or accesses their information to maintain the safety of your personal information. All transactions are processed through a gateway provider and are not stored or processed on our servers.</p>\r\n\r\n<p><strong>a. Do we use &#39;cookies&#39;?</strong><br />\r\nYes. Cookies are small files that a site or its service provider transfers to your computer&#39;s hard drive through your Web browser (if you allow) that enables the site&#39;s or service provider&#39;s systems to recognize your browser and capture and remember certain information. For instance, we use cookies to help us remember and process the items in your shopping cart. They are also used to help us understand your preferences based on previous or current site activity, which enables us to provide you with improved services. We also use cookies to help us compile aggregate data about site traffic and site interaction so that we can offer better site experiences and tools in the future. We use cookies to:<br />\r\n<br />\r\n&bull; Help remember and process the items in the shopping cart.<br />\r\n&bull; Understand and save user&#39;s preferences for future visits.<br />\r\n&bull; Compile aggregate data about site traffic and site interactions in order to offer better site experiences and tools in the future. We may also use trusted third-party services that track this information on our behalf.<br />\r\n<br />\r\nYou can choose to have your computer warn you each time a cookie is being sent, or you can choose to turn off all cookies. You do this through your browser (like Internet Explorer) settings. Each browser is a little different, so look at your browser&#39;s Help menu to learn the correct way to modify your cookies.<br />\r\n<br />\r\nIf you disable cookies, some features will be disabled It won&#39;t affect the user&#39;s experience that make your site experience more efficient and some of our services will not function properly.<br />\r\n<br />\r\nHowever, you can still place orders.<br />\r\n<br />\r\n<strong>b. Third-party disclosure</strong><br />\r\nWe do not sell, trade, or otherwise transfer to outside parties your personally identifiable information unless we provide users with advance notice. This does not include website hosting partners and other parties who assist us in operating our website, conducting our business, or serving our users, so long as those parties agree to keep this information confidential. We may also release information when it&#39;s release is appropriate to comply with the law, enforce our site policies, or protect ours or others&#39; rights, property, or safety. However, non-personally identifiable visitor information may be provided to other parties for marketing, advertising, or other uses.<br />\r\n<br />\r\nThird-party links Occasionally, at our discretion, we may include or offer third-party products or services on our website. These third-party sites have separate and independent privacy policies. We therefore have no responsibility or liability for the content and activities of these linked sites. Nonetheless, we seek to protect the integrity of our site and welcome any feedback about these sites.</p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p><strong>Corrections</strong><br />\r\nIf you would like to update or correct information previously provided to us, please send an e-mail with your new information, including your complete name, postal address, and email address to&nbsp;<a href=\"mailto:Care@gujratfoods.in\">Care@gujratfoods.in</a>. and Phone Number to&nbsp;<a href=\"tel:+919876543210\">+919876543210</a>&nbsp;Registered users can modify and update their membership information (including name, mailing address, telephone number and email address) by accessing the password protected &quot;Edit Profile&quot; page.<br />\r\n<br />\r\nYour Consent and Changes to this Policy Subject to the above provisions, by using our Web Site, you consent to the terms of this Privacy Policy and the Terms of Use, of which this policy is a part. We may change our Privacy Policy from time to time as new features are added, suggestions from our customers are incorporated or other changes are made. We will post the revised Privacy Policy on our Web Site at least 30 days prior to their effective date - unless we believe changes must take effect sooner to comply with law or to protect the Company or our customers, users, members, recipients, sponsors, providers, licensors, merchants, associates and affiliates, in which case the changes will be effective upon posting or as otherwise specified.</p>\r\n', '2022-06-03 18:33:01', '2022-06-03 13:11:55');
 
 -- --------------------------------------------------------
 
@@ -632,8 +760,16 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`id`, `fullname`, `email`, `mobile`, `password`, `otp`, `dob`, `document`, `avatar`, `user_type`, `login_type`, `login_identifier`, `device_type`, `device_token`, `latitude`, `longitude`, `status`, `active`, `referral_count`, `referral_amount`, `referral`, `friend_referral`, `referral_used`, `pincode`, `created`, `updated`) VALUES
-(1, 'Johny Deep', '', '9090909090', 'e10adc3949ba59abbe56e057f20f883e', NULL, '0000-00-00', '', '', 1, 0, '', 'ios', '123456', '12.362541', '13.236514', 0, 1, 0, 0, NULL, NULL, 0, NULL, '2022-05-23 10:12:45', NULL),
-(2, 'Johny Deep', '', '9090909091', 'e10adc3949ba59abbe56e057f20f883e', NULL, '0000-00-00', NULL, NULL, 0, 0, '', 'ios', '123456', '12.362541', '13.236514', 1, 1, 0, 0, '735191', NULL, 0, NULL, '2022-05-23 10:37:58', NULL);
+(1, 'John Dao', 'johndao@gmail.com', '9632587431', 'e10adc3949ba59abbe56e057f20f883e', NULL, '1996-05-12', NULL, '611892avatar2.png', 0, 0, '', 'ios', '123456', '12.362541', '13.236514', 1, 1, 0, 0, '738574', NULL, 0, 360004, '2022-05-10 16:23:09', '2022-05-31 16:54:46'),
+(2, 'John Dao', 'johndao@gmail.com', '8080808080', 'e10adc3949ba59abbe56e057f20f883e', NULL, '1996-05-12', '', '282131avatar2.png', 1, 0, '', 'ios', '123456', '12.352541', '13.362541', 1, 1, 0, 0, NULL, NULL, 0, NULL, '2022-05-10 16:48:56', '2022-05-10 16:52:21'),
+(3, 'Johny Deep', '', '9090909090', 'e10adc3949ba59abbe56e057f20f883e', NULL, '0000-00-00', '', '', 1, 0, '', 'ANDROID', '123456789', '12.362541', '13.236514', 1, 0, 0, 0, NULL, NULL, 0, NULL, '2022-05-11 15:43:27', NULL),
+(4, 'Johny Deep', '', '9090909091', '4297f44b13955235245b2497399d7a93', NULL, '0000-00-00', NULL, NULL, 0, 0, '', 'ios', '123456', '12.362541', '13.236514', 1, 1, 0, 0, '659077', NULL, 0, NULL, '2022-05-23 16:24:41', NULL),
+(6, 'Zoe Mitchelle', '', '9876543210', 'e10adc3949ba59abbe56e057f20f883e', NULL, '0000-00-00', NULL, NULL, 0, 0, '', 'ios', '123456', '12.362541', '13.236514', 1, 1, 0, 0, '240104', NULL, 0, NULL, '2022-06-05 05:11:03', NULL),
+(7, 'Brad Perez', '', '9876543211', 'e10adc3949ba59abbe56e057f20f883e', NULL, '0000-00-00', NULL, NULL, 0, 0, '', 'ios', '123456', '12.362541', '13.236514', 1, 1, 0, 0, '979009', NULL, 0, NULL, '2022-06-05 05:11:30', NULL),
+(9, 'Hardik Chapla', '', '8073204662', '25f9e794323b453885f5181f1b624d0b', NULL, '0000-00-00', NULL, '15312320220522_093201.jpg', 0, 0, '', '', '', '', '', 1, 1, 0, 0, '815607', NULL, 0, NULL, '2022-06-08 09:50:59', '2022-06-08 10:16:14'),
+(10, 'John Dao', '', '8080808091', 'e10adc3949ba59abbe56e057f20f883e', NULL, '0000-00-00', NULL, NULL, 1, 0, '', 'ios', '123456', '12.362541', '13.236514', 0, 1, 0, 0, NULL, NULL, 0, NULL, '2022-06-08 13:35:00', NULL),
+(11, 'John Dao', '', '8080808090', 'e10adc3949ba59abbe56e057f20f883e', NULL, '0000-00-00', NULL, NULL, 0, 0, '', 'ios', '123456', '12.362541', '13.236514', 1, 1, 0, 0, '954226', NULL, 0, NULL, '2022-06-08 13:35:18', NULL),
+(12, 'kishan', '', '9427396304', '202cb962ac59075b964b07152d234b70', NULL, '0000-00-00', NULL, NULL, 0, 0, '', '', '', '', '', 1, 1, 0, 0, '427897', NULL, 0, NULL, '2022-06-08 14:01:28', '2022-06-08 14:04:02');
 
 -- --------------------------------------------------------
 
@@ -653,7 +789,12 @@ CREATE TABLE `user_address` (
   `main_area` varchar(50) DEFAULT NULL,
   `landmark` varchar(50) DEFAULT NULL,
   `city` varchar(50) DEFAULT NULL,
+  `address` longtext DEFAULT NULL,
+  `pincode` int(6) DEFAULT NULL,
   `state` varchar(50) DEFAULT NULL,
+  `latitude` varchar(50) DEFAULT NULL,
+  `longitude` varchar(50) DEFAULT NULL,
+  `is_default` int(11) NOT NULL DEFAULT 0,
   `created` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -661,8 +802,16 @@ CREATE TABLE `user_address` (
 -- Dumping data for table `user_address`
 --
 
-INSERT INTO `user_address` (`id`, `user_id`, `full_name`, `mobile_number`, `alt_mobile_number`, `house_no`, `building_name`, `road_area_colony`, `main_area`, `landmark`, `city`, `state`, `created`) VALUES
-(1, 2, 'KIshan Patel', '9632587445', '78787979745', '101', 'Saurashtra Residensy', 'Near Maharaja Farm', 'Mota Varachha', 'Mota Varachha', 'surat', 'gujrat', '2022-05-25 08:01:26');
+INSERT INTO `user_address` (`id`, `user_id`, `full_name`, `mobile_number`, `alt_mobile_number`, `house_no`, `building_name`, `road_area_colony`, `main_area`, `landmark`, `city`, `address`, `pincode`, `state`, `latitude`, `longitude`, `is_default`, `created`) VALUES
+(4, 2, 'KIshan Patel', '9632587445', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '101, Saurashtra\'s Residensy, Mota Varachha, Surat', 395006, 'Gujrat', NULL, NULL, 0, '2022-05-29 04:48:52'),
+(5, 4, 'KIshan Patel', '9632587445', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '101, Saurashtra\'s Residensy, Mota Varachha, Surat', 395006, 'Gujrat', NULL, NULL, 1, '2022-05-29 04:49:03'),
+(7, 1, 'KIshan Patel', '9427396304', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '105, velenja', 394150, 'gujrat', NULL, NULL, 0, '2022-05-29 05:06:29'),
+(10, 1, 'KIshan ', '9632587445', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'rajkot', 151535, 'gujrat', NULL, NULL, 0, '2022-05-30 16:39:19'),
+(21, 9, 'Hardik Chapla', '123', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Sardargadh, Gujarat 362640, India', 360000, 'gujarat', '21.5696844', '70.2021382', 0, '2022-06-08 10:09:09'),
+(23, 9, 'Hardik Chapla', '8073204662', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Rajkot, Gujarat 360022, India', 395001, 'gujarat', '22.1988203', '70.7943774', 0, '2022-06-08 10:13:29'),
+(24, 11, 'Leah Barnes', '4125689995', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '1602, Green Rd, Tampa', 69207, 'Idaho', '12.2561451', '13.2651451', 0, '2022-06-08 13:48:36'),
+(28, 9, 'Hardik Chapla', '9558686644', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Baharpara Street 6, Sardargadh, Gujarat 362640, India', 362640, 'gujarat', '21.5687846', '70.1989952', 1, '2022-06-09 05:19:03'),
+(29, 12, 'kishan', '9427396304', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Surat, Gujarat, India', 395006, 'gujarat', '21.1702401', '72.83106070000001', 0, '2022-06-10 07:32:15');
 
 --
 -- Indexes for dumped tables
@@ -723,6 +872,12 @@ ALTER TABLE `pincode`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `privacy_policy`
+--
+ALTER TABLE `privacy_policy`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `product`
 --
 ALTER TABLE `product`
@@ -764,6 +919,12 @@ ALTER TABLE `slider`
   ADD KEY `category_id` (`category_id`);
 
 --
+-- Indexes for table `terms_and_conditions`
+--
+ALTER TABLE `terms_and_conditions`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `user`
 --
 ALTER TABLE `user`
@@ -790,91 +951,103 @@ ALTER TABLE `admin`
 -- AUTO_INCREMENT for table `cart`
 --
 ALTER TABLE `cart`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
 
 --
 -- AUTO_INCREMENT for table `category`
 --
 ALTER TABLE `category`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `near_by_request`
 --
 ALTER TABLE `near_by_request`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `notification`
 --
 ALTER TABLE `notification`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=54;
 
 --
 -- AUTO_INCREMENT for table `order_items`
 --
 ALTER TABLE `order_items`
-  MODIFY `order_items_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `order_items_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `payment`
 --
 ALTER TABLE `payment`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT for table `pincode`
 --
 ALTER TABLE `pincode`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT for table `privacy_policy`
+--
+ALTER TABLE `privacy_policy`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `product`
 --
 ALTER TABLE `product`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=52;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=54;
 
 --
 -- AUTO_INCREMENT for table `product_image`
 --
 ALTER TABLE `product_image`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=169;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=176;
 
 --
 -- AUTO_INCREMENT for table `product_order`
 --
 ALTER TABLE `product_order`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `product_type`
 --
 ALTER TABLE `product_type`
-  MODIFY `product_type_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=134;
+  MODIFY `product_type_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=138;
 
 --
 -- AUTO_INCREMENT for table `review`
 --
 ALTER TABLE `review`
-  MODIFY `review_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `review_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `slider`
 --
 ALTER TABLE `slider`
-  MODIFY `slider_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `slider_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+
+--
+-- AUTO_INCREMENT for table `terms_and_conditions`
+--
+ALTER TABLE `terms_and_conditions`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `user_address`
 --
 ALTER TABLE `user_address`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 
 --
 -- Constraints for dumped tables
