@@ -576,13 +576,13 @@ function sendPushNotification($token, $title, $deviceType = 'ios', $data = array
 
         // Ios
 
-        $server_key = 'AAAAcD2LtxM:APA91bHZdDW072KAXuXZ8U3KsWaYRV1hDQieF77JNjj53a6ilyLg_sHQu6xLbyXpMqccHajbdIb-BJvDqjs9qftVdPbcfeH6ybhx2J21x8RifiHwF7dIo45o3bK-TOuBc7apHiJ9JF2H';
+        $server_key = 'AAAAjyZmtgM:APA91bHwKF8aO-UvlRhWPO7BoI17ooIn4FfdGMSwx5c8lv0PZitKD3Cp8drYoRax6k22eWOZWu4-a1TOeWwx1J37cy4oz0i-yTMGRjgspEWo8PBw11IOIkc38n9GUwOCLTx0YXOBc_5l';
 
     else:
 
         // Android
 
-        $server_key = 'AAAAcD2LtxM:APA91bHZdDW072KAXuXZ8U3KsWaYRV1hDQieF77JNjj53a6ilyLg_sHQu6xLbyXpMqccHajbdIb-BJvDqjs9qftVdPbcfeH6ybhx2J21x8RifiHwF7dIo45o3bK-TOuBc7apHiJ9JF2H';
+        $server_key = 'AAAAjyZmtgM:APA91bHwKF8aO-UvlRhWPO7BoI17ooIn4FfdGMSwx5c8lv0PZitKD3Cp8drYoRax6k22eWOZWu4-a1TOeWwx1J37cy4oz0i-yTMGRjgspEWo8PBw11IOIkc38n9GUwOCLTx0YXOBc_5l';
 
     endif;
 
