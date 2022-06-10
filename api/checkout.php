@@ -78,7 +78,7 @@
  		$TXNDATE = (isset($_REQUEST['TXNDATE']) && $_REQUEST['TXNDATE'] != '') ? $_REQUEST['TXNDATE']:'';
  		$referral_amount = (isset($_REQUEST['referral_amount']) && $_REQUEST['referral_amount'] != '') ? $_REQUEST['referral_amount']:0;
  		$created = date('Y-m-d H:i:s');
-        $order_date = date("Y-m-d H:i:s", strtotime("+1 day"));
+        $order_date = date("Y-m-d H:i:s");
         $admin = $db->query("SELECT * FROM `admin` WHERE id = 1");
         $feadmin = $admin->fetch();
  		$checkmobile = $db->query("SELECT * FROM user WHERE id = '$user_id'");
