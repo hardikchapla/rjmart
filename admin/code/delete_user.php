@@ -10,6 +10,9 @@
 		$stmt->execute();
 		if ($stmt) 
 		{
+			$query = "DELETE FROM user_address WHERE user_id='$cat_id'";
+			$stmt = $db->prepare($query);
+			$stmt->execute();
 			$output['status']  = 'success';
 			$output['message'] = 'User has been deleted successfully';
 		} else {

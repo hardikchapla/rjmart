@@ -2,7 +2,7 @@
 include('../connection/connection.php');
 include('../helper/core_function.php');
 include('../helper/constant.php');
-$currentPage = 'category';
+$currentPage = 'notification';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -79,7 +79,7 @@ $currentPage = 'category';
                                             <th>Title</th>
                                             <th>Message</th>
                                             <th>Type</th>
-                                            <th>View</th>
+                                            <!-- <th>View</th> -->
                                         </tr>
                                     </thead>
                                     <tbody>

@@ -22,11 +22,11 @@ foreach($result as $row)
     $sub_array[] = $row["title"];
     $sub_array[] = $row['message'];
     $sub_array[] = $row['type'];
-    if($row['type'] == 'new_register'){
-        $sub_array[] = '<a class="btn btn-outline-info userProfileDetails" type="button" href="user-details.php?id='.$row["sender_id"].'">View</a>';
-    } else {
-        $sub_array[] = '<a class="btn btn-outline-info userProfileDetails" type="button" href="user-orders.php?id='.$row["order_id"].'">View</a>';
-    }
+    // if($row['type'] == 'new_register'){
+    //     $sub_array[] = '<a class="btn btn-outline-info userProfileDetails" type="button" href="user-details.php?id='.$row["sender_id"].'">View</a>';
+    // } else {
+    //     $sub_array[] = '<a class="btn btn-outline-info userProfileDetails" type="button" href="user-orders.php?id='.$row["order_id"].'">View</a>';
+    // }
     $data[] = $sub_array;
     $i++;
 }
