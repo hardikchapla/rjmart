@@ -117,7 +117,7 @@
                 } else {
                     $query = $db->query("INSERT INTO user SET mobile = '$mobile', password = '$password',user_type = '$usertype',login_type = '$logintype',fullname = '$fullname', email = '$email', dob = '$dob', login_identifier = '$login_identifier', device_type = '$device_type', device_token = '$device_token', latitude = '$latitude', longitude = '$longitude', created = '$date', status = '$status',referral = '$referral'");
                     $user_id = $db->lastInsertId();
-                    $notification = $db->query("INSERT INTO notification SET sender_id = '$user_id', title = 'User register', message = 'New user register successfully', `type` = 'new_regiter', receiver_type = '1', created = '$date'");
+                    $notification = $db->query("INSERT INTO notification SET sender_id = '$user_id', title = 'User register', message = 'New user register successfully', `type` = 'new_register', receiver_type = '1', created = '$date'");
                 }
 	 		}
  			if($query){
