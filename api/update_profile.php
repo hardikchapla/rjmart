@@ -105,8 +105,16 @@
 				$aa['email'] = $feget['email'];
 				$aa['mobile'] = $feget['mobile'];
 				$aa['dob'] = $feget['dob'];
-				$aa['document'] = $avtar_path.$feget['document'];
-				$aa['avatar'] = $avtar_path.$feget['avatar'];
+				if($feget['document'] == ''){
+					$aa['document'] = '';
+				}else{
+					$aa['document'] = $avtar_path.$feget['document'];
+				}
+				if($feget['avatar'] == ''){
+					$aa['avatar'] = '';
+				}else{
+					$aa['avatar'] = $avtar_path.$feget['avatar'];
+				}
 				$aa['user_type'] = $feget['user_type'];
 				$aa['login_type'] = $feget['login_type'];
 				$aa['login_identifier'] = $feget['login_identifier'];

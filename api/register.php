@@ -1,5 +1,6 @@
 <?php
 	include "../connection/connection.php";
+	include "../helper/constant.php";
 	$status = 0;
 	$message = "";
 	$data = array();
@@ -120,7 +121,7 @@
                 }
 	 		}
  			if($query){
- 				$avtar_path = 'http://'.$_SERVER['SERVER_NAME'].'/food_app/assets/img/user/';
+				$avtar_path = BASE_URL.'assets/img/user/';
 	 			$get = $db->query("SELECT * FROM user WHERE id = '$user_id'");
 	 			if($user_type == 'user'){
              		$status = 1;
@@ -136,8 +137,16 @@
  				$aa['email'] = $feget['email'];
  				$aa['mobile'] = $feget['mobile'];
  				$aa['dob'] = $feget['dob'];
- 				$aa['document'] = $avtar_path.$feget['document'];
- 				$aa['avatar'] = $avtar_path.$feget['avatar'];
+ 				if($feget['document'] == ''){
+					$aa['document'] = '';
+				}else{
+					$aa['document'] = $avtar_path.$feget['document'];
+				}
+				if($feget['avatar'] == ''){
+					$aa['avatar'] = '';
+				}else{
+					$aa['avatar'] = $avtar_path.$feget['avatar'];
+				}
  				$aa['user_type'] = $feget['user_type'];
  				$aa['login_type'] = $feget['login_type'];
  				$aa['login_identifier'] = $feget['login_identifier'];
