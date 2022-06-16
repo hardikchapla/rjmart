@@ -27,23 +27,14 @@
 			echo json_encode($response);
 			die;
  		}
- 		if(empty($_REQUEST['otp'])){
- 			$status = 2;
-			$message = "Please enter otp";
-			$data = array();
-			$response['status'] = $status;
-			$response['message'] = $message;
-			$response['data'] = $data;
-			echo json_encode($response);
-			die;
- 		}
+ 		
  		$user_id = $_REQUEST['user_id'];
  		$order_number = $_REQUEST['order_number'];
- 		$otp = $_REQUEST['otp'];
+ 	
  		$created = date('Y-m-d H:i:s');
  		$checkmobile = $db->query("SELECT * FROM user WHERE id = '$user_id' AND user_type = 1");
  		if($checkmobile->rowCount() > 0){
-			$check = $db->query("SELECT * FROM product_order WHERE order_number = '$order_number' AND receive_otp = '$otp'");
+			$check = $db->query("SELECT * FROM product_order WHERE order_number = '$order_number'");
 			if($check->rowCount() > 0){
 				$fecheck = $check->fetch();
 				if($fecheck['order_status'] == 2){
