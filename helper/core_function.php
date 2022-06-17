@@ -530,7 +530,8 @@ function sendPushNotification($token, $title, $deviceType = 'ios', $data = array
     if ($deviceType == 'ios'):
         $arrayToSend = array('to' => $token, 'notification' => array("body" => $data['message'], "title" => $title), 'data' => $data, 'priority' => 'high', 'badge' => '1');
     else:
-        $arrayToSend = array('to' => $token, 'data' => array("title" => $title, "body" => $data), 'priority' => 'high');
+        $arrayToSend = array('to' => $token, 'notification' => array("body" => $data['message'], "title" => $title), 'data' => $data, 'priority' => 'high', 'badge' => '1');
+        // $arrayToSend = array('to' => $token, 'data' => array("title" => $title, "body" => $data), 'priority' => 'high');
     endif;
 //    echo "<pre>";
 //    print_r($deviceType);
@@ -567,7 +568,8 @@ function sendPushNotificationDeliveryBoy($token, $title, $deviceType = 'ios', $d
     if ($deviceType == 'ios'):
         $arrayToSend = array('to' => $token, 'notification' => array("body" => $data['message'], "title" => $title), 'data' => $data, 'priority' => 'high', 'badge' => '1');
     else:
-        $arrayToSend = array('to' => $token, 'data' => array("title" => $title, "body" => $data), 'priority' => 'high');
+        $arrayToSend = array('to' => $token, 'notification' => array("body" => $data['message'], "title" => $title), 'data' => $data, 'priority' => 'high', 'badge' => '1');
+        // $arrayToSend = array('to' => $token, 'data' => array("title" => $title, "body" => $data), 'priority' => 'high');
     endif;
 //    echo "<pre>";
 //    print_r($deviceType);
