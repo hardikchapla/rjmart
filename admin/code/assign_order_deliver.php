@@ -128,7 +128,7 @@ if (isset($_REQUEST['order_id']) && isset($_REQUEST['user_id'])) {
     $data2 = array();
     $data2['message'] = "Order assign by admin";
     $data2['data'] = $aa;
-    sendPushNotification($fedeliver['device_token'], $title1, $fedeliver['device_type'], $data2);
+    sendPushNotificationDeliveryBoy($fedeliver['device_token'], $title1, $fedeliver['device_type'], $data2);
     $notification2 = $db->query("INSERT INTO notification SET receiver_id = '$user_id',order_id = '$order_id', title = 'Order assign', message = 'Order assign by admin', `type` = 'order_assigned', receiver_type = '0', created = '$date'");
     echo "true";
 

@@ -13,7 +13,7 @@ if (isset($_REQUEST['user_id'])) {
         $title = "Your Account disapproved";
         $data1 = array();
         $data1['message'] = "Your account is disapproved from admin please re-register it";
-        sendPushNotification($device_token, $title, $device_type, $data1);
+        sendPushNotificationDeliveryBoy($device_token, $title, $device_type, $data1);
     }
     $query1 = "DELETE FROM `user` WHERE id = '$user_id'";
     $delete = $db->prepare($query1);

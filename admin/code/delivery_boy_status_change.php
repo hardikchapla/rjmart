@@ -15,12 +15,12 @@ if (isset($_REQUEST['user_id']) && isset($_REQUEST['status'])) {
             $title = "Your Account Activate";
             $data1 = array();
             $data1['message'] = "Your account is activate successfully from admin";
-            sendPushNotification($device_token, $title, $device_type, $data1);
+            sendPushNotificationDeliveryBoy($device_token, $title, $device_type, $data1);
         } else {
             $title = "Your Account Deactivate";
             $data1 = array();
             $data1['message'] = "Your account is de-activate successfully from admin";
-            sendPushNotification($device_token, $title, $device_type, $data1);
+            sendPushNotificationDeliveryBoy($device_token, $title, $device_type, $data1);
         }
     }
     $query1 = "Update `user` SET status = '$status' WHERE id = '$user_id'";

@@ -18,12 +18,15 @@ if (isset($_REQUEST['order_id'])) {
         $feuser = $user->fetch();
         $user1 = $db->query("SELECT * FROM user WHERE id = '$toid'");
         $feuser1 = $user1->fetch();
+        $admin = $db->query("SELECT * FROM `admin` WHERE id = 1");
+        $feadmin = $admin->fetch();
         $date = date('Y-m-d H:i:s');
         $title = "Order Completed";
         $data1 = array();
         $data1['message'] = "Order completed successfully";
         sendPushNotification($feuser['device_token'], $title, $feuser['device_type'], $data1);
-        sendPushNotification($feuser1['device_token'], $title, $feuser1['device_type'], $data1);
+        sendPushNotificationDeliveryBoy($feuser1['device_token'], $title, $feuser1['device_type'], $data1);
+        sendPushNotificationAdmin($feadmin['device_token'],$title,$feadmin['device_type'],$data1);
         $notification2 = $db->query("INSERT INTO notification SET receiver_id = '$from_id',order_id = '$order_id', title = 'Order Shipped', message = 'Order shipped successfully', `type` = 'order_shipped', receiver_type = '0', created = '$date'");
         $notification3 = $db->query("INSERT INTO notification SET receiver_id = '$toid',order_id = '$order_id', title = 'Order Shipped', message = 'Order shipped successfully', `type` = 'order_shipped', receiver_type = '0', created = '$date'");
         $notification4 = $db->query("INSERT INTO notification SET sender_id = '$toid',order_id = '$order_id', title = 'Order Shipped', message = 'Order shipped successfully', `type` = 'order_shipped', receiver_type = '1', created = '$date'");

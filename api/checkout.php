@@ -201,6 +201,7 @@
                     $data2 = array();
                     $data2['message'] = "Order request sent successfully";
                     sendPushNotification($feuser['device_token'],$title,$feuser['device_type'],$data2);
+                    sendPushNotificationAdmin($feadmin['device_token'],$title,$feadmin['device_type'],$data2);
                     // sendsms($feuser['mobile'],"Packed : Your order for Gujarat Fruits & Vegetables order ID ".$feorder['order_number']." has been packed by the seller and will be shipped soon.");
 
                     $status = 1;

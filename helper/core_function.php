@@ -525,102 +525,116 @@ function productDetails($product_id){
 }
 
 function sendPushNotification($token, $title, $deviceType = 'ios', $data = array()) {
-
 // notification messages
-
-
-
     $arrayToSend = '';
-
     if ($deviceType == 'ios'):
-
         $arrayToSend = array('to' => $token, 'notification' => array("body" => $data['message'], "title" => $title), 'data' => $data, 'priority' => 'high', 'badge' => '1');
-
     else:
-
         $arrayToSend = array('to' => $token, 'data' => array("title" => $title, "body" => $data), 'priority' => 'high');
-
     endif;
-
-
-
 //    echo "<pre>";
-
 //    print_r($deviceType);
-
 //    print_r($arrayToSend);
-
 //    die;
-
-
-
-
-
-
-
     $json = json_encode($arrayToSend);
-
-
-
 //FCM API end-point
-
     $url = 'https://fcm.googleapis.com/fcm/send';
-
-
-
 //api_key in Firebase Console -> Project Settings -> CLOUD MESSAGING -> Server key
-
-
-
     if ($deviceType == 'ios'):
-
         // Ios
-
         $server_key = 'AAAAjyZmtgM:APA91bHwKF8aO-UvlRhWPO7BoI17ooIn4FfdGMSwx5c8lv0PZitKD3Cp8drYoRax6k22eWOZWu4-a1TOeWwx1J37cy4oz0i-yTMGRjgspEWo8PBw11IOIkc38n9GUwOCLTx0YXOBc_5l';
-
     else:
-
         // Android
-
         $server_key = 'AAAAjyZmtgM:APA91bHwKF8aO-UvlRhWPO7BoI17ooIn4FfdGMSwx5c8lv0PZitKD3Cp8drYoRax6k22eWOZWu4-a1TOeWwx1J37cy4oz0i-yTMGRjgspEWo8PBw11IOIkc38n9GUwOCLTx0YXOBc_5l';
-
     endif;
-
-
-
 //header with content_type api key
-
     $headers = array();
-
     $headers[] = 'Authorization: key=' . $server_key;
-
     $headers[] = 'Content-Type: application/json';
-
 //CURL request to route notification to FCM connection server (provided by Google)
-
-
-
     $ch = curl_init();
-
     curl_setopt($ch, CURLOPT_URL, $url);
-
     curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
-
     curl_setopt($ch, CURLOPT_POSTFIELDS, $json);
-
     curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
-
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-
     $result = curl_exec($ch);
-
-
-
     return $result;
-
 }
-
-
+function sendPushNotificationDeliveryBoy($token, $title, $deviceType = 'ios', $data = array()) {
+    // notification messages
+    $arrayToSend = '';
+    if ($deviceType == 'ios'):
+        $arrayToSend = array('to' => $token, 'notification' => array("body" => $data['message'], "title" => $title), 'data' => $data, 'priority' => 'high', 'badge' => '1');
+    else:
+        $arrayToSend = array('to' => $token, 'data' => array("title" => $title, "body" => $data), 'priority' => 'high');
+    endif;
+//    echo "<pre>";
+//    print_r($deviceType);
+//    print_r($arrayToSend);
+//    die;
+    $json = json_encode($arrayToSend);
+//FCM API end-point
+    $url = 'https://fcm.googleapis.com/fcm/send';
+//api_key in Firebase Console -> Project Settings -> CLOUD MESSAGING -> Server key
+    if ($deviceType == 'ios'):
+        // Ios
+        $server_key = 'AAAANqfW5cA:APA91bF7AE3Nr972VRqYf8lNH4kcFPw3sAO-Q2V4ddZkYLN3eiFtDgzLYkbkafRQKag3YhtnjJsPV1YOZbuXoIXa1sWOJ7VN_oqq1PWdORKnochN25-a5VqBa6DroMH06KLU8DU3mYSG';
+    else:
+        // Android
+        $server_key = 'AAAANqfW5cA:APA91bF7AE3Nr972VRqYf8lNH4kcFPw3sAO-Q2V4ddZkYLN3eiFtDgzLYkbkafRQKag3YhtnjJsPV1YOZbuXoIXa1sWOJ7VN_oqq1PWdORKnochN25-a5VqBa6DroMH06KLU8DU3mYSG';
+    endif;
+//header with content_type api key
+    $headers = array();
+    $headers[] = 'Authorization: key=' . $server_key;
+    $headers[] = 'Content-Type: application/json';
+//CURL request to route notification to FCM connection server (provided by Google)
+    $ch = curl_init();
+    curl_setopt($ch, CURLOPT_URL, $url);
+    curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
+    curl_setopt($ch, CURLOPT_POSTFIELDS, $json);
+    curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+    $result = curl_exec($ch);
+    return $result;
+}
+function sendPushNotificationAdmin($token, $title, $deviceType = 'ios', $data = array()) {
+// notification messages
+    $arrayToSend = '';
+    if ($deviceType == 'ios'):
+        $arrayToSend = array('to' => $token, 'notification' => array("body" => $data['message'], "title" => $title), 'data' => $data, 'priority' => 'high', 'badge' => '1');
+    else:
+        $arrayToSend = array('to' => $token, 'data' => array("title" => $title, "body" => $data), 'priority' => 'high');
+    endif;
+//    echo "<pre>";
+//    print_r($deviceType);
+//    print_r($arrayToSend);
+//    die;
+    $json = json_encode($arrayToSend);
+//FCM API end-point
+    $url = 'https://fcm.googleapis.com/fcm/send';
+//api_key in Firebase Console -> Project Settings -> CLOUD MESSAGING -> Server key
+    if ($deviceType == 'ios'):
+        // Ios
+        $server_key = 'AAAAe4jMMPk:APA91bF0FbxWL9ww0iUIt9aCEupV-eWAoPLYNBe7iagKFAqTWdX1sPjw36IrwdVOd-krtsfIsEFF5YHqmQ38ncRBoUu4kzd6MRaxR614Ho-fDWQewvDZ4ZqsgcEbBb3O_Tgh7ir_BkoR';
+    else:
+        // Android
+        $server_key = 'AAAAe4jMMPk:APA91bF0FbxWL9ww0iUIt9aCEupV-eWAoPLYNBe7iagKFAqTWdX1sPjw36IrwdVOd-krtsfIsEFF5YHqmQ38ncRBoUu4kzd6MRaxR614Ho-fDWQewvDZ4ZqsgcEbBb3O_Tgh7ir_BkoR';
+    endif;
+//header with content_type api key
+    $headers = array();
+    $headers[] = 'Authorization: key=' . $server_key;
+    $headers[] = 'Content-Type: application/json';
+//CURL request to route notification to FCM connection server (provided by Google)
+    $ch = curl_init();
+    curl_setopt($ch, CURLOPT_URL, $url);
+    curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
+    curl_setopt($ch, CURLOPT_POSTFIELDS, $json);
+    curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+    $result = curl_exec($ch);
+    return $result;
+}
 
 function send_email_verification($user_email)
 
