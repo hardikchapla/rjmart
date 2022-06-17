@@ -21,11 +21,13 @@
  		$created = date('Y-m-d H:i:s');
  		$checkmobile = $db->query("SELECT * FROM user WHERE id = '$user_id' AND user_type = 1");
  		if($checkmobile->rowCount() > 0){
+			$avtar_path = BASE_URL.'assets/img/user/';
 			$order_details = $db->query("SELECT c.id as request_id,c.*, a.id as order_id,a.created as orderdt,a.*,b.* FROM near_by_request c, product_order a,user_address b WHERE c.order_id = a.id AND a.user_address_id = b.id AND c.to_id = '$user_id' AND c.status = 1 AND a.order_status = 2 ORDER BY c.created DESC");
 			if($order_details->rowCount() > 0){
 				$path = BASE_URL.'assets/img/product/';
 				$aa = array();
 				$a = 0;
+				$feUser = $checkmobile->fetch();
 				while($feorder = $order_details->fetch()){
 					$order_id = $feorder['order_id'];
 					$aa[$a]['request_id'] = $feorder['request_id'];
@@ -52,6 +54,11 @@
 					$aa[$a]['longitude'] = $feorder['longitude'];
                     $aa[$a]['delivery_date'] = ($feorder['order_date']) ? $feorder['order_date']:'';
                     $aa[$a]['order_date'] = ($feorder['orderdt']) ? $feorder['orderdt']:'';
+					if($feUser['avatar'] == ''){
+						$aa[$a]['avatar'] = '';
+					}else{
+						$aa[$a]['avatar'] = $avtar_path.$feUser['avatar'];
+					}
 					$order_items = $db->query("SELECT a.*,b.*,c.* FROM order_items a, product b,product_type c WHERE a.product_id = b.id AND a.product_type_id = c.product_type_id AND a.order_id = '$order_id'");
 					$bb = array();
 					$b = 0;
