@@ -31,7 +31,7 @@
         
  		$adminUpdate = $db->query("UPDATE `admin` SET device_type = '$device_type', device_token ='$device_token' WHERE id='1'");
  		if($adminUpdate){
-            $status = 0;
+            $status = 1;
             $message = "device updated succussfully";
             $data = (object)  array();
  		} else {
