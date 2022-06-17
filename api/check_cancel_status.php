@@ -1,6 +1,7 @@
 <?php
 	include "../connection/connection.php";
 	include "../helper/constant.php";
+	include "../helper/core_function.php";
 	$status = 0;
 	$message = "";
 	$data = array();
@@ -38,6 +39,13 @@
             $message = "Your order has been cancelled, you will get your refund within 48 hours";
             $updateStatus = $db->query("UPDATE product_order SET order_status = '3' WHERE id = '$order_id'");
 			$notification = $db->query("INSERT INTO notification SET sender_id = '$user_id',order_id = '$order_id', title = 'Cancel Order', message = 'Your order has been cancelled, you will get your refund within 48 hours', `type` = 'order_cancelled', receiver_type = '1', created = '$created'");
+			$admin = $db->query("SELECT * FROM `admin` WHERE id = 1");
+        	$feadmin = $admin->fetch();
+			$title1 = "Cancel Order";
+			$data2 = array();
+			$data2['message'] = "Your order has been cancelled, you will get your refund within 48 hours";
+			$data2['data'] = array();
+			sendPushNotificationAdmin($feadmin['device_token'], $title1, $feadmin['device_type'], $data2);
         }else{
             $status = 0;
             $message = "You cannot cancel an order. You can cancel the order within ".$cancelMinutes." minutes after placing your order";
