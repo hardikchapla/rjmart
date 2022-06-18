@@ -37,7 +37,7 @@
 					$avatar = rand(1000,1000000).$file; 
 					$path = '../assets/img/user/'.$avatar;
 					move_uploaded_file($tmp,$path);
-					unlink('../assets/img/user/'.$fecheck['avatar']);
+					@unlink('../assets/img/user/'.$fecheck['avatar']);
 					$query = $db->query("UPDATE user SET fullname = '$fullname',avatar = '$avatar', email = '$email', dob = '$dob', updated = '$date' WHERE id = '$user_id'");
 				}
 				else
@@ -62,7 +62,7 @@
 					$document = rand(1000,1000000).$file1; 
 					$path1 = '../assets/img/user/'.$document;
 					move_uploaded_file($tmp1,$path1);
-					unlink('../assets/img/user/'.$fecheck['document']);
+					@unlink('../assets/img/user/'.$fecheck['document']);
 					$query = $db->query("UPDATE user SET fullname = '$fullname',avatar = '$avatar',document = '$document', email = '$email', dob = '$dob', updated = '$date' WHERE id = '$user_id'");
 				}
 				else if(!empty($_FILES['avatar']['name']))
@@ -73,7 +73,7 @@
 					$avatar = rand(1000,1000000).$file; 
 					$path = '../assets/img/user/'.$avatar;
 					move_uploaded_file($tmp,$path);
-					unlink('../assets/img/user/'.$fecheck['avatar']);
+					@unlink('../assets/img/user/'.$fecheck['avatar']);
 					$query = $db->query("UPDATE user SET fullname = '$fullname',avatar = '$avatar', email = '$email', dob = '$dob', updated = '$date' WHERE id = '$user_id'");
 				} 
 				else if(!empty($_FILES['document']['name']))
@@ -84,7 +84,7 @@
 					$document = rand(1000,1000000).$file; 
 					$path = '../assets/img/user/'.$document;
 					move_uploaded_file($tmp,$path);
-					unlink('../assets/img/user/'.$fecheck['document']);
+					@unlink('../assets/img/user/'.$fecheck['document']);
 					$query = $db->query("UPDATE user SET fullname = '$fullname',document = '$document', email = '$email', dob = '$dob', updated = '$date' WHERE id = '$user_id'");
 				}
 				else
