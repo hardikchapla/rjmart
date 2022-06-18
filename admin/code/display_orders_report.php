@@ -1,11 +1,11 @@
 <?php
 include('../../connection/connection.php');
-$start_date = $_REQUEST['start_date'];
-$end_date = $_REQUEST['end_date'];
+$start_date = str_replace('/','-',$_REQUEST['start_date']);
+$end_date = str_replace('/','-',$_REQUEST['end_date']);
 if($start_date == '' && $end_date == ''){
     $query = "SELECT a.*,b.full_name,count(c.order_items_id) as order_item FROM product_order a, user_address b, order_items c WHERE a.user_address_id = b.id AND a.id = c.order_id AND a.order_status = '2' GROUP BY c.order_id ORDER BY a.id DESC";
 } else {
-    $query = "SELECT a.*,b.full_name,count(c.order_items_id) as order_item FROM product_order a, user_address b, order_items c WHERE a.user_address_id = b.id AND a.id = c.order_id AND a.order_status = '2' AND a.created Between '$start_date' AND '$end_date' GROUP BY c.order_id ORDER BY a.id DESC";
+    $query = "SELECT a.*,b.full_name,count(c.order_items_id) as order_item FROM product_order a, user_address b, order_items c WHERE a.user_address_id = b.id AND a.id = c.order_id AND a.order_status = '2' AND DATE_FORMAT(a.created,'%Y-%m-%d') Between '$start_date' AND '$end_date' GROUP BY c.order_id ORDER BY a.id DESC";
 }
 $reoutput = array();
 
@@ -33,4 +33,3 @@ $reoutput = array(
 );
 echo json_encode($reoutput);
 ?>
-

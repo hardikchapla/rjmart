@@ -23,6 +23,34 @@
 		$user_address = $db->query("SELECT * FROM user_address WHERE id = '$user_address_id'");
 		$feaddress = $user_address->fetch();
 		$order_date = date('d M Y',strtotime($feorder['created']));
+		$address = '';
+		if(!empty($feaddress['house_no'])){
+			$address .= $feaddress['house_no'].', ';
+		}
+		if(!empty($feaddress['floor_no'])){
+			$address .= $feaddress['floor_no'].', ';
+		}
+		if(!empty($feaddress['tower_no'])){
+			$address .= $feaddress['tower_no'].', ';
+		}
+		if(!empty($feaddress['building_name'])){
+			$address .= $feaddress['building_name'].', ';
+		}
+		if(!empty($feaddress['landmark'])){
+			$address .= $feaddress['landmark'].', ';
+		}
+		if(!empty($feaddress['address'])){
+			$address .= $feaddress['address'].', ';
+		}
+		if(!empty($feaddress['google_auto_address'])){
+			$address .= $feaddress['google_auto_address'].', ';
+		}
+		if(!empty($feaddress['state'])){
+			$address .= $feaddress['state'].' - ';
+		}
+		if(!empty($feaddress['pincode'])){
+			$address .= $feaddress['pincode'];
+		}
 		// $response = '';
 		// $response .= '<table class="sheet padding-10mm" style="border:1px solid #333;border-collapse:collapse;margin:0 auto;width:740px;"><thead><tr style="padding:12px; border:1px solid #333; width:185px;"><th colspan="3" style="padding:12px; border:1px solid #333; width:185px;color: #000;">'.$feorder['order_number'].'</th><th colspan="2" style="padding:12px; border:1px solid #333; width:185px;color: #000;text-align: center;">'.$order_date.'</th></tr><tr style="padding:12px; border:1px solid #333; width:185px; padding-top: 0; padding-bottom: 0;"><th colspan="2" style="padding:12px; border:1px solid #333; width:185px;color: #000;padding-top: 0; padding-bottom: 0;"><img src="assets/img/Logo_jpg.png" width="400" height="200"></th><th colspan="3" style="padding:12px; border:1px solid #333; width:185px;color: #000;"><h4 style="color: #000;">From:</h4><p style="color: #000; font-weight: 500;"> <b>Customer Care:</b> +91 90817 01091<br> Gujarat Fruits & Vegetables APP, <br> 97, Nana Varachha, Co. Housing Soc, <br> Nr. Moti Nagar Soc. Nana Varachha, <br> Surat - 395013</p></th></tr><tr style="padding:12px; border:1px solid #333; width:185px;"><td colspan="2" style="padding:12px;border:1px solid #333;width:185px;"><p style="text-align:center;"><img src="https://chart.googleapis.com/chart?chs=300x300&cht=qr&chl='.$feorder['order_number'].'&choe=UTF-8" title="Order Number" width="150px" height="150px"/></p></td><td colspan="3" style="padding:12px; border:1px solid #333; width:185px;"><h4 style="color: #000;">Customer:</h4><p style="color: #000;"> Name : '.$feaddress['full_name'].'<br> Address : '.$feaddress['house_no'].', '.$feaddress['building_name'].', '.$feaddress['road_area_colony'].'<br>'.$feaddress['main_area'].', '.$feaddress['landmark'].', '.$feaddress['city'].', '.$feaddress['state'].'<br>Mobile No : '.$feaddress['mobile_number'].'</p></td></tr></thead><tbody><tr><th style="padding:12px; border:1px solid #333; width:185px;color: #000;">Product</th><th style="padding:12px; border:1px solid #333; width:185px;color: #000;">Qty.</th><th style="padding:12px; border:1px solid #333; width:185px;color: #000;">@</th><th style="padding:12px; border:1px solid #333; width:185px;color: #000;">Cost</th><th style="padding:12px; border:1px solid #333; width:185px;color: #000;">Total Cost</th></tr>';
 		// $items = $db->query("SELECT a.*,b.*,c.* FROM order_items a, product b, product_type c WHERE a.product_id = b.id AND a.product_type_id = c.product_type_id AND a.order_id = '$order_id'");
@@ -33,7 +61,7 @@
 		// $response .= '</tbody><tfoot><tr><th style="color: #000;text-align: right;">Payment Type:</th><td style="color: #000;font-weight: 700;text-align: left; padding-left:20px;">'.$paymentType.'</td><th colspan="2" style="color: #000;text-align: right;">Grand Total:</th><td style="color: #000;font-weight: 700;text-align: left; padding-left:20px;">₹'.$feorder['total_amount'].'</td></tr></tfoot></table>';
 
 		$response = '';
-		$response .= '<div style="width: 80%; border:1px solid;margin: auto;"> <div style="width: 100%; display: inline-flex;"> <div style="width: 70%;border-right: 1px solid;border-bottom: 1px solid;height: 30px;"> <p style="padding-left: 20px;margin-top: 5px;">'.$feorder['order_number'].'</p></div><div style="width: 30%;border-bottom: 1px solid;height: 30px;"> <p style="padding-right: 20px; text-align: right;margin-top: 5px;">'.$order_date.'</p></div></div><div style="width: 100%; display: inline-flex; border-bottom: 1px solid;"> <div style="width: 30%;border-right: 1px solid;text-align: center;"><img src="https://chart.googleapis.com/chart?chs=300x300&cht=qr&chl='.$feorder['order_number'].'&choe=UTF-8" title="Order Number" width="120px" height="120px"></div><div style="width: 40%;border-right: 1px solid;"> <h4 style="padding-left: 20px;">Customer</h4> <p style="padding-left: 20px;">Name : '.$feaddress['full_name'].'<br>Address : '.$feaddress['address'].', '.$feaddress['state'].', '.$feaddress['pincode'].'<br>Mobile No : '.$feaddress['mobile_number'].'</p></div><div style="width: 30%;text-align: center;"><img src="assets/img/Logo_jpg.png" title="Order Number" width="150px" height="100px"></div></div><table style="width:100%;border-collapse: collapse;"> <tr style="border-bottom: 1px solid;"> <th style="border-right: 1px solid;">Product</th> <th style="width: 10%;border-right: 1px solid;">Qty</th> <th style="width: 10%;border-right: 1px solid;">@</th> <th style="width: 10%;border-right: 1px solid;">Cost</th> <th style="width: 20%;">Total Cost</th> </tr>';
+		$response .= '<div style="width: 80%; border:1px solid;margin: auto;"> <div style="width: 100%; display: inline-flex;"> <div style="width: 70%;border-right: 1px solid;border-bottom: 1px solid;height: 30px;"> <p style="padding-left: 20px;margin-top: 5px;">'.$feorder['order_number'].'</p></div><div style="width: 30%;border-bottom: 1px solid;height: 30px;"> <p style="padding-right: 20px; text-align: right;margin-top: 5px;">'.$order_date.'</p></div></div><div style="width: 100%; display: inline-flex; border-bottom: 1px solid;"> <div style="width: 30%;border-right: 1px solid;text-align: center;"><img src="https://chart.googleapis.com/chart?chs=300x300&cht=qr&chl='.$feorder['order_number'].'&choe=UTF-8" title="Order Number" width="120px" height="120px"></div><div style="width: 40%;border-right: 1px solid;"> <h4 style="padding-left: 20px;">Customer</h4> <p style="padding-left: 20px;">Name : '.$feaddress['full_name'].'<br>Address : '.$address.'<br>Mobile No : '.$feaddress['mobile_number'].'</p></div><div style="width: 30%;text-align: center;"><img src="assets/img/Logo_jpg.png" title="Order Number" width="150px" height="100px"></div></div><table style="width:100%;border-collapse: collapse;"> <tr style="border-bottom: 1px solid;"> <th style="border-right: 1px solid;">Product</th> <th style="width: 10%;border-right: 1px solid;">Qty</th> <th style="width: 10%;border-right: 1px solid;">@</th> <th style="width: 10%;border-right: 1px solid;">Cost</th> <th style="width: 20%;">Total Cost</th> </tr>';
 		$items = $db->query("SELECT a.*,b.*,c.* FROM order_items a, product b, product_type c WHERE a.product_id = b.id AND a.product_type_id = c.product_type_id AND a.order_id = '$order_id'");
 		while($feitems = $items->fetch()){
 		    $total_amt = $feitems['product_type_price'] * $feitems['qty'];

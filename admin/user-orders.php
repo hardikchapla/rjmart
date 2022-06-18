@@ -174,12 +174,6 @@ $feaddress = $user_address->fetch();
                                 <div class="col-xl-3 col-lg-3 col-sm-3">
                                     <p><?= $feaddress['alt_mobile_number'] ?></p>
                                 </div> -->
-                                <!-- <div class="col-xl-3 col-lg-3 col-sm-3">
-                                    <p><strong>Landmark :</strong></p>
-                                </div>
-                                <div class="col-xl-3 col-lg-3 col-sm-3">
-                                    <p><?= $feaddress['landmark'] ?></p>
-                                </div>
                                 <div class="col-xl-3 col-lg-3 col-sm-3">
                                     <p><strong>House No. :</strong></p>
                                 </div>
@@ -187,22 +181,46 @@ $feaddress = $user_address->fetch();
                                     <p><?= $feaddress['house_no'] ?></p>
                                 </div>
                                 <div class="col-xl-3 col-lg-3 col-sm-3">
-                                    <p><strong>City :</strong></p>
+                                    <p><strong>Floor No. :</strong></p>
                                 </div>
                                 <div class="col-xl-3 col-lg-3 col-sm-3">
-                                    <p><?= $feaddress['city'] ?></p>
+                                    <p><?= $feaddress['floor_no'] ?></p>
+                                </div>
+                                <div class="col-xl-3 col-lg-3 col-sm-3">
+                                    <p><strong>Tower No. :</strong></p>
+                                </div>
+                                <div class="col-xl-3 col-lg-3 col-sm-3">
+                                    <p><?= $feaddress['tower_no'] ?></p>
                                 </div>
                                 <div class="col-xl-3 col-lg-3 col-sm-3">
                                     <p><strong>Building name. :</strong></p>
                                 </div>
                                 <div class="col-xl-3 col-lg-3 col-sm-3">
                                     <p><?= $feaddress['building_name'] ?></p>
+                                </div>
+                                <div class="col-xl-3 col-lg-3 col-sm-3">
+                                    <p><strong>Landmark :</strong></p>
+                                </div>
+                                <div class="col-xl-3 col-lg-3 col-sm-3">
+                                    <p><?= $feaddress['landmark'] ?></p>
+                                </div>
+                                <!-- <div class="col-xl-3 col-lg-3 col-sm-3">
+                                    <p><strong>City :</strong></p>
+                                </div>
+                                <div class="col-xl-3 col-lg-3 col-sm-3">
+                                    <p><?= $feaddress['city'] ?></p>
                                 </div> -->
                                 <div class="col-xl-3 col-lg-3 col-sm-3">
                                     <p><strong>Address :</strong></p>
                                 </div>
                                 <div class="col-xl-3 col-lg-3 col-sm-3">
                                     <p><?= $feaddress['address'] ?></p>
+                                </div>
+                                <div class="col-xl-3 col-lg-3 col-sm-3">
+                                    <p><strong>Google Auto Address :</strong></p>
+                                </div>
+                                <div class="col-xl-3 col-lg-3 col-sm-3">
+                                    <p><?= $feaddress['google_auto_address'] ?></p>
                                 </div>
                                 <div class="col-xl-3 col-lg-3 col-sm-3">
                                     <p><strong>State :</strong></p>

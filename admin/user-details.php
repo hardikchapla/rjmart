@@ -114,13 +114,16 @@
                                                         <th>Full Name</th>
                                                         <th>Mobile Number</th>
                                                         <!-- <th>Alt. Mobile Number</th> -->
-                                                        <!-- <th>House No.</th> -->
-                                                        <!-- <th>Building No.</th> -->
+                                                        <th>House No.</th>
+                                                        <th>Floor No.</th>
+                                                        <th>Tower No.</th>
+                                                        <th>Building Name</th>
                                                         <!-- <th>Road/Area/Colony</th> -->
                                                         <!-- <th>Main area</th> -->
-                                                        <!-- <th>Landmark</th> -->
+                                                        <th>Landmark</th>
                                                         <!-- <th>City</th> -->
                                                         <th>Address</th>
+                                                        <th>Google Auto Address</th>
                                                         <th>State</th>
                                                         <th>Pincode</th>
                                                         <th>Is Default?</th>
