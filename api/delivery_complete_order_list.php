@@ -43,12 +43,15 @@
 					$aa[$a]['mobile_number'] = $feorder['mobile_number'];
 					$aa[$a]['alt_mobile_number'] = $feorder['alt_mobile_number'];
 					$aa[$a]['house_no'] = $feorder['house_no'];
+					$aa[$a]['floor_no'] = $feorder['floor_no'];
+					$aa[$a]['tower_no'] = $feorder['tower_no'];
 					$aa[$a]['building_name'] = $feorder['building_name'];
 					$aa[$a]['main_area'] = $feorder['main_area'];
 					$aa[$a]['landmark'] = $feorder['landmark'];
 					$aa[$a]['city'] = $feorder['city'];
 					$aa[$a]['state'] = $feorder['state'];
 					$aa[$a]['address'] = $feorder['address'];
+					$aa[$a]['google_auto_address'] = $feorder['google_auto_address'];
 					$aa[$a]['pincode'] = $feorder['pincode'];
 					$aa[$a]['latitude'] = $feorder['latitude'];
 					$aa[$a]['longitude'] = $feorder['longitude'];

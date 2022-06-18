@@ -22,7 +22,7 @@
  		$checkmobile = $db->query("SELECT * FROM user WHERE id = '$user_id' AND user_type = 1");
  		if($checkmobile->rowCount() > 0){
 			$avtar_path = BASE_URL.'assets/img/user/';
-			$order_details = $db->query("SELECT c.id as request_id,c.*, a.id as order_id,a.created as orderdt,a.*,b.* FROM near_by_request c, product_order a,user_address b WHERE c.order_id = a.id AND a.user_address_id = b.id AND c.to_id = '$user_id' AND c.status = 1 AND (a.order_status = 1 OR a.order_status = 4) ORDER BY c.created DESC");
+			$order_details = $db->query("SELECT c.id as request_id,c.*, a.id as order_id,a.created as orderdt,a.*,b.* FROM near_by_request c, product_order a,user_address b WHERE c.order_id = a.id AND a.user__id = b.id AND c.to_id = '$user_id' AND c.status = 1 AND (a.order_status = 1 OR a.order_status = 4) ORDER BY c.created DESC");
 			if($order_details->rowCount() > 0){
 				$path = BASE_URL.'assets/img/product/';
 				$aa = array();
@@ -43,12 +43,15 @@
 					$aa[$a]['mobile_number'] = $feorder['mobile_number'];
 					$aa[$a]['alt_mobile_number'] = $feorder['alt_mobile_number'];
 					$aa[$a]['house_no'] = $feorder['house_no'];
+					$aa[$a]['floor_no'] = $feorder['floor_no'];
+					$aa[$a]['tower_no'] = $feorder['tower_no'];
 					$aa[$a]['building_name'] = $feorder['building_name'];
 					$aa[$a]['main_area'] = $feorder['main_area'];
 					$aa[$a]['landmark'] = $feorder['landmark'];
 					$aa[$a]['city'] = $feorder['city'];
 					$aa[$a]['state'] = $feorder['state'];
 					$aa[$a]['address'] = $feorder['address'];
+					$aa[$a]['google_auto_address'] = $feorder['google_auto_address'];
 					$aa[$a]['pincode'] = $feorder['pincode'];
 					$aa[$a]['latitude'] = $feorder['latitude'];
 					$aa[$a]['longitude'] = $feorder['longitude'];
