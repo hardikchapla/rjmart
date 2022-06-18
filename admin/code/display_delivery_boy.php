@@ -1,7 +1,7 @@
 <?php
 include('../../connection/connection.php');
 $reoutput = array();
-$query = "SELECT * FROM user WHERE user_type = '1'";
+$query = "SELECT * FROM user WHERE user_type = '1' ORDER BY id DESC";
 $statement = $db->query($query);
 $result = $statement->fetchAll();
 $data = array();
