@@ -119,9 +119,9 @@ $feuser = $user->fetch();
                                     </p>
                                 </div>
                                 <div class="col-xl-12 col-lg-12 col-sm-12 text-right">
-                                    <button class="btn btn-info view_documents" data-toggle="modal"
+                                    <!-- <button class="btn btn-info view_documents" data-toggle="modal"
                                         data-target="#exampleModal" id="<?= $feuser['document'] ?>">Show
-                                        Documents</button>
+                                        Documents</button> -->
                                     <?php
                                     if($feuser['status'] == 0){
                                 ?>

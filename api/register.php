@@ -64,7 +64,7 @@
  			$status = 1;
  		} else {
  			$usertype = 1;
- 			$status = 0;
+ 			$status = 1;
  		}
  		$date = date('Y-m-d H:i:s');
  		$checkmobile = $db->query("SELECT * FROM user WHERE mobile = '$mobile'");
