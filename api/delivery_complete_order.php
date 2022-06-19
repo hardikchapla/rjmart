@@ -55,11 +55,15 @@
 						    $order_user = $fecheck['user_id'];
 						    $user = $db->query("SELECT * FROM user WHERE id = '$order_user'");
 						    $feuser = $user->fetch();
+							$admin = $db->query("SELECT * FROM `admin` WHERE id = 1");
+        					$feadmin = $admin->fetch();
 	                        $title = "Order completed";
 	                        $data2 = array();
 	                        $data2['message'] = "Order completed successfully";
 	                        sendPushNotification($feuser['device_token'],$title,$feuser['device_type'],$data2);
+	                        sendPushNotificationAdmin($feadmin['device_token'],$title,$feadmin['device_type'],$data2);
 							$notification2 = $db->query("INSERT INTO notification SET receiver_id = '$order_user',order_id = '$order_id', title = 'Order completed', message = 'Order completed successfully', `type` = 'order_completed', receiver_type = '0', created = '$created'");
+							$notification2 = $db->query("INSERT INTO notification SET sender_id = '$order_user',order_id = '$order_id', title = 'Order completed', message = 'Order completed successfully', `type` = 'order_completed', receiver_type = '1', created = '$created'");
 	                        // sendsms($feuser['mobile'],"Delivered : Your order for Gujarat Fruits & Vegetables order ID ".$order_number." has been delivered.");
 							$status = 1;
 							$message = "Order completed successfully";

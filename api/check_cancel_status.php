@@ -46,6 +46,16 @@
 			$data2['message'] = "Your order has been cancelled, you will get your refund within 48 hours";
 			$data2['data'] = array();
 			sendPushNotificationAdmin($feadmin['device_token'], $title1, $feadmin['device_type'], $data2);
+
+			$request = $db->query("SELECT * FROM near_by_request WHERE order_id = '$order_id'");
+			if($request->rowCount() > 0){
+        		$ferequest = $request->fetch(PDO::FETCH_ASSOC);
+				$to_id = $ferequest['to_id'];
+				$user1 = $db->query("SELECT * FROM user WHERE id = '$to_id'");
+        		$feuser1 = $user1->fetch();
+				$notification2 = $db->query("INSERT INTO notification SET receiver_id = '$to_id',order_id = '$order_id', title = 'Cancel Order', message = 'Your order has been cancelled, you will get your refund within 48 hours', `type` = 'order_cancelled', receiver_type = '0', created = '$date'");
+				sendPushNotificationDeliveryBoy($feuser1['device_token'], $title1, $feuser1['device_type'], $data2);
+			}
         }else{
             $status = 0;
             $message = "You cannot cancel an order. You can cancel the order within ".$cancelMinutes." minutes after placing your order";
