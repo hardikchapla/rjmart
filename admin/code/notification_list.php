@@ -72,8 +72,13 @@ if($noti->rowCount() > 0){
 
         <div class="media-body">
             <?php
-                    if($fenoti['type'] == 'new_register'){
+                    if($fenoti['type'] == 'new_register' && $feuser['user_type'] == 1){
                         ?>
+            <div class="notification-para"><span class="user-name"><?= $feuser['fullname'] ?></span><a
+                    href="delivery_boy_details.php?id=<?= $fenoti['sender_id'] ?>"> <?= $fenoti['message'] ?></a></div>
+            <?php
+                    } elseif ($fenoti['type'] == 'new_register' && $feuser['user_type'] == 0) {
+            ?>
             <div class="notification-para"><span class="user-name"><?= $feuser['fullname'] ?></span><a
                     href="user-details.php?id=<?= $fenoti['sender_id'] ?>"> <?= $fenoti['message'] ?></a></div>
             <?php
