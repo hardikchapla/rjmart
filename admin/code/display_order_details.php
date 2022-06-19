@@ -30,7 +30,7 @@ foreach($result as $row)
     $sub_array[] = $row["offer"];
     $sub_array[] = $row["product_type"];
     $sub_array[] = $row["Product_qty"];
-    $sub_array[] = $row["product_type_price"];
+    $sub_array[] = '₹'.$row["product_type_price"];
     $sub_array[] = $row["qty"];
     $data[] = $sub_array;
     $i++;

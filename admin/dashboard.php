@@ -333,7 +333,7 @@ var fridayCount = "<?php echo $fridayCount; ?>";
 
                                 <div class="order-summary">
 
-                                    <div class="summary-list">
+                                    <!-- <div class="summary-list">
                                         <div class="w-icon">
                                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                                                 viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
@@ -392,7 +392,7 @@ var fridayCount = "<?php echo $fridayCount; ?>";
 
                                         </div>
 
-                                    </div>
+                                    </div> -->
 
                                     <div class="summary-list">
                                         <div class="w-icon">
@@ -514,7 +514,7 @@ var fridayCount = "<?php echo $fridayCount; ?>";
                                                     <div class="td-content"><a
                                                             href="user-orders.php?id=<?= $ferecent["order_id"] ?>""><?= $ferecent['order_number'] ?></a></div></td>
                                                 <td><div class=" td-content pricing"><span
-                                                                class=""><?= $ferecent['total_amount'] ?></span></div>
+                                                                class="">₹<?= $ferecent['total_amount'] ?></span></div>
                                                 </td>
                                                 <td>
                                                     <div class="td-content"><?= $order_status ?></div>
@@ -581,7 +581,7 @@ var fridayCount = "<?php echo $fridayCount; ?>";
                                                 </td>
                                                 <td>
                                                     <div class="td-content"><span
-                                                            class="pricing"><?= $fetop['product_type_price'] ?></span>
+                                                            class="pricing">₹<?= $fetop['product_type_price'] ?></span>
                                                     </div>
                                                 </td>
                                                 <td>

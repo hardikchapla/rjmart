@@ -14,7 +14,7 @@ foreach($result as $row)
     $sub_array[] = $row['order_number'];
     $sub_array[] = $row["full_name"];
     $sub_array[] = $row["order_item"];
-    $sub_array[] = $row['total_amount'];
+    $sub_array[] = '₹'.$row['total_amount'];
     $sub_array[] = $row['payment_type'];
     if($row['is_cancel_by_admin'] == 1){
         $sub_array[] = "Admin";

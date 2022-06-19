@@ -14,7 +14,7 @@ foreach($result as $row)
     $sub_array[] = '<a type="href" href="user-orders.php?id='.$row["id"].'">'.$row['order_number'].'</a>';
     $sub_array[] = $row["full_name"];
     $sub_array[] = $row["order_item"];
-    $sub_array[] = $row['total_amount'];
+    $sub_array[] = '₹'.$row['total_amount'];
     $sub_array[] = $row['payment_type'];
     $sub_array[] = '<a href="user-orders.php?id='.$row["id"].'"><button class="btn btn-outline-info userProfileDetails" type="button" >View</button></a>';
     $data[] = $sub_array;

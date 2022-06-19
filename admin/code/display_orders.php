@@ -21,7 +21,7 @@ foreach($result as $row)
     $sub_array[] = $row['order_number'];
     $sub_array[] = $row["full_name"];
     $sub_array[] = $row["order_item"];
-    $sub_array[] = $row['total_amount'];
+    $sub_array[] = '₹'.$row['total_amount'];
     $sub_array[] = $row['payment_type'];
     $sub_array[] = '<button class="btn btn-outline-danger cancelOrder"  id="'.$row["id"].'" type="button" >Cancel Order</button>';
     $sub_array[] =  '<select class="form-control assigndeliveryboy" id="'.$row["id"].'"><option>Select Delivery Boy</option>'.$kbc.'</select>';
