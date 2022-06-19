@@ -68,7 +68,7 @@ $currentPage = 'Push Notification';
         <div id="content" class="main-content">
             <div class="layout-px-spacing">
                 <div class="row layout-top-spacing">
-                    <div id="custom_styles" class="col-lg-12 layout-spacing col-md-12">
+                    <div id="custom_styles" class="col-lg-6 layout-spacing col-md-6">
                         <div class="statbox widget box box-shadow">
                             <div class="widget-content widget-content-area br-6">
                                 <div class="widget-header add-new-cat-title">
@@ -81,10 +81,28 @@ $currentPage = 'Push Notification';
                                 <form class="needs-validation" novalidate action="javascript:void(0);" method="POST"
                                     accept-charset="utf-8" id="add-pincode-form">
                                     <div class="form-row">
-                                        <div class="col-md-4 mb-4">
-                                            <label for="validationCustom05">Select User</label>
+                                        <div class="col-md-12 mb-4">
+                                            <label for="title">Select User Type</label><br>
+                                            <div class="form-check form-check-inline">
+                                                <input class="form-check-input" type="radio" name="user_type"
+                                                    id="user_type1" value="all">
+                                                <label class="form-check-label" for="user_type1">All</label>
+                                            </div>
+                                            <div class="form-check form-check-inline">
+                                                <input class="form-check-input" type="radio" name="user_type"
+                                                    id="user_type2" value="delivery_boy">
+                                                <label class="form-check-label" for="user_type2">Delivery Boy</label>
+                                            </div>
+                                            <div class="form-check form-check-inline">
+                                                <input class="form-check-input" type="radio" name="user_type"
+                                                    id="user_type3" value="users">
+                                                <label class="form-check-label" for="user_type3">Users</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <label for="selected_user">Select User</label>
                                             <select class="form-control" name="selected_user[]" id="selected_user"
-                                                required multiple>
+                                                multiple>
                                                 <?php
                                                     $getData = $db->query("SELECT * FROM user WHERE user_type = 0 ORDER BY ID ASC");
                                                     while($fetchData = $getData->fetch()){ ?>
@@ -94,18 +112,18 @@ $currentPage = 'Push Notification';
                                             ?>
                                             </select>
                                         </div>
-                                        <div class="col-md-4 mb-4">
-                                            <label for="validationCustom05">Title</label>
+                                        <div class="col-md-12 mb-4">
+                                            <label for="title">Title</label>
                                             <input type="text" class="form-control" id="title" placeholder="Enter Title"
                                                 required name="title">
                                             <div class="invalid-feedback">
                                                 Please provide a valid Title.
                                             </div>
                                         </div>
-                                        <div class="col-md-4 mb-4">
-                                            <label for="validationCustom05">Message</label>
-                                            <input type="text" class="form-control" id="message"
-                                                placeholder="Enter Message" required name="message">
+                                        <div class="col-md-12 mb-4">
+                                            <label for="message">Message</label>
+                                            <textarea class="form-control" id="message" placeholder="Enter Message"
+                                                required name="message"></textarea>
                                             <div class="invalid-feedback">
                                                 Please provide a valid Message.
                                             </div>
