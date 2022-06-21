@@ -22,7 +22,7 @@
  		$checkmobile = $db->query("SELECT * FROM user WHERE id = '$user_id' AND user_type = 1");
  		if($checkmobile->rowCount() > 0){
 			$avtar_path = BASE_URL.'assets/img/user/';
-			$order_details = $db->query("SELECT c.id as request_id,c.*, a.id as order_id,a.created as orderdt,a.*,b.* FROM near_by_request c, product_order a,user_address b WHERE c.order_id = a.id AND a.user__id = b.id AND c.to_id = '$user_id' AND c.status = 1 AND (a.order_status = 1 OR a.order_status = 4) ORDER BY c.created DESC");
+			$order_details = $db->query("SELECT c.id as request_id,c.*, a.id as order_id,a.created as orderdt,a.*,b.* FROM near_by_request c, product_order a,user_address b WHERE c.order_id = a.id AND a.user_id = b.id AND c.to_id = '$user_id' AND c.status = 1 AND (a.order_status = 1 OR a.order_status = 4) ORDER BY c.created DESC");
 			if($order_details->rowCount() > 0){
 				$path = BASE_URL.'assets/img/product/';
 				$aa = array();
