@@ -80,10 +80,10 @@
 				$query = $db->query("INSERT INTO user SET mobile = '$mobile', password = '$password',user_type = '$usertype',login_type = '$logintype',fullname = '$fullname', email = '$email', dob = '$dob', login_identifier = '$login_identifier', device_type = '$device_type', device_token = '$device_token', latitude = '$latitude', longitude = '$longitude', created = '$date', status = '$status'");
 	 			$user_id = $db->lastInsertId();
 
-	 			$notification = $db->query("INSERT INTO notification SET sender_id = '$user_id', title = 'Delivery boy register', message = 'New delivery boy register successfully', `type` = 'new_register', receiver_type = '1', created = '$date'");
+	 			$notification = $db->query("INSERT INTO notification SET sender_id = '$user_id', title = 'Delivery boy register', message = 'New Delivery boy Registered.', `type` = 'new_register', receiver_type = '1', created = '$date'");
 				 $title = "Delivery boy register";
 				 $data2 = array();
-				 $data2['message'] = "New delivery boy register successfully";
+				 $data2['message'] = "New Delivery boy Registered.";
 				 sendPushNotificationAdmin($feadmin['device_token'],$title,$feadmin['device_type'],$data2);
  			} else {
                 $friend_referral = $_REQUEST['friend_referral'];
@@ -110,10 +110,10 @@
                         }
                         $query = $db->query("INSERT INTO user SET mobile = '$mobile', password = '$password',user_type = '$usertype',login_type = '$logintype',fullname = '$fullname', email = '$email', dob = '$dob', login_identifier = '$login_identifier', device_type = '$device_type', device_token = '$device_token', latitude = '$latitude', longitude = '$longitude', created = '$date', status = '$status',referral = '$referral',friend_referral = '$friend_referral'");
                         $user_id = $db->lastInsertId();
-                        $notification = $db->query("INSERT INTO notification SET sender_id = '$user_id', title = 'User register', message = 'New user register successfully', `type` = 'new_register', receiver_type = '1', created = '$date'");
+                        $notification = $db->query("INSERT INTO notification SET sender_id = '$user_id', title = 'User register', message = 'New User Registered.', `type` = 'new_register', receiver_type = '1', created = '$date'");
 						$title = "User register";
 						$data2 = array();
-						$data2['message'] = "New user register successfully";
+						$data2['message'] = "New User Registered.";
 						sendPushNotificationAdmin($feadmin['device_token'],$title,$feadmin['device_type'],$data2);
                     } else {
                         $status = 0;
@@ -128,10 +128,10 @@
                 } else {
                     $query = $db->query("INSERT INTO user SET mobile = '$mobile', password = '$password',user_type = '$usertype',login_type = '$logintype',fullname = '$fullname', email = '$email', dob = '$dob', login_identifier = '$login_identifier', device_type = '$device_type', device_token = '$device_token', latitude = '$latitude', longitude = '$longitude', created = '$date', status = '$status',referral = '$referral'");
                     $user_id = $db->lastInsertId();
-                    $notification = $db->query("INSERT INTO notification SET sender_id = '$user_id', title = 'User register', message = 'New user register successfully', `type` = 'new_register', receiver_type = '1', created = '$date'");
+                    $notification = $db->query("INSERT INTO notification SET sender_id = '$user_id', title = 'User register', message = 'New User Registered.', `type` = 'new_register', receiver_type = '1', created = '$date'");
 					$title = "User register";
 					$data2 = array();
-					$data2['message'] = "New user register successfully";
+					$data2['message'] = "New User Registered.";
 					sendPushNotificationAdmin($feadmin['device_token'],$title,$feadmin['device_type'],$data2);
                 }
 	 		}

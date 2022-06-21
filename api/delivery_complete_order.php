@@ -34,6 +34,7 @@
  		$created = date('Y-m-d H:i:s');
  		$checkmobile = $db->query("SELECT * FROM user WHERE id = '$user_id' AND user_type = 1");
  		if($checkmobile->rowCount() > 0){
+			$femobile = $checkmobile->fetch(PDO::FETCH_ASSOC);
 			$check = $db->query("SELECT * FROM product_order WHERE order_number = '$order_number'");
 			if($check->rowCount() > 0){
 				$fecheck = $check->fetch();
@@ -50,7 +51,7 @@
 					    $order_id = $fecheck['id'];
 						$update = $db->query("UPDATE product_order SET order_status = 2 WHERE order_number = '$order_number'");
 						$user_update = $db->query("UPDATE user SET active = 1 WHERE id = '$user_id'");
-	                    $notification = $db->query("INSERT INTO notification SET sender_id = '$user_id',order_id = '$order_id', title = 'Order completed', message = 'Order completed successfully', `type` = 'order_completed', receiver_type = '1', created = '$created'");
+	                    // $notification = $db->query("INSERT INTO notification SET sender_id = '$user_id',order_id = '$order_id', title = 'Order completed', message = 'Order completed successfully', `type` = 'order_completed', receiver_type = '1', created = '$created'");
 						if($update && $user_update){
 						    $order_user = $fecheck['user_id'];
 						    $user = $db->query("SELECT * FROM user WHERE id = '$order_user'");
@@ -59,11 +60,13 @@
         					$feadmin = $admin->fetch();
 	                        $title = "Order completed";
 	                        $data2 = array();
-	                        $data2['message'] = "Order completed successfully";
+	                        $data2['message'] = "Your order ".$order_number." has been delivered, I hope you will enjoy the order.";
+							$data3 = array();
+	                        $data3['message'] = $femobile['fullname']." has delivered the order ".$order_number." to the ".$feuser['fullname'];
 	                        sendPushNotification($feuser['device_token'],$title,$feuser['device_type'],$data2);
 	                        sendPushNotificationAdmin($feadmin['device_token'],$title,$feadmin['device_type'],$data2);
-							$notification2 = $db->query("INSERT INTO notification SET receiver_id = '$order_user',order_id = '$order_id', title = 'Order completed', message = 'Order completed successfully', `type` = 'order_completed', receiver_type = '0', created = '$created'");
-							$notification2 = $db->query("INSERT INTO notification SET sender_id = '$order_user',order_id = '$order_id', title = 'Order completed', message = 'Order completed successfully', `type` = 'order_completed', receiver_type = '1', created = '$created'");
+							$notification2 = $db->query("INSERT INTO notification SET receiver_id = '$order_user',order_id = '$order_id', title = 'Order completed', message = 'Your order ".$order_number." has been delivered, I hope you will enjoy the order.', `type` = 'order_completed', receiver_type = '0', created = '$created'");
+							$notification2 = $db->query("INSERT INTO notification SET sender_id = '$order_user',order_id = '$order_id', title = 'Order completed', message = '".$femobile['fullname']." has delivered the order ".$order_number." to the ".$feuser['fullname']."', `type` = 'order_completed', receiver_type = '1', created = '$created'");
 	                        // sendsms($feuser['mobile'],"Delivered : Your order for Gujarat Fruits & Vegetables order ID ".$order_number." has been delivered.");
 							$status = 1;
 							$message = "Order completed successfully";

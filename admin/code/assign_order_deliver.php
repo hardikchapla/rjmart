@@ -107,29 +107,25 @@ if (isset($_REQUEST['order_id']) && isset($_REQUEST['user_id'])) {
     // send push notification
 
     $user = $db->query("SELECT * FROM user WHERE id = '$from_id'");
-
     $feuser = $user->fetch();
 
-
+    $deliver = $db->query("SELECT * FROM user WHERE id = '$user_id'");
+    $fedeliver = $deliver->fetch();
 
     $title = "Request Accepted";
 
     $data1 = array();
 
-    $data1['message'] = "Order request accepted successfully";
+    $data1['message'] = "Your order has been assigned to ".$fedeliver['fullname'].", you will get the order soon.";
     sendPushNotification($feuser['device_token'], $title, $feuser['device_type'], $data1);
-    $notification = $db->query("INSERT INTO notification SET receiver_id = '$from_id',order_id = '$order_id', title = 'Request Accepted', message = 'Your order request accepted successfully', `type` = 'order_accepted', receiver_type = '0', created = '$date'");
-    $deliver = $db->query("SELECT * FROM user WHERE id = '$user_id'");
-    $fedeliver = $deliver->fetch();
-
-
+    $notification = $db->query("INSERT INTO notification SET receiver_id = '$from_id',order_id = '$order_id', title = 'Request Accepted', message = 'Your order has been assigned to ".$fedeliver['fullname'].", you will get the order soon.', `type` = 'order_accepted', receiver_type = '0', created = '$date'");
 
     $title1 = "Order assign";
     $data2 = array();
-    $data2['message'] = "Order assign by admin";
+    $data2['message'] = "Admin has assigned to you on this order id ".$feorder['order_number'].". please, click here for more details.";
     $data2['data'] = $aa;
     sendPushNotificationDeliveryBoy($fedeliver['device_token'], $title1, $fedeliver['device_type'], $data2);
-    $notification2 = $db->query("INSERT INTO notification SET receiver_id = '$user_id',order_id = '$order_id', title = 'Order assign', message = 'Order assign by admin', `type` = 'order_assigned', receiver_type = '0', created = '$date'");
+    $notification2 = $db->query("INSERT INTO notification SET receiver_id = '$user_id',order_id = '$order_id', title = 'Order assign', message = 'Admin has assigned to you on this order id ".$feorder['order_number'].". please, click here for more details.', `type` = 'order_assigned', receiver_type = '0', created = '$date'");
     echo "true";
 
 }

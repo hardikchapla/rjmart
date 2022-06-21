@@ -21,11 +21,13 @@ if (isset($_REQUEST['order_id'])) {
         $date = date('Y-m-d H:i:s');
         $title = "Order Shipped";
         $data1 = array();
-        $data1['message'] = "Order shipped successfully";
+        $data1['message'] = "Your order ".$feorder1['order_number']." has been shipped.";
+        $data2 = array();
+        $data2['message'] = "The order ".$feorder1['order_number']." has been shipped by admin, please collect the order from the store.";
         sendPushNotification($feuser['device_token'], $title, $feuser['device_type'], $data1);
-        sendPushNotificationDeliveryBoy($feuser1['device_token'], $title, $feuser1['device_type'], $data1);
-        $notification2 = $db->query("INSERT INTO notification SET receiver_id = '$from_id',order_id = '$order_id', title = 'Order Shipped', message = 'Order shipped successfully', `type` = 'order_shipped', receiver_type = '0', created = '$date'");
-        $notification2 = $db->query("INSERT INTO notification SET receiver_id = '$to_id',order_id = '$order_id', title = 'Order Shipped', message = 'Order shipped successfully', `type` = 'order_shipped', receiver_type = '0', created = '$date'");
+        sendPushNotificationDeliveryBoy($feuser1['device_token'], $title, $feuser1['device_type'], $data2);
+        $notification2 = $db->query("INSERT INTO notification SET receiver_id = '$from_id',order_id = '$order_id', title = 'Order Shipped', message = 'Your order ".$feorder1['order_number']." has been shipped.', `type` = 'order_shipped', receiver_type = '0', created = '$date'");
+        $notification2 = $db->query("INSERT INTO notification SET receiver_id = '$to_id',order_id = '$order_id', title = 'Order Shipped', message = 'The order ".$feorder1['order_number']." has been shipped by admin, please collect the order from the store.', `type` = 'order_shipped', receiver_type = '0', created = '$date'");
         // sendsms($feuser['mobile'],"Shipped : Your Order has been shipped.it will be delivered by in 24 hours. and your one time password is :".$otp);
         echo "true";
     }

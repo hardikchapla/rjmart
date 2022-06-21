@@ -23,13 +23,17 @@ if (isset($_REQUEST['order_id'])) {
         $date = date('Y-m-d H:i:s');
         $title = "Order Completed";
         $data1 = array();
-        $data1['message'] = "Order completed successfully";
+        $data1['message'] = "Your order ".$feorder1['order_number']." has been delivered, I hope you will enjoy the order.";
+        $data2 = array();
+        $data2['message'] = "The order ".$feorder1['order_number']." has been marked as delivered by the admin.";
+        $data3 = array();
+        $data3['message'] = $feuser['fullname']." order ".$feorder1['order_number']." has been delivered";
         sendPushNotification($feuser['device_token'], $title, $feuser['device_type'], $data1);
-        sendPushNotificationDeliveryBoy($feuser1['device_token'], $title, $feuser1['device_type'], $data1);
-        sendPushNotificationAdmin($feadmin['device_token'],$title,$feadmin['device_type'],$data1);
-        $notification2 = $db->query("INSERT INTO notification SET receiver_id = '$from_id',order_id = '$order_id', title = 'Order Shipped', message = 'Order shipped successfully', `type` = 'order_shipped', receiver_type = '0', created = '$date'");
-        $notification3 = $db->query("INSERT INTO notification SET receiver_id = '$toid',order_id = '$order_id', title = 'Order Shipped', message = 'Order shipped successfully', `type` = 'order_shipped', receiver_type = '0', created = '$date'");
-        $notification4 = $db->query("INSERT INTO notification SET sender_id = '$toid',order_id = '$order_id', title = 'Order Shipped', message = 'Order shipped successfully', `type` = 'order_shipped', receiver_type = '1', created = '$date'");
+        sendPushNotificationDeliveryBoy($feuser1['device_token'], $title, $feuser1['device_type'], $data2);
+        sendPushNotificationAdmin($feadmin['device_token'],$title,$feadmin['device_type'],$data3);
+        $notification2 = $db->query("INSERT INTO notification SET receiver_id = '$from_id',order_id = '$order_id', title = 'Order Shipped', message = 'Your order ".$feorder1['order_number']." has been delivered, I hope you will enjoy the order.', `type` = 'order_shipped', receiver_type = '0', created = '$date'");
+        $notification3 = $db->query("INSERT INTO notification SET receiver_id = '$toid',order_id = '$order_id', title = 'Order Shipped', message = 'The order ".$feorder1['order_number']." has been marked as delivered by the admin.', `type` = 'order_shipped', receiver_type = '0', created = '$date'");
+        $notification4 = $db->query("INSERT INTO notification SET sender_id = '$toid',order_id = '$order_id', title = 'Order Shipped', message = '".$feuser['fullname']." order ".$feorder1['order_number']." has been delivered', `type` = 'order_shipped', receiver_type = '1', created = '$date'");
         // sendsms($feuser['mobile'],"Shipped : Your Order has been shipped.it will be delivered by in 24 hours. and your one time password is :".$otp);
         echo "true";
     }

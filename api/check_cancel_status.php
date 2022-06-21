@@ -38,13 +38,16 @@
             $status = 1;
             $message = "Your order has been cancelled, you will get your refund within 48 hours";
             $updateStatus = $db->query("UPDATE product_order SET order_status = '3' WHERE id = '$order_id'");
-			$notification = $db->query("INSERT INTO notification SET sender_id = '$user_id',order_id = '$order_id', title = 'Cancel Order', message = 'Your order has been cancelled, you will get your refund within 48 hours', `type` = 'order_cancelled', receiver_type = '1', created = '$created'");
+			$user = $db->query("SELECT * FROM user WHERE id = '$user_id'");
+        	$feuser = $user->fetch();
+			$notification = $db->query("INSERT INTO notification SET sender_id = '$user_id',order_id = '$order_id', title = 'Cancel Order', message = '".$feuser['fullname']." has canceled the order ".$feOrder['order_number']."', `type` = 'order_cancelled', receiver_type = '1', created = '$created'");
 			$admin = $db->query("SELECT * FROM `admin` WHERE id = 1");
         	$feadmin = $admin->fetch();
 			$title1 = "Cancel Order";
 			$data2 = array();
-			$data2['message'] = "Your order has been cancelled, you will get your refund within 48 hours";
+			$data2['message'] = $feuser['fullname']." has canceled the order ".$feOrder['order_number'];
 			$data2['data'] = array();
+			$title1 = "Cancel Order";
 			sendPushNotificationAdmin($feadmin['device_token'], $title1, $feadmin['device_type'], $data2);
 
 			$request = $db->query("SELECT * FROM near_by_request WHERE order_id = '$order_id'");
@@ -53,8 +56,10 @@
 				$to_id = $ferequest['to_id'];
 				$user1 = $db->query("SELECT * FROM user WHERE id = '$to_id'");
         		$feuser1 = $user1->fetch();
-				$notification2 = $db->query("INSERT INTO notification SET receiver_id = '$to_id',order_id = '$order_id', title = 'Cancel Order', message = 'Your order has been cancelled, you will get your refund within 48 hours', `type` = 'order_cancelled', receiver_type = '0', created = '$date'");
-				sendPushNotificationDeliveryBoy($feuser1['device_token'], $title1, $feuser1['device_type'], $data2);
+				$data3 = array();
+				$data3['message'] = $feuser['fullname']." has canceled the order ".$feOrder['order_number'];
+				$notification2 = $db->query("INSERT INTO notification SET receiver_id = '$to_id',order_id = '$order_id', title = 'Cancel Order', message = '".$feuser['fullname']." has canceled the order ".$feOrder['order_number']."', `type` = 'order_cancelled', receiver_type = '0', created = '$date'");
+				sendPushNotificationDeliveryBoy($feuser1['device_token'], $title1, $feuser1['device_type'], $data3);
 			}
         }else{
             $status = 0;

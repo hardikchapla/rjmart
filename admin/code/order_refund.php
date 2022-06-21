@@ -13,9 +13,9 @@ if (isset($_REQUEST['order_id'])) {
         $date = date('Y-m-d H:i:s');
         $title = "Amount Refund";
         $data1 = array();
-        $data1['message'] = "You will get your refund within 48 hours";
+        $data1['message'] = "Your refund has been initiated for the order ".$feorder1['order_number'].", please wait up to 2 working days";
         sendPushNotification($feuser['device_token'], $title, $feuser['device_type'], $data1);
-        $notification2 = $db->query("INSERT INTO notification SET receiver_id = '$from_id',order_id = '$order_id', title = 'Amount Refund', message = 'You will get your refund within 48 hours', `type` = 'order_refund', receiver_type = '0', created = '$date'");
+        $notification2 = $db->query("INSERT INTO notification SET receiver_id = '$from_id',order_id = '$order_id', title = 'Amount Refund', message = 'Your refund has been initiated for the order ".$feorder1['order_number'].", please wait up to 2 working days', `type` = 'order_refund', receiver_type = '0', created = '$date'");
         // sendsms($feuser['mobile'],"Shipped : Your Order has been shipped.it will be delivered by in 24 hours. and your one time password is :".$otp);
         echo "true";
     }

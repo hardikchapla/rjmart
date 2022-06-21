@@ -110,8 +110,6 @@
                 $order = $db->query("INSERT INTO product_order SET order_number = '$order_number', user_id = '$user_id', user_address_id = '$user_address_id', total_amount	 = '$total_amount', payment_type = '$payment_type', order_status = 0, created = '$created', order_date = '$order_date', referral_amount = '$referral_amount'");
                 $order_id = $db->lastInsertId();
 
-                $notification = $db->query("INSERT INTO notification SET sender_id = '$user_id',order_id = '$order_id', title = 'New Order', message = 'New order created successfully', `type` = 'new_order', receiver_type = '1', created = '$created'");
-                $notification1 = $db->query("INSERT INTO notification SET receiver_id = '$user_id',order_id = '$order_id', title = 'New Order', message = 'New order created successfully', `type` = 'new_order', receiver_type = '0', created = '$created'");
                 while ($fecheckcart = $checkcart->fetch()) {
                     $product_id = $fecheckcart['p_id'];
                     $qty = $fecheckcart['qty'];
@@ -200,10 +198,14 @@
                 //     }
                 // }
                 if($order){
+                    $notification = $db->query("INSERT INTO notification SET sender_id = '$user_id',order_id = '$order_id', title = 'New Order', message = 'You got a new order from ".$feuser['fullname'].", please click here for more details.', `type` = 'new_order', receiver_type = '1', created = '$created'");
+                    $notification1 = $db->query("INSERT INTO notification SET receiver_id = '$user_id',order_id = '$order_id', title = 'New Order', message = 'Thank you for being our valued customer. We hope our product will meet your expectations. Let us know if you have any questions.', `type` = 'new_order', receiver_type = '0', created = '$created'");
                     $title = "New Order";
                     $data2 = array();
-                    $data2['message'] = "Order request sent successfully";
-                    sendPushNotification($feuser['device_token'],$title,$feuser['device_type'],$data2);
+                    $data2['message'] = 'You got a new order from '.$feuser['fullname'].', please click here for more details.';
+                    $data3 = array();
+                    $data3['message'] = 'Thank you for being our valued customer. We hope our product will meet your expectations. Let us know if you have any questions.';
+                    sendPushNotification($feuser['device_token'],$title,$feuser['device_type'],$data3);
                     sendPushNotificationAdmin($feadmin['device_token'],$title,$feadmin['device_type'],$data2);
                     // sendsms($feuser['mobile'],"Packed : Your order for Gujarat Fruits & Vegetables order ID ".$feorder['order_number']." has been packed by the seller and will be shipped soon.");
 
