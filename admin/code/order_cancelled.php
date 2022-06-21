@@ -16,7 +16,7 @@ if (isset($_REQUEST['order_id']) && isset($_REQUEST['reasone']) && !empty($_REQU
 
         $title = "Order Cancelled";
         $data1 = array();
-        $data1['message'] = 'Your order '.$feorder1['order_number'].' has been canceled by admin because of '.$reasone;
+        $data1['message'] = "Your order ".$feorder1['order_number']." has been canceled by admin because of ".$reasone;
         $notification = $db->query("INSERT INTO notification (`receiver_id`, `order_id`, `title`, `message`, `type`) VALUES ('$from_id', '$order_id', '$title',".$data1['message'].", 'cancel_order')");
         sendPushNotification($feuser['device_token'], $title, $feuser['device_type'], $data1);
         // sendsms($feuser['mobile'],"Cancelled : Your Order has been cancelled.");
