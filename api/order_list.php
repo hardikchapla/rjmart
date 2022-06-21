@@ -53,7 +53,14 @@
 					$aa[$a]['pincode'] = $feorder['pincode'];
 					$aa[$a]['latitude'] = $feorder['latitude'];
 					$aa[$a]['longitude'] = $feorder['longitude'];
-                    $aa[$a]['delivery_date'] = ($feorder['order_date']) ? $feorder['order_date']:'';
+                    $aa[$a]['delivery_type'] = $feorder['delivery_type'];
+					if($feorder['delivery_type'] == 2){
+						$aa[$a]['delivery_date'] = $feorder['delivery_date'];
+						$aa[$a]['delivery_time'] = $feorder['delivery_time'];
+					} else {
+						$aa[$a]['delivery_date'] = ($feorder['order_date']) ? $feorder['order_date']:'';
+						$aa[$a]['delivery_time'] = '';
+					}
                     $aa[$a]['order_date'] = ($feorder['orderdt']) ? $feorder['orderdt']:'';
 					$request = $db->query("SELECT * FROM near_by_request WHERE order_id = '$order_id'");
 					if($request->rowCount() > 0){

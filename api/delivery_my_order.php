@@ -56,7 +56,14 @@
 					$aa[$a]['latitude'] = $feorder['latitude'];
 					$aa[$a]['longitude'] = $feorder['longitude'];
 					$aa[$a]['receive_otp'] = $feorder['receive_otp'];
-                    $aa[$a]['delivery_date'] = ($feorder['order_date']) ? $feorder['order_date']:'';
+                    $aa[$a]['delivery_type'] = $feorder['delivery_type'];
+					if($feorder['delivery_type'] == 2){
+						$aa[$a]['delivery_date'] = $feorder['delivery_date'];
+						$aa[$a]['delivery_time'] = $feorder['delivery_time'];
+					} else {
+						$aa[$a]['delivery_date'] = ($feorder['order_date']) ? $feorder['order_date']:'';
+						$aa[$a]['delivery_time'] = '';
+					}
                     $aa[$a]['order_date'] = ($feorder['orderdt']) ? $feorder['orderdt']:'';
 					if($feUser['avatar'] == ''){
 						$aa[$a]['avatar'] = '';

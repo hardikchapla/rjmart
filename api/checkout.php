@@ -47,33 +47,44 @@
 			$response['data'] = $data;
 			echo json_encode($response);
 			die;
- 		}/*
- 		if(empty($_REQUEST['latitude'])){
- 			$status = 2;
-			$message = "Please enter latitude";
-			$data = array();
-			$response['status'] = $status;
-			$response['message'] = $message;
-			$response['data'] = $data;
-			echo json_encode($response);
-			die;
  		}
- 		if(empty($_REQUEST['longitude'])){
- 			$status = 2;
-			$message = "Please enter longitude";
-			$data = array();
-			$response['status'] = $status;
-			$response['message'] = $message;
-			$response['data'] = $data;
-			echo json_encode($response);
-			die;
- 		}*/
+        if(empty($_REQUEST['delivery_type'])){
+            $status = 2;
+           $message = "Please enter delivery_type";
+           $data = array();
+           $response['status'] = $status;
+           $response['message'] = $message;
+           $response['data'] = $data;
+           echo json_encode($response);
+           die;
+        }
+        if($_REQUEST['delivery_type'] == 2){
+            if(empty($_REQUEST['delivery_date'])){
+                $status = 2;
+                $message = "Please enter delivery_date";
+                $data = array();
+                $response['status'] = $status;
+                $response['message'] = $message;
+                $response['data'] = $data;
+                echo json_encode($response);
+                die;
+            }
+            if(empty($_REQUEST['delivery_time'])){
+                $status = 2;
+                $message = "Please enter delivery_time";
+                $data = array();
+                $response['status'] = $status;
+                $response['message'] = $message;
+                $response['data'] = $data;
+                echo json_encode($response);
+                die;
+            }
+        }
  		$user_id = $_REQUEST['user_id'];
  		$user_address_id = $_REQUEST['user_address_id'];
  		$total_amount = $_REQUEST['total_amount'];
  		$payment_type = $_REQUEST['payment_type'];
- 		$latitude = $_REQUEST['latitude'];
- 		$longitude = $_REQUEST['longitude'];
+ 		$delivery_type = $_REQUEST['delivery_type'];
  		$payment_identifier = (isset($_REQUEST['payment_identifier']) && $_REQUEST['payment_identifier'] != '') ? $_REQUEST['payment_identifier']:'';
  		$TXNDATE = (isset($_REQUEST['TXNDATE']) && $_REQUEST['TXNDATE'] != '') ? $_REQUEST['TXNDATE']:'';
  		$referral_amount = (isset($_REQUEST['referral_amount']) && $_REQUEST['referral_amount'] != '') ? $_REQUEST['referral_amount']:0;
@@ -107,7 +118,13 @@
                         die;
                     }
                 }
-                $order = $db->query("INSERT INTO product_order SET order_number = '$order_number', user_id = '$user_id', user_address_id = '$user_address_id', total_amount	 = '$total_amount', payment_type = '$payment_type', order_status = 0, created = '$created', order_date = '$order_date', referral_amount = '$referral_amount'");
+                if($delivery_type == 2){
+                    $delivery_date = $_REQUEST['delivery_date'];
+                    $delivery_time = $_REQUEST['delivery_time'];
+                    $order = $db->query("INSERT INTO product_order SET order_number = '$order_number', user_id = '$user_id', user_address_id = '$user_address_id', total_amount	 = '$total_amount', payment_type = '$payment_type', order_status = 0, created = '$created', order_date = '$order_date', referral_amount = '$referral_amount', delivery_date = '$delivery_date', delivery_time = '$delivery_time', delivery_type = '$delivery_type'");
+                } else {
+                    $order = $db->query("INSERT INTO product_order SET order_number = '$order_number', user_id = '$user_id', user_address_id = '$user_address_id', total_amount	 = '$total_amount', payment_type = '$payment_type', order_status = 0, created = '$created', order_date = '$order_date', referral_amount = '$referral_amount'");
+                }
                 $order_id = $db->lastInsertId();
 
                 while ($fecheckcart = $checkcart->fetch()) {
@@ -153,7 +170,14 @@
                 $aa['pincode'] = $feorder['pincode'];
                 $aa['latitude'] = $feorder['latitude'];
                 $aa['longitude'] = $feorder['longitude'];
-                $aa['delivery_date'] = ($feorder['order_date']) ? $feorder['order_date']:'';
+                $aa['delivery_type'] = $feorder['delivery_type'];
+                if($feorder['delivery_type'] == 2){
+                    $aa['delivery_date'] = $feorder['delivery_date'];
+                    $aa['delivery_time'] = $feorder['delivery_time'];
+                } else {
+                    $aa['delivery_date'] = ($feorder['order_date']) ? $feorder['order_date']:'';
+                    $aa['delivery_time'] = '';
+                }
                 $aa['order_date'] = ($feorder['orderdt']) ? $feorder['orderdt']:'';
                 $order_items = $db->query("SELECT a.*,b.*,c.* FROM order_items a, product b,product_type c WHERE a.product_id = b.id AND a.product_type_id = c.product_type_id AND a.order_id = '$order_id'");
                 $bb = array();
