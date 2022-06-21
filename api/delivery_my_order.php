@@ -23,10 +23,10 @@
  		if($checkmobile->rowCount() > 0){
 			$avtar_path = BASE_URL.'assets/img/user/';
 			$order_details = $db->query("SELECT c.id as request_id,c.*, a.id as order_id,a.created as orderdt,a.*,b.* FROM near_by_request c, product_order a,user_address b WHERE c.order_id = a.id AND a.user_id = b.id AND c.to_id = '$user_id' AND c.status = 1 AND (a.order_status = 1 OR a.order_status = 4) ORDER BY c.created DESC");
+			$aa = array();
+			$a = 0;
 			if($order_details->rowCount() > 0){
 				$path = BASE_URL.'assets/img/product/';
-				$aa = array();
-				$a = 0;
 				$feUser = $checkmobile->fetch();
 				while($feorder = $order_details->fetch()){
 					$order_id = $feorder['order_id'];
