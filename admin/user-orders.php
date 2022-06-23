@@ -104,10 +104,34 @@ $feaddress = $user_address->fetch();
                                     <p><?= $feorder['payment_type'] ?></p>
                                 </div>
                                 <div class="col-xl-3 col-lg-3 col-sm-3">
-                                    <p><strong>Delivery Date. :</strong></p>
+                                    <p><strong>Order Date. :</strong></p>
                                 </div>
                                 <div class="col-xl-3 col-lg-3 col-sm-3">
                                     <p><?= ($feorder['order_date'] == '0000-00-00 00:00:00') ? '':date('d, M Y H:i a',strtotime($feorder['order_date'])) ?>
+                                    </p>
+                                </div>
+                                <div class="col-xl-3 col-lg-3 col-sm-3">
+                                    <p><strong>Delivery Type. :</strong></p>
+                                </div>
+                                <div class="col-xl-3 col-lg-3 col-sm-3">
+                                    <p>
+                                        <?= ($feorder['delivery_type'] == 2) ? 'Later':'Same Day' ?>
+                                    </p>
+                                </div>
+                                <div class="col-xl-3 col-lg-3 col-sm-3">
+                                    <p><strong>Delivery Date. :</strong></p>
+                                </div>
+                                <div class="col-xl-3 col-lg-3 col-sm-3">
+                                    <p>
+                                        <?= ($feorder['delivery_type'] == 2) ? date('d M Y', strtotime($feorder['delivery_date'])):'' ?>
+                                    </p>
+                                </div>
+                                <div class="col-xl-3 col-lg-3 col-sm-3">
+                                    <p><strong>Delivery Time. :</strong></p>
+                                </div>
+                                <div class="col-xl-3 col-lg-3 col-sm-3">
+                                    <p>
+                                        <?= ($feorder['delivery_type'] == 2) ? date('h:i A', strtotime($feorder['delivery_time'])):'' ?>
                                     </p>
                                 </div>
                                 <?php 

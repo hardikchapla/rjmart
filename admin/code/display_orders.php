@@ -23,6 +23,15 @@ foreach($result as $row)
     $sub_array[] = $row["order_item"];
     $sub_array[] = '₹'.$row['total_amount'];
     $sub_array[] = $row['payment_type'];
+    if($row['delivery_type'] == 2){
+        $sub_array[] = 'Later';
+        $sub_array[] = date('d M Y', strtotime($row['delivery_date']));
+        $sub_array[] = date('H:i A', strtotime($row['delivery_time']));
+    } else {
+        $sub_array[] = 'Same Day';
+        $sub_array[] = '';
+        $sub_array[] = '';
+    }
     $sub_array[] = '<button class="btn btn-outline-danger cancelOrder"  id="'.$row["id"].'" type="button" >Cancel Order</button>';
     $sub_array[] =  '<select class="form-control assigndeliveryboy" id="'.$row["id"].'"><option>Select Delivery Boy</option>'.$kbc.'</select>';
     $sub_array[] = '<a href="user-orders.php?id='.$row["id"].'"><button class="btn btn-outline-info userProfileDetails" type="button" >View</button></a>';
