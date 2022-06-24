@@ -234,24 +234,14 @@ $feaddress = $user_address->fetch();
                                 <div class="col-xl-3 col-lg-3 col-sm-3">
                                     <p><?= $feaddress['city'] ?></p>
                                 </div> -->
-                                <div class="col-xl-3 col-lg-3 col-sm-3">
-                                    <p><strong>Address :</strong></p>
-                                </div>
-                                <div class="col-xl-3 col-lg-3 col-sm-3">
-                                    <p><?= $feaddress['address'] ?></p>
-                                </div>
+
                                 <div class="col-xl-3 col-lg-3 col-sm-3">
                                     <p><strong>Google Auto Address :</strong></p>
                                 </div>
                                 <div class="col-xl-3 col-lg-3 col-sm-3">
                                     <p><?= $feaddress['google_auto_address'] ?></p>
                                 </div>
-                                <div class="col-xl-3 col-lg-3 col-sm-3">
-                                    <p><strong>State :</strong></p>
-                                </div>
-                                <div class="col-xl-3 col-lg-3 col-sm-3">
-                                    <p><?= $feaddress['state'] ?></p>
-                                </div>
+
                                 <div class="col-xl-3 col-lg-3 col-sm-3">
                                     <p><strong>Pincode :</strong></p>
                                 </div>

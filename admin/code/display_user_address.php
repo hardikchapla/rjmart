@@ -22,9 +22,7 @@ foreach($result as $row)
     // $sub_array[] = $row['main_area'];
     $sub_array[] = $row['landmark'];
     // $sub_array[] = $row['city'];
-    $sub_array[] = $row['address'];
     $sub_array[] = $row['google_auto_address'];
-    $sub_array[] = $row['state'];
     $sub_array[] = $row['pincode'];
     $sub_array[] = ($row['is_default'] == 1) ? 'Yes':'No';
     $data[] = $sub_array;

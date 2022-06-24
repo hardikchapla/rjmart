@@ -39,14 +39,8 @@
 		if(!empty($feaddress['landmark'])){
 			$address .= $feaddress['landmark'].', ';
 		}
-		if(!empty($feaddress['address'])){
-			$address .= $feaddress['address'].', ';
-		}
 		if(!empty($feaddress['google_auto_address'])){
 			$address .= $feaddress['google_auto_address'].', ';
-		}
-		if(!empty($feaddress['state'])){
-			$address .= $feaddress['state'].' - ';
 		}
 		if(!empty($feaddress['pincode'])){
 			$address .= $feaddress['pincode'];

@@ -122,9 +122,7 @@
                                                         <!-- <th>Main area</th> -->
                                                         <th>Landmark</th>
                                                         <!-- <th>City</th> -->
-                                                        <th>Address</th>
                                                         <th>Google Auto Address</th>
-                                                        <th>State</th>
                                                         <th>Pincode</th>
                                                         <th>Is Default?</th>
                                                     </tr>
