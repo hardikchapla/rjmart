@@ -58,7 +58,7 @@
  				$fecart = $checkcart->fetch();
  				$cart_id = $fecart['id'];
 				$newQTY = $fecart['qty'] + $quentity;
- 				$update = $db->query("UPDATE cart SET qty = '$quentity', updated = '$date' WHERE id = '$cart_id'");
+ 				$update = $db->query("UPDATE cart SET qty = '$newQTY', updated = '$date' WHERE id = '$cart_id'");
  			} else {
  				$update = $db->query("INSERT INTO cart SET `user_id` = '$user_id', p_id = '$product_id', qty = '$quentity', product_type_id = '$product_type_id', created = '$date'");
  			}
