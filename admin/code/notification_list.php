@@ -3,9 +3,9 @@ include('../../connection/connection.php');
 $noti = $db->query("SELECT * FROM notification WHERE receiver_type = 1 AND is_read = 0 ORDER BY id DESC LIMIT 0,5");
 if($noti->rowCount() > 0){
     while($fenoti = $noti->fetch()){
-        $user_id = $fenoti['sender_id'];
-        $user = $db->query("SELECT * FROM user WHERE id = '$user_id'");
-        $feuser = $user->fetch();
+            $user_id = $fenoti['sender_id'];
+            $user = $db->query("SELECT * FROM user WHERE id = '$user_id'");
+            $feuser = $user->fetch();
         ?>
 <div class="dropdown-item">
     <div class="media">
