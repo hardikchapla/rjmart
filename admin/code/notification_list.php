@@ -84,8 +84,8 @@ if($noti->rowCount() > 0){
             <?php
                     } else {
                         ?>
-            <div class="notification-para"><span class="user-name"><?= $feuser['fullname'] ?></span><a
-                    href="user-orders.php?id=<?= $fenoti['order_id'] ?>"> <?= $fenoti['message'] ?></a></div>
+            <div class="notification-para"><a href="user-orders.php?id=<?= $fenoti['order_id'] ?>">
+                    <?= $fenoti['message'] ?></a></div>
             <?php
                     }
                     ?>
