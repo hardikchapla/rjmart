@@ -113,7 +113,8 @@ var fridayCount = "<?php echo $fridayCount; ?>";
     <link href="assets/css/dashboard/dash_1.css" rel="stylesheet" type="text/css" />
     <!-- END PAGE LEVEL PLUGINS/CUSTOM STYLES -->
     <link rel="stylesheet" type="text/css" href="plugins/dropify/dropify.min.css">
-    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+    <link href="assets/css/style.css" rel="stylesheet" type="text/css" />
+    <link href="assets/css/media.css" rel="stylesheet" type="text/css" />
     <link href="assets/css/dashboard/dash_2.css" rel="stylesheet" type="text/css" />
     <style>
     .admin-name-header {
