@@ -32,8 +32,7 @@
 
 					$getUserAvatar = $feorder['user_id'];
 					$selectAvatar = $db->query("SELECT * FROM user WHERE id = '$getUserAvatar'");
-					print_r("SELECT * FROM user WHERE id = '$getUserAvatar'"); die;
-					$feUserAvatar = $checkmobile->fetch();
+					$feUserAvatar = $selectAvatar->fetch();
 					$order_id = $feorder['order_id'];
 					$aa[$a]['request_id'] = $feorder['request_id'];
 					$aa[$a]['order_id'] = $feorder['order_id'];
