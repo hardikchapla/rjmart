@@ -34,7 +34,7 @@
  					$aa[$a]['description'] = $fecheckcart['description'];
  					$aa[$a]['offer'] = $fecheckcart['offer'];
  					$aa[$a]['qty'] = $fecheckcart['qty'];
- 					$aa[$a]['product_type'] = $fecheckcart['product_type'];
+ 					$aa[$a]['product_type'] = $fecheckcart['Product_qty'].' '.$fecheckcart['product_type'];
  					$aa[$a]['Product_qty'] = $fecheckcart['Product_qty'];
  					$aa[$a]['product_type_price'] = $fecheckcart['product_type_price'];
  					$images = $db->query("SELECT * FROM product_image WHERE p_id = '".$fecheckcart['p_id']."'");
