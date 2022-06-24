@@ -68,7 +68,7 @@ $currentPage = 'Push Notification';
         <div id="content" class="main-content">
             <div class="layout-px-spacing">
                 <div class="row layout-top-spacing">
-                    <div id="custom_styles" class="col-lg-6 layout-spacing col-md-6">
+                    <div id="custom_styles" class="col-lg-12 layout-spacing col-md-6">
                         <div class="statbox widget box box-shadow">
                             <div class="widget-content widget-content-area br-6">
                                 <div class="widget-header add-new-cat-title">
