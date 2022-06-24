@@ -66,6 +66,9 @@ $feuser = $user->fetch();
                                             <th>Order Items</th>
                                             <th>Total Amount</th>
                                             <th>Payment Type</th>
+                                            <th>Delivery Type</th>
+                                            <th>Delivery Date</th>
+                                            <th>Delivery Time</th>
                                             <th>Cancel Order</th>
                                             <th class="safari-assign-boy">Assign</th>
                                             <th>View</th>
