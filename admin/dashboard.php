@@ -497,6 +497,10 @@ var fridayCount = "<?php echo $fridayCount; ?>";
                                             } elseif ($ferecent['order_status'] == 1) {
                                                 $order_status = '<span class="badge outline-badge-info">Confirmed</span>';
                                             } elseif($ferecent['order_status'] == 2) {
+                                                $order_status = '<span class="badge outline-badge-success">Delivered</span>';
+                                            } elseif($ferecent['order_status'] == 3) {
+                                                $order_status = '<span class="badge outline-badge-danger">Cancelled</span>';
+                                            } elseif($ferecent['order_status'] == 4) {
                                                 $order_status = '<span class="badge outline-badge-success">Shipped</span>';
                                             } else {
                                                 $order_status = '<span class="badge outline-badge-danger">Cancelled</span>';
