@@ -53,13 +53,14 @@
  		$date = date('Y-m-d H:i:s');
  		$checkmobile = $db->query("SELECT * FROM user WHERE id = '$user_id'");
  		if($checkmobile->rowCount() > 0){
- 			$checkcart = $db->query("SELECT * FROM cart WHERE user_id = '$user_id' AND p_id = '$product_id' AND product_type_id = '$product_type_id'");
+ 			$checkcart = $db->query("SELECT * FROM cart WHERE `user_id` = '$user_id' AND p_id = '$product_id' AND product_type_id = '$product_type_id'");
  			if($checkcart->rowCount() > 0){
  				$fecart = $checkcart->fetch();
  				$cart_id = $fecart['id'];
+				$newQTY = $fecart['qty'] + $quentity;
  				$update = $db->query("UPDATE cart SET qty = '$quentity', updated = '$date' WHERE id = '$cart_id'");
  			} else {
- 				$update = $db->query("INSERT INTO cart SET user_id = '$user_id', p_id = '$product_id', qty = '$quentity', product_type_id = '$product_type_id', created = '$date'");
+ 				$update = $db->query("INSERT INTO cart SET `user_id` = '$user_id', p_id = '$product_id', qty = '$quentity', product_type_id = '$product_type_id', created = '$date'");
  			}
  			if($update){
  				$status = 1;
