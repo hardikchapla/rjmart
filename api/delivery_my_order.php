@@ -29,6 +29,10 @@
 				$path = BASE_URL.'assets/img/product/';
 				$feUser = $checkmobile->fetch();
 				while($feorder = $order_details->fetch()){
+
+					$getUserAvatar = $feorder['user_id'];
+					$selectAvatar = $db->query("SELECT * FROM user WHERE id = '$getUserAvatar'");
+					$feUserAvatar = $checkmobile->fetch();
 					$order_id = $feorder['order_id'];
 					$aa[$a]['request_id'] = $feorder['request_id'];
 					$aa[$a]['order_id'] = $feorder['order_id'];
@@ -65,10 +69,10 @@
 						$aa[$a]['delivery_time'] = '';
 					}
                     $aa[$a]['order_date'] = ($feorder['orderdt']) ? $feorder['orderdt']:'';
-					if($feUser['avatar'] == ''){
+					if($feUserAvatar['avatar'] == ''){
 						$aa[$a]['avatar'] = '';
 					}else{
-						$aa[$a]['avatar'] = $avtar_path.$feUser['avatar'];
+						$aa[$a]['avatar'] = $avtar_path.$feUserAvatar['avatar'];
 					}
 					$order_items = $db->query("SELECT a.*,b.*,c.* FROM order_items a, product b,product_type c WHERE a.product_id = b.id AND a.product_type_id = c.product_type_id AND a.order_id = '$order_id'");
 					$bb = array();
