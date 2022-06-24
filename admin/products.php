@@ -309,18 +309,18 @@
     });
     $(document).ready(function() {
         $('#product_type_add').html(
-            '<div style="display: inline-flex;"><div class="col-md-4 mb-4"> <input type="text" class="form-control" id="product_type1" placeholder="Product type (EX: GM,KG)" required name="product_type[]"> </div><div class="col-md-3 mb-4"> <input type="text" class="form-control" id="product_type_qty1" placeholder="Product Quantity" required name="Product_qty[]"> </div><div class="col-md-3 mb-4"> <input type="text" class="form-control" id="product_type_price1" placeholder="Product Price" required name="product_type_price[]"> </div><div class="col-md-3 mb-4"> <button type="button" class="form-control btn btn-success" id="add_new_product_type">Add</button> </div></div>'
+            '<div style="display: inline-flex;"><div class="col-md-4 mb-4 pt15"> <input type="text" class="form-control" id="product_type1" placeholder="Product type (EX: GM,KG)" required name="product_type[]"> </div><div class="col-md-3 mb-4"> <input type="text" class="form-control" id="product_type_qty1" placeholder="Product Quantity" required name="Product_qty[]"> </div><div class="col-md-3 mb-4"> <input type="text" class="form-control" id="product_type_price1" placeholder="Product Price" required name="product_type_price[]"> </div><div class="col-md-3 mb-4 pt15"> <button type="button" class="form-control btn btn-success" id="add_new_product_type">Add</button> </div></div>'
         );
     });
     $(document).on('click', '#add_new_product_type', function() {
         $('#product_type_add').append('<div id="delete_type' + i +
-            '" style="display: inline-flex;"><div class="col-md-4 mb-4"> <input type="text" class="form-control" id="product_type' +
+            '" style="display: inline-flex;"><div class="col-md-4 mb-4 pt15"> <input type="text" class="form-control" id="product_type' +
             i +
             '" placeholder="Product type (EX: GM,KG)" required name="product_type[]"> </div><div class="col-md-3 mb-4"> <input type="text" class="form-control" id="product_type_qty' +
             i +
             '" placeholder="Product Quantity" required name="Product_qty[]"> </div><div class="col-md-3 mb-4"> <input type="text" class="form-control" id="product_type_price' +
             i +
-            '" placeholder="Product Price" required name="product_type_price[]"> </div><div class="col-md-3 mb-4"> <button type="button" class="form-control btn btn-success" onclick="deleteProducttype(' +
+            '" placeholder="Product Price" required name="product_type_price[]"> </div><div class="col-md-3 mb-4 pt15"> <button type="button" class="form-control btn btn-success" onclick="deleteProducttype(' +
             i + ')" id="delete_new_product_type' + i + '">Delete</button> </div></div>');
         i++;
     });

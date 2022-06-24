@@ -951,3 +951,8 @@ label.error {
     background: #ffffff !important;
     padding: 5px 16px !important;
 }
+
+.pt15 {
+    padding-right: 5px;
+    padding-left: 5px;
+}
