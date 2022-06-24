@@ -33,9 +33,9 @@
                     <?php
                          $noti = $db->query("SELECT * FROM notification WHERE receiver_type = 1 AND is_read = 0");
                          if($noti->rowCount() > 0){
-                            
-                         }else{
                             ?> <span class="badge badge-success"></span> <?php
+                         }else{
+                            
                          }
                     ?>
 
