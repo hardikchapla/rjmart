@@ -20,7 +20,7 @@
  		$created = date('Y-m-d H:i:s');
  		$checkmobile = $db->query("SELECT * FROM user WHERE id = '$user_id'");
  		if($checkmobile->rowCount() > 0){
-			$order_details = $db->query("SELECT * FROM notification WHERE receiver_id = '$user_id' AND receiver_type = 0 ORDER BY created DESC");
+			$order_details = $db->query("SELECT * FROM notification WHERE receiver_id = '$user_id' AND receiver_type = 0 ORDER BY id DESC");
 			if($order_details->rowCount() > 0){
 				$aa = array();
 				$a = 0;
