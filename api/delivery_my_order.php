@@ -53,8 +53,6 @@
 					$aa[$a]['main_area'] = $feorder['main_area'];
 					$aa[$a]['landmark'] = $feorder['landmark'];
 					$aa[$a]['city'] = $feorder['city'];
-					$aa[$a]['state'] = $feorder['state'];
-					$aa[$a]['address'] = $feorder['address'];
 					$aa[$a]['google_auto_address'] = $feorder['google_auto_address'];
 					$aa[$a]['pincode'] = $feorder['pincode'];
 					$aa[$a]['latitude'] = $feorder['latitude'];

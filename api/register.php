@@ -185,10 +185,8 @@
 					 $bb['tower_no'] = $feaddress['tower_no'];
 					 $bb['building_name'] = $feaddress['building_name'];
 					 $bb['landmark'] = $feaddress['landmark'];
-					 $bb['address'] = $feaddress['address'];
 					 $bb['google_auto_address'] = $feaddress['google_auto_address'];
 					 $bb['pincode'] = $feaddress['pincode'];
-					 $bb['state'] = $feaddress['state'];
 					 $bb['latitude'] = $feaddress['latitude'];
 					 $bb['longitude'] = $feaddress['longitude'];
 					 $bb['is_default'] = $feaddress['is_default'];
