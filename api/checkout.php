@@ -164,8 +164,6 @@
                 $aa['main_area'] = $feorder['main_area'];
                 $aa['landmark'] = $feorder['landmark'];
                 $aa['city'] = $feorder['city'];
-                $aa['state'] = $feorder['state'];
-                $aa['address'] = $feorder['address'];
                 $aa['google_auto_address'] = $feorder['google_auto_address'];
                 $aa['pincode'] = $feorder['pincode'];
                 $aa['latitude'] = $feorder['latitude'];
