@@ -129,7 +129,7 @@
                                                 Please select a category.
                                             </div>
                                         </div>
-                                        <div id="product_type_add">
+                                        <div id="product_type_add" class="w-100 p-1">
                                         </div>
                                     </div>
                                     <div class="form-row">
@@ -309,18 +309,18 @@
     });
     $(document).ready(function() {
         $('#product_type_add').html(
-            '<div style="display: inline-flex;"><div class="col-md-4 mb-4 pt15"> <input type="text" class="form-control" id="product_type1" placeholder="Product type (EX: GM,KG)" required name="product_type[]"> </div><div class="col-md-3 mb-4"> <input type="text" class="form-control" id="product_type_qty1" placeholder="Product Quantity" required name="Product_qty[]"> </div><div class="col-md-3 mb-4"> <input type="text" class="form-control" id="product_type_price1" placeholder="Product Price" required name="product_type_price[]"> </div><div class="col-md-3 mb-4 pt15"> <button type="button" class="form-control btn btn-success" id="add_new_product_type">Add</button> </div></div>'
+            '<div class="d-flex d-block-mobile"><div class="flex-fill bd-highlight mb-4 pr-2"> <input type="text" class="form-control" id="product_type1" placeholder="Product type (EX: GM,KG)" required name="product_type[]"> </div><div class="flex-fill bd-highlight mb-4 pr-2"> <input type="text" class="form-control" id="product_type_qty1" placeholder="Product Quantity" required name="Product_qty[]"> </div><div class="flex-fill bd-highlight mb-4 pr-2"> <input type="text" class="form-control" id="product_type_price1" placeholder="Product Price" required name="product_type_price[]"> </div><div class="flex-fill bd-highlight mb-4"> <button type="button" class="form-control btn btn-success" id="add_new_product_type">Add</button> </div></div>'
         );
     });
     $(document).on('click', '#add_new_product_type', function() {
         $('#product_type_add').append('<div id="delete_type' + i +
-            '" style="display: inline-flex;"><div class="col-md-4 mb-4 pt15"> <input type="text" class="form-control" id="product_type' +
+            '" class="d-flex d-block-mobile"><div class="flex-fill bd-highlight mb-4 pr-2"> <input type="text" class="form-control" id="product_type' +
             i +
-            '" placeholder="Product type (EX: GM,KG)" required name="product_type[]"> </div><div class="col-md-3 mb-4"> <input type="text" class="form-control" id="product_type_qty' +
+            '" placeholder="Product type (EX: GM,KG)" required name="product_type[]"> </div><div class="flex-fill bd-highlight mb-4 pr-2"> <input type="text" class="form-control" id="product_type_qty' +
             i +
-            '" placeholder="Product Quantity" required name="Product_qty[]"> </div><div class="col-md-3 mb-4"> <input type="text" class="form-control" id="product_type_price' +
+            '" placeholder="Product Quantity" required name="Product_qty[]"> </div><div class="flex-fill bd-highlight mb-4 pr-2"> <input type="text" class="form-control" id="product_type_price' +
             i +
-            '" placeholder="Product Price" required name="product_type_price[]"> </div><div class="col-md-3 mb-4 pt15"> <button type="button" class="form-control btn btn-success" onclick="deleteProducttype(' +
+            '" placeholder="Product Price" required name="product_type_price[]"> </div><div class="flex-fill bd-highlight mb-4"> <button type="button" class="form-control btn btn-success" onclick="deleteProducttype(' +
             i + ')" id="delete_new_product_type' + i + '">Delete</button> </div></div>');
         i++;
     });
@@ -420,33 +420,33 @@
                 $.each(data.product_type, function(key, value) {
                     if (i == 1) {
                         $('#product_type_add').html(
-                            '<div style="display: inline-flex;"><div class="col-md-4 mb-4"><input type="hidden" name="product_edit_type_id[]" value="' +
+                            '<div class="d-flex d-block-mobile"><div class="flex-fill bd-highlight mb-4 pr-2"><input type="hidden" name="product_edit_type_id[]" value="' +
                             value.product_type_id +
                             '"> <input type="text" class="form-control" id="product_edit_type1" placeholder="Product type (EX: GM,KG)" required name="product_edit_type[]" value="' +
                             value.product_type +
-                            '"> </div><div class="col-md-3 mb-4"> <input type="text" class="form-control" id="product_edit_type_qty1" placeholder="Product Quantity" required name="Product_edit_qty[]" value="' +
+                            '"> </div><div class="flex-fill bd-highlight mb-4 pr-2"> <input type="text" class="form-control" id="product_edit_type_qty1" placeholder="Product Quantity" required name="Product_edit_qty[]" value="' +
                             value.Product_qty +
-                            '"> </div><div class="col-md-3 mb-4"> <input type="text" class="form-control" id="product_edit_type_price1" placeholder="Product Price" required name="product_edit_type_price[]" value="' +
+                            '"> </div><div class="flex-fill bd-highlight mb-4 pr-2"> <input type="text" class="form-control" id="product_edit_type_price1" placeholder="Product Price" required name="product_edit_type_price[]" value="' +
                             value.product_type_price +
-                            '"> </div><div class="col-md-3 mb-4"> <button type="button" class="form-control btn btn-success" id="add_new_product_type">Add</button> </div></div>'
+                            '"> </div><div class="flex-fill bd-highlight mb-4"> <button type="button" class="form-control btn btn-success" id="add_new_product_type">Add</button> </div></div>'
                         );
                     } else {
                         $('#product_type_add').append('<div id="delete_edit_type' + i +
-                            '" style="display: inline-flex;"><div class="col-md-4 mb-4"> <input type="hidden" name="product_edit_type_id[]" value="' +
+                            '" class="d-flex d-block-mobile"><div class="flex-fill bd-highlight mb-4 pr-2"> <input type="hidden" name="product_edit_type_id[]" value="' +
                             value.product_type_id +
                             '"><input type="text" class="form-control" id="product_edit_type' +
                             i +
                             '" placeholder="Product type (EX: GM,KG)" required name="product_edit_type[]" value="' +
                             value.product_type +
-                            '"> </div><div class="col-md-3 mb-4"> <input type="text" class="form-control" id="product_edit_type_qty' +
+                            '"> </div><div class="flex-fill bd-highlight mb-4 pr-2"> <input type="text" class="form-control" id="product_edit_type_qty' +
                             i +
                             '" placeholder="Product Quantity" required name="Product_edit_qty[]" value="' +
                             value.Product_qty +
-                            '"> </div><div class="col-md-3 mb-4"> <input type="text" class="form-control" id="product_edit_type_price' +
+                            '"> </div><div class="flex-fill bd-highlight mb-4 pr-2"> <input type="text" class="form-control" id="product_edit_type_price' +
                             i +
                             '" placeholder="Product Price" required name="product_edit_type_price[]" value="' +
                             value.product_type_price +
-                            '"> </div><div class="col-md-3 mb-4"> <button type="button" class="form-control btn btn-success" onclick="deleteEditProductType(' +
+                            '"> </div><div class="flex-fill bd-highlight mb-4"> <button type="button" class="form-control btn btn-success" onclick="deleteEditProductType(' +
                             i + ',' + value.product_type_id +
                             ')" id="delete_new_product_edit_type' + i +
                             '">Delete</button> </div></div>');

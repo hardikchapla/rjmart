@@ -2,92 +2,97 @@
 
 /* CSS Document */
 
-@media(min-width:320px) and (max-width:480px) {
-    .add-category{
+@media (min-width: 320px) and (max-width: 480px) {
+    .add-category {
         margin-right: 0;
     }
-    .profile-modal .modal-content .close{
-    	margin-top: -19px;
+    .profile-modal .modal-content .close {
+        margin-top: -19px;
     }
     .image-previewer {
         width: 100%;
     }
-    .slider_images_of_animal_description img{
-      height: 180px;
-      object-fit: cover;
+    .slider_images_of_animal_description img {
+        height: 180px;
+        object-fit: cover;
     }
-    .deactive_ads, .abuse_spam_ads{
+    .deactive_ads,
+    .abuse_spam_ads {
         margin-top: 25px;
     }
-    .total_spent_payment{
+    .total_spent_payment {
         margin-top: 25px;
     }
-	.image_delete:nth-child(n+2){
-		margin-top: 20px !important;
-	}
-	.login-bg{
-	    height:200px;
-	}
-	.form-form .form-form-wrap{
-	    height:0;
-	    margin-top: 50px;
-	}
+    .image_delete:nth-child(n + 2) {
+        margin-top: 20px !important;
+    }
+    .login-bg {
+        height: 200px;
+    }
+    .form-form .form-form-wrap {
+        height: 0;
+        margin-top: 50px;
+    }
+    .d-block-mobile {
+        display: inline-block !important;
+        width: 100%;
+    }
 }
 
-@media(min-width:480px) and (max-width:767px) {
+@media (min-width: 480px) and (max-width: 767px) {
+    .d-block-mobile {
+        display: inline-block !important;
+        width: 100%;
+    }
 }
 
-@media(min-width:768px) and (max-width:1024px) {
-    
-}
+@media (min-width: 768px) and (max-width: 1024px) {}
 
-@media(min-width:1025px) and (max-width:1170px) {
+@media (min-width: 1025px) and (max-width: 1170px) {
     .table-responsive {
         overflow-x: auto !important;
     }
 }
-@media(min-width:480px) and (max-width:767px) {
 
-}
-@media(min-width:425px) and (max-width:550px) {
-    .add-category{
+@media (min-width: 480px) and (max-width: 767px) {}
+
+@media (min-width: 425px) and (max-width: 550px) {
+    .add-category {
         margin-right: 0;
     }
-    .cose_preview_modal{
-    	margin-top: -20px !important;
+    .cose_preview_modal {
+        margin-top: -20px !important;
     }
-    .slider_images_of_animal_description img{
-      height: 180px;
-      object-fit: cover;
+    .slider_images_of_animal_description img {
+        height: 180px;
+        object-fit: cover;
     }
-    .deactive_ads, .abuse_spam_ads{
+    .deactive_ads,
+    .abuse_spam_ads {
         margin-top: 25px;
     }
-	.image_delete:nth-child(n+2){
-		margin-top: 20px !important;
-	}
-	.login-bg{
-	    height:200px;
-	}
-	.form-form .form-form-wrap{
-	    height:0;
-	    margin-top: 50px;
-	}
+    .image_delete:nth-child(n + 2) {
+        margin-top: 20px !important;
+    }
+    .login-bg {
+        height: 200px;
+    }
+    .form-form .form-form-wrap {
+        height: 0;
+        margin-top: 50px;
+    }
 }
 
-@media(min-width:768px) and (max-width:1024px) {
+@media (min-width: 768px) and (max-width: 1024px) {}
 
-}
-
-@media(min-width:1024px) and (max-width:1170px) {
+@media (min-width: 1024px) and (max-width: 1170px) {
     .table-responsive {
         overflow-x: auto !important;
     }
 }
 
-@media only screen  and (min-width : 1400px) {
+@media only screen and (min-width: 1400px) {
     .table-responsive {
         overflow-x: auto !important;
     }
-    
 }
