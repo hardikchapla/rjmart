@@ -2,11 +2,13 @@
 include('../../connection/connection.php');
 $start_date = $_REQUEST['start_date'];
 $end_date = $_REQUEST['end_date'];
+$fStartDate = date('Y-m-d', strtotime($start_date));
+$lEndDate = date('Y-m-d', strtotime($end_date));
 $reoutput = array();
-if($start_date == '' && $end_date == ''){
+if($fStartDate == '' && $lEndDate == ''){
     $query = "SELECT sum(total_amount) as total_amount FROM product_order WHERE order_status = 2";
 } else {
-    $query = "SELECT sum(total_amount) as total_amount FROM product_order WHERE order_status = 2 AND created BETWEEN '$start_date' AND '$end_date'";
+    $query = "SELECT sum(total_amount) as total_amount FROM product_order WHERE order_status = 2 AND CONVERT (created, GETDATE()) BETWEEN '$fStartDate' AND '$lEndDate'";
 }
 $statement = $db->query($query);
 $statement->execute();
