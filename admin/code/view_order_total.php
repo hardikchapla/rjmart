@@ -7,7 +7,6 @@ if($start_date == '' && $end_date == ''){
     $query = "SELECT sum(total_amount) as total_amount FROM product_order WHERE order_status = 2";
 } else {
     $query = "SELECT sum(total_amount) as total_amount FROM product_order WHERE order_status = 2 AND created BETWEEN '$start_date' AND '$end_date'";
-    print_r("SELECT sum(total_amount) as total_amount FROM product_order WHERE order_status = 2 AND created BETWEEN '$start_date' AND '$end_date'"); die;
 }
 $statement = $db->query($query);
 $statement->execute();
