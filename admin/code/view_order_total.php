@@ -8,7 +8,7 @@ $reoutput = array();
 if($fStartDate == '' && $lEndDate == ''){
     $query = "SELECT sum(total_amount) as total_amount FROM product_order WHERE order_status = 2";
 } else {
-    $query = "SELECT sum(total_amount) as total_amount FROM product_order WHERE order_status = 2 AND created BETWEEN '$fStartDate' AND '$lEndDate'";
+    $query = "SELECT sum(total_amount) as total_amount FROM product_order WHERE order_status = 2 AND DATE(created) BETWEEN '$fStartDate' AND '$lEndDate'";
 }
 $statement = $db->query($query);
 $statement->execute();
