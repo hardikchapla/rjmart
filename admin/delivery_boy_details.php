@@ -138,8 +138,8 @@ $feuser = $user->fetch();
                                     <?php
                                     if($feuser['status'] == 0){
                                 ?>
-                                    <button class="btn btn-danger disapproved"
-                                        id="<?= $feuser['id'] ?>">Disapproved</button>
+                                    <!-- <button class="btn btn-danger disapproved"
+                                        id="<?= $feuser['id'] ?>">Disapproved</button> -->
                                     <?php
                                     }
                                 ?>
@@ -336,7 +336,7 @@ $feuser = $user->fetch();
         var dataTable1 = $('#display_order').DataTable({
             "destroy": true,
             "ajax": {
-                url: "code/display_delivery_order.php",
+                url: "code/display_delivery_order",
                 type: "POST",
                 data: {
                     user_id: user_id,
@@ -396,7 +396,7 @@ $feuser = $user->fetch();
             preConfirm: function() {
                 return new Promise(function(resolve) {
                     $.ajax({
-                            url: 'code/delivery_boy_disapprove.php',
+                            url: 'code/delivery_boy_disapprove',
                             type: 'POST',
                             data: {
                                 user_id: user_id

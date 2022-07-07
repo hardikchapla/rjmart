@@ -6,7 +6,9 @@ $end_date = (isset($_REQUEST['end_date']) && $_REQUEST['end_date'] != '') ? $_RE
 $status = $_REQUEST['status'];
 $reoutput = array();
 if($start_date != '' && $end_date != ''){
-    $query = "SELECT k.id as request_id,k.*,a.*,b.full_name,count(c.order_items_id) as order_item FROM near_by_request k, product_order a, user_address b, order_items c WHERE k.order_id = a.id AND a.user_address_id = b.id AND k.order_id = c.order_id AND k.to_id = '$user_id' AND k.status = '$status' AND a.created BETWEEN '$start_date' AND '$end_date' GROUP BY c.order_id ORDER BY k.id DESC";
+    $start_date = str_replace('/','-',$_REQUEST['start_date']);
+    $end_date = str_replace('/','-',$_REQUEST['end_date']);
+    $query = "SELECT k.id as request_id,k.*,a.*,b.full_name,count(c.order_items_id) as order_item FROM near_by_request k, product_order a, user_address b, order_items c WHERE k.order_id = a.id AND a.user_address_id = b.id AND k.order_id = c.order_id AND k.to_id = '$user_id' AND k.status = '$status' AND DATE_FORMAT(a.created,'%Y-%m-%d') BETWEEN '$start_date' AND '$end_date' GROUP BY c.order_id ORDER BY k.id DESC";
 } else {
     $query = "SELECT k.id as request_id,k.*,a.*,b.full_name,count(c.order_items_id) as order_item FROM near_by_request k, product_order a, user_address b, order_items c WHERE k.order_id = a.id AND a.user_address_id = b.id AND k.order_id = c.order_id AND k.to_id = '$user_id' AND k.status = '$status' GROUP BY c.order_id ORDER BY k.id DESC";
 }

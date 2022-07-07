@@ -7,6 +7,12 @@ $order_id = $_REQUEST['id'];
 $order = $db->query("SELECT * FROM product_order WHERE id = '$order_id'");
 $feorder = $order->fetch();
 
+$payment = $db->query("SELECT * FROM payment WHERE order_id = '$order_id'");
+$fepayment = $payment->fetch(PDO::FETCH_ASSOC);
+$payment_status = 'Pending';
+if($fepayment['status'] == 1){
+    $payment_status = 'Completed';
+}
 if($feorder['order_status'] == 0){
     $order_status = 'Pending';
 } elseif ($feorder['order_status'] == 1){
@@ -87,6 +93,12 @@ $feaddress = $user_address->fetch();
                             <div class="row">
                                 <div class="col-xl-3 col-lg-3 col-sm-3">
                                     <p><strong>Payment Status :</strong></p>
+                                </div>
+                                <div class="col-xl-3 col-lg-3 col-sm-3">
+                                    <p><?= $payment_status ?></p>
+                                </div>
+                                <div class="col-xl-3 col-lg-3 col-sm-3">
+                                    <p><strong>Order Status :</strong></p>
                                 </div>
                                 <div class="col-xl-3 col-lg-3 col-sm-3">
                                     <p><?= $order_status ?></p>

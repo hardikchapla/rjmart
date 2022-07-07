@@ -2,7 +2,7 @@
 include('../../connection/connection.php');
 $user_id = (isset($_REQUEST['user_id']) && $_REQUEST['user_id'] != '') ? $_REQUEST['user_id']:0;
 $reoutput = array();
-$user = $db->query("SELECT * FROM user WHERE user_type = 1 AND active = 1");
+$user = $db->query("SELECT * FROM user WHERE user_type = 1 AND status = 1");
 $feuser = $user->fetchAll();
 $kbc = '';
 foreach($feuser as $ab){
