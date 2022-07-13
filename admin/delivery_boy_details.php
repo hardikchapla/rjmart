@@ -586,11 +586,6 @@ $feuser = $user->fetch();
         bindDateRangeValidation($("#form"), 'startDate', 'endDate');
     });
     </script>
-    <script>
-    $(document).ready(function() {
-        App.init();
-    });
-    </script>
     <!-- END PAGE LEVEL SCRIPTS -->
 
 </body>
