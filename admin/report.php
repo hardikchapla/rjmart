@@ -22,6 +22,7 @@
     <!-- BEGIN PAGE LEVEL PLUGINS/CUSTOM STYLES -->
     <!-- END PAGE LEVEL PLUGINS/CUSTOM STYLES -->
     <link href="assets/css/style.css" rel="stylesheet" type="text/css" />
+    <link href="assets/css/media.css" rel="stylesheet" type="text/css" />
     <!-- END GLOBAL MANDATORY STYLES -->
     <!-- BEGIN PAGE LEVEL STYLES -->
     <link rel="stylesheet" type="text/css" href="plugins/table/datatable/datatables.css">
@@ -166,25 +167,17 @@
     </script>
     <script src="bootstrap/js/popper.min.js"></script>
     <script src="bootstrap/js/bootstrap.min.js"></script>
-    <script src="plugins/perfect-scrollbar/perfect-scrollbar.min.js"></script>
     <script src="assets/js/app.js"></script>
-    <script>
-    $(document).ready(function() {
-        App.init();
-    });
-    </script>
+    <script src="plugins/perfect-scrollbar/perfect-scrollbar.min.js"></script>
+
     <script src="assets/js/custom.js"></script>
-    <!-- END GLOBAL MANDATORY SCRIPTS -->
-    <!-- BEGIN PAGE LEVEL PLUGINS/CUSTOM SCRIPTS -->
-    <script src="plugins/apex/apexcharts.min.js"></script>
-    <script src="assets/js/dashboard/dash_1.js"></script>
-    <!-- BEGIN PAGE LEVEL PLUGINS/CUSTOM SCRIPTS -->
     <!-- BEGIN PAGE LEVEL SCRIPTS -->
     <script src="plugins/table/datatable/datatables.js"></script>
     <script src="plugins/sweetalerts/promise-polyfill.js"></script>
     <script src="plugins/sweetalerts/sweetalert2.min.js"></script>
     <script src="plugins/sweetalerts/custom-sweetalert.js"></script>
     <script src="assets/js/apps/invoice.js"></script>
+
     <script>
     $('#zero-config').DataTable({
         "oLanguage": {
