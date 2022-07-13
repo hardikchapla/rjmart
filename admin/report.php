@@ -157,26 +157,24 @@
         <!--  END CONTENT AREA  -->
     </div>
     <!-- END MAIN CONTAINER -->
-    <!-- BEGIN GLOBAL MANDATORY SCRIPTS -->
     <script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
+    <script src="bootstrap/js/popper.min.js"></script>
+    <script src="bootstrap/js/bootstrap.min.js"></script>
+    <script src="assets/js/app.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.bootstrapvalidator/0.5.3/js/bootstrapValidator.min.js">
     </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.2/moment.min.js"></script>
     <script
         src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/3.1.3/js/bootstrap-datetimepicker.min.js">
     </script>
-    <script src="bootstrap/js/popper.min.js"></script>
-    <script src="bootstrap/js/bootstrap.min.js"></script>
-    <script src="assets/js/app.js"></script>
-    <script src="plugins/perfect-scrollbar/perfect-scrollbar.min.js"></script>
-
-    <script src="assets/js/custom.js"></script>
     <!-- BEGIN PAGE LEVEL SCRIPTS -->
+    <script src="plugins/perfect-scrollbar/perfect-scrollbar.min.js"></script>
     <script src="plugins/table/datatable/datatables.js"></script>
     <script src="plugins/sweetalerts/promise-polyfill.js"></script>
     <script src="plugins/sweetalerts/sweetalert2.min.js"></script>
     <script src="plugins/sweetalerts/custom-sweetalert.js"></script>
     <script src="assets/js/apps/invoice.js"></script>
+    <script src="assets/js/custom.js"></script>
 
     <script>
     $('#zero-config').DataTable({
