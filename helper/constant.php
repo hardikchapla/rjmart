@@ -1,5 +1,6 @@
 <?php
-
+    print_r($_SERVER['HTTP_HOST']);
+    die;
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -8,6 +9,8 @@
  // Defining base url
     if($_SERVER['HTTP_HOST'] == "localhost"){
         define("BASE_URL", "http://localhost/rjmart/");
+    } elseif ($_SERVER['HTTP_HOST'] == "https://rjmart.store/") {
+        define("BASE_URL", "https://rjmart.store/");
     } else {
         define("BASE_URL", "https://uniformedtech.com/rjmart/");
     }
