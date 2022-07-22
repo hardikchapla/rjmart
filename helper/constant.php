@@ -7,7 +7,7 @@
  // Defining base url
     if($_SERVER['HTTP_HOST'] == "localhost"){
         define("BASE_URL", "http://localhost/rjmart/");
-    } elseif ($_SERVER['HTTP_HOST'] == "https://rjmart.store/") {
+    } elseif ($_SERVER['HTTP_HOST'] == "rjmart.store") {
         define("BASE_URL", "https://rjmart.store/");
     } else {
         define("BASE_URL", "https://uniformedtech.com/rjmart/");

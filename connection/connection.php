@@ -1,6 +1,4 @@
 <?php
-	    print_r($_SERVER['HTTP_HOST']);
-		die;
 	/*
 	 * To change this license header, choose License Headers in Project Properties.
 	 * To change this template file, choose Tools | Templates
@@ -17,6 +15,11 @@
 		$username = 'root';
 		$password = '';
 		$databaseName = 'rjmart';
+	} elseif ($_SERVER['HTTP_HOST'] == "rjmart.store") {
+        $servername = 'localhost';
+		$username = 'u818658830_rjmart';
+		$password = 'f?c/q:ojP3';
+		$databaseName = 'u818658830_rjmart';
 	} else {
 		$servername = 'localhost';
 		$username = 'u269128924_rjmart';
