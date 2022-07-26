@@ -24,7 +24,7 @@
             $otp = rand(100000, 999999);
             $curl = curl_init();
             curl_setopt_array($curl, array(
-            CURLOPT_URL => 'https://2factor.in/API/V1/214c8c4d-0cca-11ed-9c12-0200cd936042/SMS/'.$mobile.'/'.$otp,
+            CURLOPT_URL => 'https://2factor.in/API/V1/87cb31cc-0cd7-11ed-9c12-0200cd936042/SMS/'.$mobile.'/'.$otp,
             CURLOPT_RETURNTRANSFER => true,
             CURLOPT_ENCODING => '',
             CURLOPT_MAXREDIRS => 10,
