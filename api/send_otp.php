@@ -19,8 +19,8 @@
 			die;
  		}
         $mobile = $_REQUEST['mobile'];
-        $checkmobile = $db->query("SELECT * FROM user WHERE mobile = '$mobile'");
- 		if($checkmobile->rowCount() > 0){
+        // $checkmobile = $db->query("SELECT * FROM user WHERE mobile = '$mobile'");
+ 		// if($checkmobile->rowCount() > 0){
             $otp = rand(100000, 999999);
             $curl = curl_init();
             curl_setopt_array($curl, array(
@@ -53,11 +53,11 @@
             $message = "This mobile number is registered. please register first";
             $data = (object)  array();
         }
-    } else {
-        $status = 0;
-		$message = "Please enter field values";
-		$data = (object)  array();
-    }
+    // } else {
+    //     $status = 0;
+	// 	$message = "Please enter field values";
+	// 	$data = (object)  array();
+    // }
     $response['status'] = $status;
 	$response['message'] = $message;
 	$response['data'] = $data;
